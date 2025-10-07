@@ -6,10 +6,6 @@ function getServiceAccountCredentials() {
     /\\n/g,
     '\n',
   );
-
-  console.log({ old: process.env.GCP_PRIVATE_KEY });
-  console.log({ new: privateWithRealBreak });
-
   const json = {
     type: 'service_account',
     project_id: process.env.GCP_PROJECT_ID,

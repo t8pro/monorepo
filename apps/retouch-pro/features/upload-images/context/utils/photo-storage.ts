@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Photo, UserData } from '../types';
 
 const DB_NAME = 'RetouchProDB';

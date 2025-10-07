@@ -94,13 +94,6 @@ export const processPhotoForUpload = async (file: File) => {
     lastModified: Date.now(),
   });
 
-  console.log('Image processed:', {
-    original: `${(file.size / 1024 / 1024).toFixed(2)}MB`,
-    compressed: `${(compressedFile.size / 1024 / 1024).toFixed(2)}MB`,
-    reduction: `${(((file.size - compressedFile.size) / file.size) * 100).toFixed(1)}%`,
-    dimensions: `${targetWidth}x${targetHeight}`,
-  });
-
   return {
     file: compressedFile,
     width: targetWidth,

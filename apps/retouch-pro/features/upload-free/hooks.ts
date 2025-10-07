@@ -124,16 +124,8 @@ export const useUploadFree = () => {
         fileType: 'image/jpeg', // Convert to JPEG for better compression
       };
 
-      const compressedFile = await imageCompression(file, options);
-      console.log('Image compressed:', {
-        original: `${(file.size / 1024 / 1024).toFixed(2)}MB`,
-        compressed: `${(compressedFile.size / 1024 / 1024).toFixed(2)}MB`,
-        reduction: `${(((file.size - compressedFile.size) / file.size) * 100).toFixed(1)}%`,
-      });
-
-      return compressedFile;
-    } catch (error) {
-      console.warn('Image compression failed, using original:', error);
+      return await imageCompression(file, options);
+    } catch {
       return file;
     }
   }, []);

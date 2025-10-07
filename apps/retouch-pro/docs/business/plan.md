@@ -48,26 +48,26 @@
 **Critical (Must Have Before Launch):**
 
 - [ ] ❌ Stripe Webhook implementation for payment confirmation
-   - Currently using client-side payment confirmation only
-   - Need webhook to handle payment.succeeded events
-   - Required for reliable order processing
+  - Currently using client-side payment confirmation only
+  - Need webhook to handle payment.succeeded events
+  - Required for reliable order processing
 
 - [ ] ❌ Error tracking/monitoring (Sentry or similar)
-   - No visibility into production errors
-   - Critical for diagnosing issues
+  - No visibility into production errors
+  - Critical for diagnosing issues
 
 - [ ] ❌ Analytics implementation (Google Analytics/Mixpanel)
-   - No conversion tracking
-   - Cannot measure funnel performance
+  - No conversion tracking
+  - Cannot measure funnel performance
 
 - [ ] ❌ Environment-based configuration
-   - Missing production vs. development environment handling
-   - Need proper APP_URL configuration
+  - Missing production vs. development environment handling
+  - Need proper APP_URL configuration
 
-**Important (Should Have Soon):**
-5. ❌ E-book PDF creation
-   - E-book lead capture works but no actual PDF to send
-   - Template sends placeholder link
+**Important (Should Have Soon):** 5. ❌ E-book PDF creation
+
+- E-book lead capture works but no actual PDF to send
+- Template sends placeholder link
 
 6. ❌ Customer confirmation emails
    - Only internal team notifications implemented
@@ -80,15 +80,6 @@
 8. ❌ Photo delivery workflow
    - No system for uploading finished photos back to customers
    - Manual process not documented
-
-**Nice to Have (Future Enhancements):**
-9. ❌ Admin dashboard for order management
-10. ❌ Revision request system
-11. ❌ Customer photo gallery/portal
-12. ❌ Automated follow-up emails
-13. ❌ A/B testing framework
-14. ❌ Customer satisfaction surveys
-15. ❌ Referral program
 
 ### 📋 WHAT'S NEXT: Production Launch Checklist
 
@@ -1577,6 +1568,7 @@ NODE_ENV=production
 ## Quick Reference: What's Working Now
 
 ### ✅ Customer Can Do Today:
+
 1. Visit landing page and view pricing
 2. Download e-book (gets email with link)
 3. Upload 1 photo for free trial → Team receives email with Drive link
@@ -1586,6 +1578,7 @@ NODE_ENV=production
 7. Photos automatically uploaded to Google Drive folder
 
 ### ⚠️ Manual Steps Required by Team:
+
 1. Download customer photos from Drive folder (link in email)
 2. Retouch photos manually
 3. Upload finished photos back to Drive
@@ -1593,6 +1586,7 @@ NODE_ENV=production
 5. Handle revision requests via email/WhatsApp
 
 ### 🔧 Needs to Be Built:
+
 1. Stripe webhook (currently uses client-side confirmation only - risky)
 2. Customer order confirmation emails
 3. Error tracking (blind to production issues)
@@ -1601,6 +1595,7 @@ NODE_ENV=production
 6. Actual e-book PDF file
 
 ### 🎯 Priority Order for Next Sprint:
+
 1. **CRITICAL:** Stripe webhooks
 2. **CRITICAL:** Sentry error tracking
 3. **HIGH:** Customer confirmation emails

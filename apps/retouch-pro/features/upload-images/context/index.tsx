@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 'use client';
 
 import { createContext, useCallback, useContext, useReducer } from 'react';
