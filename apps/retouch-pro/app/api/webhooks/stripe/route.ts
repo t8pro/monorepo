@@ -160,7 +160,7 @@ export async function POST(request: NextRequest) {
 
 // In-memory store for confirmed orders (waiting for photo upload)
 // In production, use Redis or a database
-export const confirmedOrders = new Map<
+const confirmedOrders = new Map<
   string,
   {
     paymentIntentId: string;
