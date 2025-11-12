@@ -58,6 +58,11 @@ export const Hero = () => {
               onClick={e => {
                 e.preventDefault();
                 e.stopPropagation();
+                if (typeof window !== 'undefined' && (window as any).gtag) {
+                  (window as any).gtag('event', 'hero_examples_click', {
+                    location: 'hero',
+                  });
+                }
                 router.push('/#before-after');
               }}
             >
@@ -71,6 +76,11 @@ export const Hero = () => {
               iconLeft="upload"
               onClick={e => {
                 e.stopPropagation();
+                if (typeof window !== 'undefined' && (window as any).gtag) {
+                  (window as any).gtag('event', 'hero_cta_click', {
+                    location: 'hero',
+                  });
+                }
                 handleClick();
               }}
             >
@@ -89,7 +99,14 @@ export const Hero = () => {
             type="file"
             multiple
             accept="image/*"
-            onChange={e => handleFileSelect(e.target.files)}
+            onChange={e => {
+              if (typeof window !== 'undefined' && (window as any).gtag) {
+                (window as any).gtag('event', 'hero_dropzone_open', {
+                  location: 'hero',
+                });
+              }
+              handleFileSelect(e.target.files);
+            }}
             className={styles.hiddenFileInput}
             aria-label="Select photos to upload"
           />
