@@ -2592,6 +2592,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@t8pro/boilerplate@workspace:apps/fran-ugc":
+  version: 0.0.0-use.local
+  resolution: "@t8pro/boilerplate@workspace:apps/fran-ugc"
+  dependencies:
+    "@t8pro/eslint-config": "npm:*"
+    "@t8pro/typescript-config": "npm:*"
+    "@tanstack/react-query": "npm:^5.90.8"
+    "@types/handlebars": "npm:^4.1.0"
+    "@types/node": "npm:^24.10.1"
+    "@types/nodemailer": "npm:^7.0.3"
+    "@types/react": "npm:19.2.3"
+    "@types/react-dom": "npm:19.2.3"
+    eslint: "npm:^9.39.1"
+    googleapis: "npm:^166.0.0"
+    handlebars: "npm:^4.7.8"
+    material-symbols: "npm:^0.39.2"
+    next: "npm:^15.5.6"
+    nodemailer: "npm:^6.10.1"
+    react: "npm:19.2.0"
+    react-dom: "npm:19.2.0"
+    react-icons: "npm:^5.5.0"
+    react-toastify: "npm:^11.0.5"
+    sass: "npm:^1.94.0"
+    typescript: "npm:5.9.3"
+  languageName: unknown
+  linkType: soft
+
 "@t8pro/design-system@npm:*, @t8pro/design-system@workspace:packages/design-system":
   version: 0.0.0-use.local
   resolution: "@t8pro/design-system@workspace:packages/design-system"
@@ -2639,6 +2666,33 @@ __metadata:
     eslint: ^9.33.0
     prettier: ^3.6.2
     typescript: ^5.9.2
+  languageName: unknown
+  linkType: soft
+
+"@t8pro/fran-ugc@workspace:apps/boilerplate":
+  version: 0.0.0-use.local
+  resolution: "@t8pro/fran-ugc@workspace:apps/boilerplate"
+  dependencies:
+    "@t8pro/eslint-config": "npm:*"
+    "@t8pro/typescript-config": "npm:*"
+    "@tanstack/react-query": "npm:^5.90.8"
+    "@types/handlebars": "npm:^4.1.0"
+    "@types/node": "npm:^24.10.1"
+    "@types/nodemailer": "npm:^7.0.3"
+    "@types/react": "npm:19.2.3"
+    "@types/react-dom": "npm:19.2.3"
+    eslint: "npm:^9.39.1"
+    googleapis: "npm:^166.0.0"
+    handlebars: "npm:^4.7.8"
+    material-symbols: "npm:^0.39.2"
+    next: "npm:^15.5.6"
+    nodemailer: "npm:^6.10.1"
+    react: "npm:19.2.0"
+    react-dom: "npm:19.2.0"
+    react-icons: "npm:^5.5.0"
+    react-toastify: "npm:^11.0.5"
+    sass: "npm:^1.94.0"
+    typescript: "npm:5.9.3"
   languageName: unknown
   linkType: soft
 

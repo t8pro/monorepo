@@ -3,12 +3,7 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "build:rp": "turbo run build --filter=@t8pro/retouch-pro",
-    "build:site": "turbo run build --filter=@t8pro/site",
-    "build:ds": "turbo run build --filter=@t8pro/design-system",
     "dev": "turbo run dev",
-    "dev:rp": "turbo run dev --filter=@t8pro/retouch-pro",
-    "dev:site": "turbo run dev --filter=@t8pro/site",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
