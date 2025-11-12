@@ -5,7 +5,8 @@
     "paths": {
       "@/*": ["./*"],
       "@/components/*": ["./components/*"],
-      "@/features/*": ["./features/*"]
+      "@/features/*": ["./features/*"],
+      "@/styles/*": ["./styles/*"]
     },
     "plugins": [
       {
