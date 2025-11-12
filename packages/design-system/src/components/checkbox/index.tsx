@@ -15,7 +15,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       size = 'medium',
       className,
       label,
-      indeterminate = false,
       ...rest
     },
     ref,

@@ -2,21 +2,13 @@
 
 import { Button, Heading, Text } from '@t8pro/design-system';
 import { useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense } from 'react';
 import styles from './styles.module.scss';
 
 function EbookDownloadContent() {
   const searchParams = useSearchParams();
   const token = searchParams.get('token');
-  const [isValid, setIsValid] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    if (token) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
-  }, [token]);
+  const isValid = token !== null;
 
   const handleDownload = () => {
     const ebookUrl = '/ebook-free.pdf';
@@ -28,15 +20,7 @@ function EbookDownloadContent() {
     document.body.removeChild(link);
   };
 
-  if (isValid === null) {
-    return (
-      <div className={styles.container}>
-        <Text>Verifying link...</Text>
-      </div>
-    );
-  }
-
-  if (isValid) {
+  if (!isValid) {
     return (
       <div className={styles.container}>
         <Heading as="h1" className={styles.title}>

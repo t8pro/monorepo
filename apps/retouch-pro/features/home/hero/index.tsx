@@ -6,6 +6,16 @@ import { useRouter } from 'next/navigation';
 import { useHero } from './hooks';
 import styles from './styles.module.scss';
 
+declare global {
+  interface Window {
+    gtag?: (
+      command: string,
+      eventName: string,
+      eventParams?: Record<string, unknown>,
+    ) => void;
+  }
+}
+
 export const Hero = () => {
   const {
     handleFileSelect,
@@ -58,8 +68,8 @@ export const Hero = () => {
               onClick={e => {
                 e.preventDefault();
                 e.stopPropagation();
-                if (typeof window !== 'undefined' && (window as any).gtag) {
-                  (window as any).gtag('event', 'hero_examples_click', {
+                if (typeof window !== 'undefined' && window.gtag) {
+                  window.gtag('event', 'hero_examples_click', {
                     location: 'hero',
                   });
                 }
@@ -76,8 +86,8 @@ export const Hero = () => {
               iconLeft="upload"
               onClick={e => {
                 e.stopPropagation();
-                if (typeof window !== 'undefined' && (window as any).gtag) {
-                  (window as any).gtag('event', 'hero_cta_click', {
+                if (typeof window !== 'undefined' && window.gtag) {
+                  window.gtag('event', 'hero_cta_click', {
                     location: 'hero',
                   });
                 }
@@ -100,8 +110,8 @@ export const Hero = () => {
             multiple
             accept="image/*"
             onChange={e => {
-              if (typeof window !== 'undefined' && (window as any).gtag) {
-                (window as any).gtag('event', 'hero_dropzone_open', {
+              if (typeof window !== 'undefined' && window.gtag) {
+                window.gtag('event', 'hero_dropzone_open', {
                   location: 'hero',
                 });
               }

@@ -6,5 +6,4 @@ export interface CheckboxProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   size?: CheckboxSize;
   label?: ReactNode;
-  indeterminate?: boolean;
 }
