@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <main id="home">Fran</main>;
+  return <main id="home">Boilerplate</main>;
 }
