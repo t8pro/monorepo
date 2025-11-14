@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import { Figtree, Young_Serif } from 'next/font/google';
 import localFont from 'next/font/local';
 import { Providers } from './providers';
-import '@/styles/globals.scss';
-import 'reshaped/themes/slate/theme.css';
 import '@/styles/themes/fran/theme.css';
+import '@/styles/globals.scss';
 
 const figtree = Figtree({
   variable: '--font-figtree',
@@ -191,7 +190,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" data-rs-theme="fran" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

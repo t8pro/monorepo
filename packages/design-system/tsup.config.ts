@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { defineConfig } from 'tsup';
 import { cssModulesPlugin } from './plugins/css-modules-plugin.js';
 

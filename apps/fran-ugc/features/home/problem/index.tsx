@@ -1,29 +1,24 @@
 'use client';
 
 import Link from 'next/link';
-import {
-  FaRegClock,
-  FaRegQuestionCircle,
-  FaRegLightbulb,
-} from 'react-icons/fa';
 import { Button, Container, Text, View } from 'reshaped';
 import styles from './styles.module.scss';
 
 const problems = [
   {
-    icon: FaRegClock,
+    icon: 'movie_edit',
     title: 'Não Sabe Editar Vídeos?',
     description:
       'Ótimo! Nosso método não exige nenhuma habilidade de edição. Se você sabe usar a câmera do celular, está pronto para começar.',
   },
   {
-    icon: FaRegQuestionCircle,
+    icon: 'schedule',
     title: 'Não Tem Tempo?',
     description:
       'Dedique apenas alguns minutos por dia. É perfeito para quem tem uma rotina corrida e quer uma renda extra sem comprometer o tempo.',
   },
   {
-    icon: FaRegLightbulb,
+    icon: 'devices',
     title: 'Acha que Precisa de Equipamento Caro?',
     description:
       'Seu celular é a única ferramenta que você precisa. Sem câmeras, microfones ou computadores potentes.',
@@ -46,11 +41,15 @@ export const Problem = () => {
 
         <div className={styles.grid}>
           {problems.map((problem, index) => {
-            const Icon = problem.icon;
             return (
               <div key={index} className={styles.card}>
                 <div className={styles.iconWrapper}>
-                  <Icon size={32} />
+                  <span
+                    className="material-symbols-rounded"
+                    style={{ fontSize: '32px' }}
+                  >
+                    {problem.icon}
+                  </span>
                 </div>
                 <h3 className={styles.cardTitle}>{problem.title}</h3>
                 <p className={styles.cardDescription}>{problem.description}</p>
@@ -66,7 +65,7 @@ export const Problem = () => {
         <View direction="row" gap={2} align="center" justify="center">
           <Link href="/lead">
             <Button size="large" color="primary" variant="solid">
-              <strong>Faça o download do Guia UGC na prática e entenda</strong>
+              <strong>Baixe nosso guia grátis</strong>
             </Button>
           </Link>
 

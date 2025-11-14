@@ -34,15 +34,20 @@
     font-family: var(--font-figtree), sans-serif;
     font-size: 16px;
     line-height: 26px;
-    color: var(--color-text-primary);
+    color: gray;
     margin: 0;
   }
 }
 
 .signature {
   margin-top: 8px;
+  max-width: 420px;
+  height: 100px;
 
   img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
     opacity: var(--opacity-90);
   }
 }

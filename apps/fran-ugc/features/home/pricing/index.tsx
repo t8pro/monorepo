@@ -22,11 +22,7 @@ export const Pricing = () => {
       <Container>
         <div className={styles.darkSection}>
           <div className={styles.content}>
-            <h2 className={styles.title}>
-              Pronto para <br />
-              Começar a <br />
-              Ganhar?
-            </h2>
+            <h2 className={styles.title}>Pronto para Começar a Ganhar?</h2>
 
             <div className={styles.priceCard}>
               <div className={styles.badge}>Oferta de Lançamento</div>

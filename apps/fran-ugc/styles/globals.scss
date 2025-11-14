@@ -5,6 +5,10 @@
   font-family: var(--font-figtree), sans-serif;
 }
 
+body {
+  background-color: #f9f2e7;
+}
+
 /* Container max-width override - keep backgrounds full width */
 /* Target reshaped Container component within sections, header, and footer */
 section > div:first-child,
