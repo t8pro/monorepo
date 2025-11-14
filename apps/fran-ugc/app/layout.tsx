@@ -9,12 +9,18 @@ const figtree = Figtree({
   variable: '--font-figtree',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 });
 
 const youngSerif = Young_Serif({
   variable: '--font-young-serif',
   subsets: ['latin'],
   weight: ['400'],
+  display: 'swap',
+  preload: true,
+  fallback: ['Georgia', 'serif'],
 });
 
 const materialSymbols = localFont({
@@ -192,6 +198,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" data-rs-theme="fran" suppressHydrationWarning>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

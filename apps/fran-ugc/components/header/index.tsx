@@ -68,7 +68,13 @@ export const Header = () => {
               aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
               aria-expanded={isMenuOpen}
             >
-              <span className={styles.menuIcon}>{isMenuOpen ? '✕' : '☰'}</span>
+              <span className={styles.menuIcon}>
+                {isMenuOpen ? (
+                  <span className="material-symbols-rounded">close</span>
+                ) : (
+                  <span className="material-symbols-rounded">menu</span>
+                )}
+              </span>
             </button>
           </div>
         </div>

@@ -27,7 +27,7 @@ export const Hero = () => {
                 width={266}
                 height={61}
                 className={styles.signature}
-                loading="lazy"
+                priority
               />
             </div>
 

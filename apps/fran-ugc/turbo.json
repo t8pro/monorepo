@@ -19,7 +19,8 @@
         "GCP_PROJECT_ID",
         "GCP_CLIENT_X509_CERT_URL",
         "GCP_CLIENT_ID",
-        "GCP_CLIENT_EMAIL"
+        "GCP_CLIENT_EMAIL",
+        "NODE_ENV"
       ]
     },
     "dev": {
@@ -39,4 +40,3 @@
     }
   }
 }
-

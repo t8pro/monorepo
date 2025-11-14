@@ -1,13 +1,32 @@
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
-import { Curriculum } from '@/features/home/curriculum';
-import { FAQ } from '@/features/home/faq';
 import { Hero } from '@/features/home/hero';
-import { Pricing } from '@/features/home/pricing';
-import { Problem } from '@/features/home/problem';
-import { Solution } from '@/features/home/solution';
-import { Testimonials } from '@/features/home/testimonials';
+
+// Lazy load below-the-fold components
+const Problem = dynamic(() =>
+  import('@/features/home/problem').then(mod => ({ default: mod.Problem })),
+);
+const Solution = dynamic(() =>
+  import('@/features/home/solution').then(mod => ({ default: mod.Solution })),
+);
+const Curriculum = dynamic(() =>
+  import('@/features/home/curriculum').then(mod => ({
+    default: mod.Curriculum,
+  })),
+);
+const FAQ = dynamic(() =>
+  import('@/features/home/faq').then(mod => ({ default: mod.FAQ })),
+);
+const Pricing = dynamic(() =>
+  import('@/features/home/pricing').then(mod => ({ default: mod.Pricing })),
+);
+const Testimonials = dynamic(() =>
+  import('@/features/home/testimonials').then(mod => ({
+    default: mod.Testimonials,
+  })),
+);
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || 'https://ugc.francieliazevedo.com';
