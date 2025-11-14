@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     // Get ebook download link from environment or use default
     const ebookLink =
       process.env.EBOOK_DOWNLOAD_LINK ||
-      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://francieliazevedo.com/ugc'}/ebook/download`;
+      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ugc.francieliazevedo.com'}/ebook/download`;
 
     // Send email to user with ebook download link
     const handlebars = await import('handlebars');

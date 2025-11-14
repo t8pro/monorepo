@@ -26,7 +26,7 @@ const materialSymbols = localFont({
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://francieliazevedo.com/ugc';
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://ugc.francieliazevedo.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

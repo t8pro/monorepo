@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { LeadSuccess } from '@/features/lead/success';
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://francieliazevedo.com/ugc';
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://ugc.francieliazevedo.com';
 
 export const metadata: Metadata = {
   title: 'Obrigado!',

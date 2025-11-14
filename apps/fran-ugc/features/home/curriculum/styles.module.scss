@@ -5,7 +5,7 @@
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 600px;
+  // grid-template-columns: 1fr 600px;
   gap: 80px;
   align-items: start;
   max-width: 1366px;
@@ -138,14 +138,11 @@
   height: auto;
 }
 
-// Responsive
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .imageContent {
     order: -1;
   }
-}
 
-@media (max-width: 768px) {
   .curriculum {
     padding: 60px 0;
   }
@@ -163,5 +160,12 @@
   .ctaButton {
     width: 100%;
     font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    grid-template-columns: 600px 1fr;
+    gap: 48px;
   }
 }

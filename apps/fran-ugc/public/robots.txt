@@ -3,5 +3,5 @@ Allow: /
 Disallow: /api/
 
 # Sitemap
-Sitemap: https://francieliazevedo.com/ugc/sitemap.xml
+Sitemap: https://ugc.francieliazevedo.com/sitemap.xml
 
