@@ -9,14 +9,24 @@ import { z } from 'zod';
 import styles from './styles.module.scss';
 
 const formSchema = z.object({
-  unemployedOrSeekingIncome: z.enum(['sim', 'nao']).optional(),
-  likesAppearingInVideos: z.enum(['sim', 'nao']).optional(),
-  wantsCreativeGuide: z.enum(['sim', 'nao']).optional(),
+  unemployedOrSeekingIncome: z.enum(['sim', 'nao'], {
+    required_error: 'Por favor, responda esta pergunta',
+  }),
+  likesAppearingInVideos: z.enum(['sim', 'nao'], {
+    required_error: 'Por favor, responda esta pergunta',
+  }),
+  wantsCreativeGuide: z.enum(['sim', 'nao'], {
+    required_error: 'Por favor, responda esta pergunta',
+  }),
   productAffinity: z
     .array(z.enum(['beleza', 'saude', 'fitness', 'alimentacao']))
     .optional(),
-  name: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
-  email: z.string().email('Email inválido'),
+  name: z
+    .string({ required_error: 'Campo obrigatório' })
+    .min(2, 'Nome deve ter pelo menos 2 caracteres'),
+  email: z
+    .string({ required_error: 'Campo obrigatório' })
+    .email('Email inválido'),
   phone: z.string().optional(),
   instagram: z.string().optional(),
 });
@@ -71,7 +81,7 @@ export default function LeadForm() {
       });
 
       if (response.ok) {
-        router.push('/lead/success');
+        router.push('/lead/thank-you');
       } else {
         throw new Error('Erro ao enviar formulário');
       }
@@ -107,7 +117,7 @@ export default function LeadForm() {
                   name="unemployedOrSeekingIncome"
                   control={control}
                   render={({ field }) => (
-                    <>
+                    <div className={styles.buttonGroup}>
                       <button
                         type="button"
                         className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
@@ -122,9 +132,18 @@ export default function LeadForm() {
                       >
                         Sim
                       </button>
-                    </>
+                    </div>
                   )}
                 />
+                {errors.unemployedOrSeekingIncome && (
+                  <Text
+                    variant="caption-1"
+                    color="critical"
+                    className={styles.error}
+                  >
+                    {errors.unemployedOrSeekingIncome.message}
+                  </Text>
+                )}
               </div>
             </div>
 
@@ -137,7 +156,7 @@ export default function LeadForm() {
                   name="likesAppearingInVideos"
                   control={control}
                   render={({ field }) => (
-                    <>
+                    <div className={styles.buttonGroup}>
                       <button
                         type="button"
                         className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
@@ -152,9 +171,18 @@ export default function LeadForm() {
                       >
                         Sim
                       </button>
-                    </>
+                    </div>
                   )}
                 />
+                {errors.likesAppearingInVideos && (
+                  <Text
+                    variant="caption-1"
+                    color="critical"
+                    className={styles.error}
+                  >
+                    {errors.likesAppearingInVideos.message}
+                  </Text>
+                )}
               </div>
             </div>
 
@@ -174,7 +202,7 @@ export default function LeadForm() {
                   name="wantsCreativeGuide"
                   control={control}
                   render={({ field }) => (
-                    <>
+                    <div className={styles.buttonGroup}>
                       <button
                         type="button"
                         className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
@@ -189,9 +217,18 @@ export default function LeadForm() {
                       >
                         Sim
                       </button>
-                    </>
+                    </div>
                   )}
                 />
+                {errors.wantsCreativeGuide && (
+                  <Text
+                    variant="caption-1"
+                    color="critical"
+                    className={styles.error}
+                  >
+                    {errors.wantsCreativeGuide.message}
+                  </Text>
+                )}
               </div>
             </div>
           </div>

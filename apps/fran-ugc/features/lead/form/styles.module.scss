@@ -59,6 +59,7 @@
   color: #914326;
   margin: 0;
   font-weight: 400;
+  text-align: center;
 }
 
 .questionDescription {
@@ -67,9 +68,17 @@
   line-height: 24px;
   color: rgba(31, 41, 55, 0.8);
   margin: 0;
+  text-align: center;
 }
 
 .yesNoButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.buttonGroup {
   display: flex;
   gap: 24px;
   justify-content: center;
@@ -119,6 +128,7 @@
   color: #914326;
   margin: 0;
   font-weight: 400;
+  text-align: center;
 }
 
 .productButtons {
@@ -299,8 +309,12 @@
   }
 
   .yesNoButtons {
-    flex-direction: column;
     align-items: stretch;
+  }
+
+  .buttonGroup {
+    width: 100%;
+    gap: 16px;
   }
 
   .yesNoButton {
