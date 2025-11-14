@@ -65,8 +65,8 @@ export const Problem = () => {
 
         <View direction="row" gap={2} align="center" justify="center">
           <Link href="/lead">
-            <Button size="large">
-              Faça o download do Guia UGC na prática e entenda
+            <Button size="large" color="primary" variant="solid">
+              <strong>Faça o download do Guia UGC na prática e entenda</strong>
             </Button>
           </Link>
 

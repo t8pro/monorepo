@@ -10,7 +10,7 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <Reshaped theme="franUgc">
+      <Reshaped theme="fran">
         <QueryClientProvider client={queryClient}>
           {children}
           <ToastContainer />

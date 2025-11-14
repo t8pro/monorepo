@@ -1,7 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { Container } from 'reshaped';
+import Link from 'next/link';
+import { Button, Container, Text } from 'reshaped';
 import styles from './styles.module.scss';
 
 const steps = [
@@ -29,7 +30,9 @@ export const Solution = () => {
   return (
     <section className={styles.solution} id="solution">
       <Container>
-        <h2 className={styles.title}>Como Funciona: o UGC em prática?</h2>
+        <Text as="h2" variant="title-6" className={styles.title}>
+          Como Funciona: o UGC em prática?
+        </Text>
 
         <p className={styles.subtitle}>
           Um método descomplicado em 3 passos para você começar a ganhar
@@ -55,9 +58,11 @@ export const Solution = () => {
         </div>
 
         <div className={styles.cta}>
-          <a href="#curriculum" className={styles.ctaButton}>
-            Ver conteúdo completo do curso
-          </a>
+          <Link href="#curriculum">
+            <Button size="large" color="primary" variant="solid">
+              <strong>Ver conteúdo completo do curso</strong>
+            </Button>
+          </Link>
         </div>
       </Container>
     </section>

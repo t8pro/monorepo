@@ -8,6 +8,10 @@
   grid-template-columns: 1fr 600px;
   gap: 80px;
   align-items: start;
+  max-width: 1366px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .textContent {
@@ -136,11 +140,6 @@
 
 // Responsive
 @media (max-width: 1024px) {
-  .content {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
   .imageContent {
     order: -1;
   }

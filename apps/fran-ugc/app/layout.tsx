@@ -3,6 +3,7 @@ import { Figtree, Young_Serif } from 'next/font/google';
 import localFont from 'next/font/local';
 import { Providers } from './providers';
 import '@/styles/globals.scss';
+import 'reshaped/themes/slate/theme.css';
 import '@/styles/themes/fran/theme.css';
 
 const figtree = Figtree({
@@ -190,7 +191,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="pt-BR" data-rs-theme="slate" data-rs-color-mode="light">
+    <html lang="pt-BR">
       <head>
         <script
           type="application/ld+json"

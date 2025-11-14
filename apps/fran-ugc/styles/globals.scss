@@ -2,13 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
-  background-color: #f1e8d6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-figtree), sans-serif;
 }
 
 /* Container max-width override - keep backgrounds full width */
@@ -43,11 +37,4 @@ footer > div:first-child {
     'wght' 500,
     'GRAD' 0,
     'opsz' 48;
-}
-
-/* Reshaped Button font override - use Figtree */
-[data-rs-theme] button,
-[data-rs-theme] [role='button'],
-[data-rs-theme] [data-rs-button] {
-  font-family: var(--font-figtree), var(--font-montserrat), sans-serif !important;
 }

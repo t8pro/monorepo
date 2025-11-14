@@ -96,7 +96,7 @@
   --rs-color-brand: #5a58f2;
   --rs-color-white: #ffffff;
   --rs-color-black: #000000;
-  --rs-color-on-background-primary: oklch(0 0 0);
+  --rs-color-on-background-primary: #ffffff;
   --rs-color-rgb-background-primary: 199.002, 92.9985, 59.007;
   --rs-color-rgb-background-primary-faded: 199.002, 92.9985, 59.007;
   --rs-color-on-background-critical: oklch(1 0 0);

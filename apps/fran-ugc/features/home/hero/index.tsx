@@ -39,7 +39,7 @@ export const Hero = () => {
             <div className={styles.buttons}>
               <Link href="#pricing">
                 <Button size="large" color="primary" variant="solid">
-                  Quero Garantir Minha Vaga
+                  <strong>Quero Garantir Minha Vaga</strong>
                 </Button>
               </Link>
 
@@ -62,15 +62,13 @@ export const Hero = () => {
                 priority
                 loading="eager"
               />
-              <div className={styles.signatureOverlay}>
-                <Image
-                  src="/signature-white.svg"
-                  alt="Assinatura de Francieli Azevedo"
-                  width={266}
-                  height={61}
-                  className={styles.signatureWhite}
-                />
-              </div>
+              <Image
+                src="/signature-white.svg"
+                alt="Assinatura de Francieli Azevedo"
+                width={266}
+                height={61}
+                className={styles.signatureWhite}
+              />
             </div>
 
             <div className={styles.socialMedia}>

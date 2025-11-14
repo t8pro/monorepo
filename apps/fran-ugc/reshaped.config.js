@@ -2,7 +2,7 @@
 /** @type {import('reshaped').ReshapedConfig} */
 const config = {
   themes: {
-    franUgc: {
+    fran: {
       color: {
         // Primary color
         backgroundPrimary: {
