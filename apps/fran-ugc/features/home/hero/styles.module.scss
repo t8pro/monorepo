@@ -72,48 +72,6 @@
   margin-top: 8px;
 }
 
-.primaryButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 16px;
-  height: 48px;
-  background-color: #c75d3b;
-  color: white;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
-  white-space: nowrap;
-
-  &:hover {
-    background-color: #b34f2f;
-  }
-}
-
-.secondaryButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 16px;
-  height: 48px;
-  background-color: rgba(199, 93, 59, 0.2);
-  color: #c75d3b;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
-  white-space: nowrap;
-
-  &:hover {
-    background-color: rgba(199, 93, 59, 0.3);
-  }
-}
-
 .imageContent {
   display: flex;
   flex-direction: column;
@@ -198,11 +156,6 @@
 
   .buttons {
     flex-direction: column;
-    width: 100%;
-  }
-
-  .primaryButton,
-  .secondaryButton {
     width: 100%;
   }
 }
