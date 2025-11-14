@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://francieliazevedo.com/ugc';
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://francieliazevedo.com/ugc';
 
   return [
     {
@@ -18,4 +19,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 }
-

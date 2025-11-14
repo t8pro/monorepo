@@ -15,7 +15,7 @@ export const Hero = () => {
             <h1 className={styles.title}>
               Método Descomplicado: Crie Vídeos com Seu Celular e Ganhe Dinheiro
             </h1>
-            
+
             <h2 className={styles.subtitle}>
               Trabalhe no seu próprio ritmo: <br />
               ganhe criando conteúdo de casa
@@ -60,7 +60,7 @@ export const Hero = () => {
                 loading="eager"
               />
             </div>
-            
+
             <div className={styles.socialMedia}>
               <FaInstagram size={24} />
               <span>@franazevedougc</span>

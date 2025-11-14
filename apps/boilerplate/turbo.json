@@ -1,10 +1,21 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "ui": "tui",
+  "extends": ["//"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "build/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": [
+        "EMAIL_USER",
+        "EMAIL_PASS",
+        "GOOGLE_DRIVE_PARENT_FOLDER_ID",
+        "GCP_PRIVATE_KEY",
+        "GCP_PRIVATE_KEY_ID",
+        "GCP_PROJECT_ID",
+        "GCP_CLIENT_X509_CERT_URL",
+        "GCP_CLIENT_ID",
+        "GCP_CLIENT_EMAIL"
+      ]
     },
     "dev": {
       "cache": false,
@@ -20,13 +31,6 @@
     "check-types": {
       "dependsOn": ["^build"],
       "outputs": ["tsconfig.tsbuildinfo"]
-    },
-    "test": {
-      "dependsOn": ["^build"],
-      "outputs": ["coverage/**"]
-    },
-    "clean": {
-      "cache": false
     }
   }
 }

@@ -33,7 +33,7 @@ export const Solution = () => {
     <section className={styles.solution} id="solution">
       <Container>
         <h2 className={styles.title}>Como Funciona: o UGC em prática?</h2>
-        
+
         <p className={styles.subtitle}>
           Um método descomplicado em 3 passos para você começar a ganhar
           dinheiro criando conteúdo para marcas.
@@ -64,5 +64,3 @@ export const Solution = () => {
     </section>
   );
 };
-
-

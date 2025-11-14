@@ -19,8 +19,8 @@ export const FinalCTA = () => {
             <View.Item>
               <div style={{ maxWidth: '600px' }}>
                 <Text variant="body-1" align="center">
-                  Comece hoje mesmo a transformar seu celular em uma fonte de renda.
-                  O guia completo está esperando por você.
+                  Comece hoje mesmo a transformar seu celular em uma fonte de
+                  renda. O guia completo está esperando por você.
                 </Text>
               </div>
             </View.Item>
@@ -36,9 +36,12 @@ export const FinalCTA = () => {
             <View.Item>
               <View direction="row" gap={2} align="center" justify="center">
                 <View.Item>
-                  <span className="material-symbols-rounded" style={{ fontSize: '20px' }}>
-                schedule
-              </span>
+                  <span
+                    className="material-symbols-rounded"
+                    style={{ fontSize: '20px' }}
+                  >
+                    schedule
+                  </span>
                 </View.Item>
                 <View.Item>
                   <Text variant="caption-1" align="center">
@@ -53,8 +56,3 @@ export const FinalCTA = () => {
     </section>
   );
 };
-
-
-
-
-

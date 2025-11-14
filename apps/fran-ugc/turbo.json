@@ -1,0 +1,42 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": [
+        "NEXT_PUBLIC_SITE_URL",
+        "EBOOK_DOWNLOAD_LINK",
+        "EMAIL_USER",
+        "EMAIL_PASS",
+        "ADMIN_EMAIL",
+        "GOOGLE_DRIVE_PARENT_FOLDER_ID",
+        "GOOGLE_SHEETS_SPREADSHEET_ID",
+        "GOOGLE_SHEETS_SHEET_NAME",
+        "GCP_PRIVATE_KEY",
+        "GCP_PRIVATE_KEY_ID",
+        "GCP_PROJECT_ID",
+        "GCP_CLIENT_X509_CERT_URL",
+        "GCP_CLIENT_ID",
+        "GCP_CLIENT_EMAIL"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "start": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "check-types": {
+      "dependsOn": ["^build"],
+      "outputs": ["tsconfig.tsbuildinfo"]
+    }
+  }
+}
+

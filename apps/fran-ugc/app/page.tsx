@@ -9,7 +9,8 @@ import { Problem } from '@/features/home/problem';
 import { Solution } from '@/features/home/solution';
 import { Testimonials } from '@/features/home/testimonials';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://francieliazevedo.com/ugc';
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://francieliazevedo.com/ugc';
 
 export const metadata: Metadata = {
   title: 'Método Descomplicado: Crie Vídeos com Seu Celular e Ganhe Dinheiro',

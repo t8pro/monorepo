@@ -1,10 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "ui": "tui",
+  "extends": ["//"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "build/**"]
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "dev": {
       "cache": false,
@@ -20,13 +20,7 @@
     "check-types": {
       "dependsOn": ["^build"],
       "outputs": ["tsconfig.tsbuildinfo"]
-    },
-    "test": {
-      "dependsOn": ["^build"],
-      "outputs": ["coverage/**"]
-    },
-    "clean": {
-      "cache": false
     }
   }
 }
+

@@ -32,9 +32,9 @@ export const Testimonials = () => {
               </p>
 
               <p>
-                Minha missão é democratizar o acesso ao mercado de UGC e
-                mostrar que você não precisa de seguidores, equipamentos caros
-                ou experiência prévia para começar a ganhar dinheiro criando
+                Minha missão é democratizar o acesso ao mercado de UGC e mostrar
+                que você não precisa de seguidores, equipamentos caros ou
+                experiência prévia para começar a ganhar dinheiro criando
                 conteúdo.
               </p>
             </div>
@@ -71,5 +71,3 @@ export const Testimonials = () => {
     </section>
   );
 };
-
-

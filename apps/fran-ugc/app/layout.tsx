@@ -1,5 +1,12 @@
 import type { Metadata } from 'next';
-import { JetBrains_Mono, Montserrat, Plus_Jakarta_Sans, Figtree, Young_Serif, Lexend } from 'next/font/google';
+import {
+  JetBrains_Mono,
+  Montserrat,
+  Plus_Jakarta_Sans,
+  Figtree,
+  Young_Serif,
+  Lexend,
+} from 'next/font/google';
 import localFont from 'next/font/local';
 import { Providers } from './providers';
 import '@/styles/globals.scss';
@@ -49,12 +56,14 @@ const materialSymbols = localFont({
   adjustFontFallback: false,
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://francieliazevedo.com/ugc';
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://francieliazevedo.com/ugc';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Método Descomplicado: Crie Vídeos com Seu Celular e Ganhe Dinheiro | UGC em Prática',
+    default:
+      'Método Descomplicado: Crie Vídeos com Seu Celular e Ganhe Dinheiro | UGC em Prática',
     template: '%s | UGC em Prática',
   },
   description:
@@ -79,7 +88,9 @@ export const metadata: Metadata = {
     'TikTok',
     'Reels',
   ],
-  authors: [{ name: 'Francieli Azevedo', url: 'https://instagram.com/franazevedougc' }],
+  authors: [
+    { name: 'Francieli Azevedo', url: 'https://instagram.com/franazevedougc' },
+  ],
   creator: 'Francieli Azevedo',
   publisher: 'UGC em Prática',
   formatDetection: {
@@ -144,9 +155,7 @@ export default function RootLayout({
     name: 'UGC em Prática',
     url: siteUrl,
     logo: `${siteUrl}/logo.svg`,
-    sameAs: [
-      'https://instagram.com/franazevedougc',
-    ],
+    sameAs: ['https://instagram.com/franazevedougc'],
     founder: {
       '@type': 'Person',
       name: 'Francieli Azevedo',
@@ -217,15 +226,21 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationStructuredData) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationStructuredData),
+          }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(courseStructuredData),
+          }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteStructuredData) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteStructuredData),
+          }}
         />
       </head>
       <body

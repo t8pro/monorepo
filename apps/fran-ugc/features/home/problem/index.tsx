@@ -1,6 +1,10 @@
 'use client';
 
-import { FaRegClock, FaRegQuestionCircle, FaRegLightbulb } from 'react-icons/fa';
+import {
+  FaRegClock,
+  FaRegQuestionCircle,
+  FaRegLightbulb,
+} from 'react-icons/fa';
 import { Container } from 'reshaped';
 import styles from './styles.module.scss';
 
@@ -57,5 +61,3 @@ export const Problem = () => {
     </section>
   );
 };
-
-

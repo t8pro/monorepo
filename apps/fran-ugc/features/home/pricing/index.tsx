@@ -36,16 +36,16 @@ export const Pricing = () => {
                 <span className={styles.price}>29,64</span>
               </div>
 
-              <p className={styles.installments}>
-                Ou 12x de R$ 2,86 no cartão
-              </p>
+              <p className={styles.installments}>Ou 12x de R$ 2,86 no cartão</p>
 
               <div className={styles.originalPrice}>
                 <span>De R$ 497,00 por apenas</span>
               </div>
 
               <div className={styles.benefits}>
-                <h3 className={styles.benefitsTitle}>O que você vai receber:</h3>
+                <h3 className={styles.benefitsTitle}>
+                  O que você vai receber:
+                </h3>
                 <ul className={styles.benefitsList}>
                   {benefits.map((benefit, index) => (
                     <li key={index}>
@@ -71,5 +71,3 @@ export const Pricing = () => {
     </section>
   );
 };
-
-

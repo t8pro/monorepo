@@ -49,7 +49,7 @@ export const FAQ = () => {
     const faqStructuredData = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: faqs.map((faq) => ({
+      mainEntity: faqs.map(faq => ({
         '@type': 'Question',
         name: faq.question,
         acceptedAnswer: {
@@ -63,13 +63,13 @@ export const FAQ = () => {
     script.type = 'application/ld+json';
     script.text = JSON.stringify(faqStructuredData);
     script.id = 'faq-structured-data';
-    
+
     // Remove existing script if present
     const existingScript = document.getElementById('faq-structured-data');
     if (existingScript) {
       existingScript.remove();
     }
-    
+
     document.head.appendChild(script);
 
     return () => {
