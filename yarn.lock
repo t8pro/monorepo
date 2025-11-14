@@ -2686,24 +2686,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-input-mask@npm:^3.0.6":
-  version: 3.0.6
-  resolution: "@types/react-input-mask@npm:3.0.6"
-  dependencies:
-    "@types/react": "npm:*"
-  checksum: 10c0/af7a8b938a6d89416630ab27d0d2b6b962acf9ac1de567c745b5041f5cfa07e42715f525a84a5b3cf51fca4b8b8e20cc32e16b80b7c04411c2ebb81aaf462b1f
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:*":
-  version: 19.2.5
-  resolution: "@types/react@npm:19.2.5"
-  dependencies:
-    csstype: "npm:^3.0.2"
-  checksum: 10c0/1f9a92c73a5ea5b167f59cd0b5b9460fde65bd22b63b6d23bfaace8ad38537df127c97657418b4912a7a03a66e6451e82a41b84718d638ec1c8e4f0515d94793
-  languageName: node
-  linkType: hard
-
 "@types/react@npm:19.2.4":
   version: 19.2.4
   resolution: "@types/react@npm:19.2.4"
@@ -5130,15 +5112,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"invariant@npm:^2.2.4":
-  version: 2.2.4
-  resolution: "invariant@npm:2.2.4"
-  dependencies:
-    loose-envify: "npm:^1.0.0"
-  checksum: 10c0/5af133a917c0bcf65e84e7f23e779e7abc1cd49cb7fdc62d00d1de74b0d8c1b5ee74ac7766099fb3be1b05b26dfc67bab76a17030d2fe7ea2eef867434362dfc
-  languageName: node
-  linkType: hard
-
 "ip-address@npm:^10.0.1":
   version: 10.0.1
   resolution: "ip-address@npm:10.0.1"
@@ -5650,7 +5623,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.0.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -5867,9 +5840,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "monorepo@workspace:."
   dependencies:
-    "@types/react-input-mask": "npm:^3.0.6"
     prettier: "npm:^3.6.2"
-    react-input-mask: "npm:^3.0.0-alpha.2"
     turbo: "npm:^2.6.1"
     typescript: "npm:5.9.3"
   languageName: unknown
@@ -6872,20 +6843,6 @@ __metadata:
   peerDependencies:
     react: "*"
   checksum: 10c0/a24309bfc993c19cbcbfc928157e53a137851822779977b9588f6dd41ffc4d11ebc98b447f4039b0d309a858f0a42980f6bfb4477fb19f9f2d1bc2e190fcf79c
-  languageName: node
-  linkType: hard
-
-"react-input-mask@npm:^3.0.0-alpha.2":
-  version: 3.0.0-alpha.2
-  resolution: "react-input-mask@npm:3.0.0-alpha.2"
-  dependencies:
-    invariant: "npm:^2.2.4"
-    prop-types: "npm:^15.7.2"
-    warning: "npm:^4.0.3"
-  peerDependencies:
-    react: ">=16.8"
-    react-dom: ">=16.8"
-  checksum: 10c0/13588bf7e67a67303744c0e06041d755b22ed386a236673dba137fe8cb1ad53f5b892f73de2de5b85c0a7ea5f6cfa32d55c0c6037d13296697dc0e57a59158f6
   languageName: node
   linkType: hard
 
@@ -8270,15 +8227,6 @@ __metadata:
   version: 0.20201231.0
   resolution: "uzip@npm:0.20201231.0"
   checksum: 10c0/44b261b20ac7e4d71e7099d7a7c4885626044be61cd246e76cf548fa444a4a37c301d1a683679168bc29c91d2ec81d62b8c1c75217a26b37f6ce35223866c2d2
-  languageName: node
-  linkType: hard
-
-"warning@npm:^4.0.3":
-  version: 4.0.3
-  resolution: "warning@npm:4.0.3"
-  dependencies:
-    loose-envify: "npm:^1.0.0"
-  checksum: 10c0/aebab445129f3e104c271f1637fa38e55eb25f968593e3825bd2f7a12bd58dc3738bb70dc8ec85826621d80b4acfed5a29ebc9da17397c6125864d72301b937e
   languageName: node
   linkType: hard
 

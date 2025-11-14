@@ -15,6 +15,14 @@ export const LeadSuccess = () => {
           check_circle
         </span>
       }
+      action={{
+        icon: <span className="material-symbols-rounded">arrow_back</span>,
+        variant: 'solid',
+        color: 'primary',
+        size: 'large',
+        href: '/',
+        label: 'Voltar para a página inicial',
+      }}
     />
   );
 };

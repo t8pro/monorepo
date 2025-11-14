@@ -7,7 +7,7 @@
       "outputs": [".next/**", "!.next/cache/**"],
       "env": [
         "NEXT_PUBLIC_SITE_URL",
-        "EBOOK_DOWNLOAD_LINK",
+        "EBOOK_HASH_SECRET",
         "EMAIL_USER",
         "EMAIL_PASS",
         "ADMIN_EMAIL",

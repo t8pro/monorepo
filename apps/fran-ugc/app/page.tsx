@@ -1,7 +1,5 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import { Footer } from '@/components/footer';
-import { Header } from '@/components/header';
 import { Hero } from '@/features/home/hero';
 
 // Lazy load below-the-fold components
@@ -28,8 +26,7 @@ const Testimonials = dynamic(() =>
   })),
 );
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://ugc.francieliazevedo.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export const metadata: Metadata = {
   title: 'UGC na Prática - Curso Completo de User Generated Content',
@@ -47,17 +44,13 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <Header />
-      <main id="home">
-        <Hero />
-        <Problem />
-        <Solution />
-        <Curriculum />
-        <FAQ />
-        <Pricing />
-        <Testimonials />
-      </main>
-      <Footer />
+      <Hero />
+      <Problem />
+      <Solution />
+      <Curriculum />
+      <FAQ />
+      <Pricing />
+      <Testimonials />
     </>
   );
 }

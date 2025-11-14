@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 import LeadForm from '@/features/lead/form';
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://ugc.francieliazevedo.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export const metadata: Metadata = {
   title: 'Receba seu guia gratuito de UGC',

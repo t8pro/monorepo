@@ -28,7 +28,7 @@ const formSchema = z.object({
   }),
   productAffinity: z
     .array(z.enum(['beleza', 'saude', 'fitness', 'alimentacao']))
-    .optional(),
+    .min(1, 'Por favor, selecione pelo menos um produto'),
   name: z
     .string({ required_error: 'Campo obrigatório' })
     .min(2, 'Nome deve ter pelo menos 2 caracteres'),
@@ -56,6 +56,8 @@ export default function LeadForm() {
   const question2Ref = useRef<HTMLDivElement>(null);
   const question3Ref = useRef<HTMLDivElement>(null);
   const productAffinityRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLDivElement>(null);
+  const emailRef = useRef<HTMLDivElement>(null);
 
   const {
     control,
@@ -103,6 +105,42 @@ export default function LeadForm() {
     setValue('productAffinity', newAffinity);
   };
 
+  const scrollToFirstError = () => {
+    setTimeout(() => {
+      if (errors.unemployedOrSeekingIncome && question1Ref.current) {
+        question1Ref.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      } else if (errors.likesAppearingInVideos && question2Ref.current) {
+        question2Ref.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      } else if (errors.wantsCreativeGuide && question3Ref.current) {
+        question3Ref.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      } else if (errors.productAffinity && productAffinityRef.current) {
+        productAffinityRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      } else if (errors.name && nameRef.current) {
+        nameRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      } else if (errors.email && emailRef.current) {
+        emailRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    }, 100);
+  };
+
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
@@ -131,7 +169,10 @@ export default function LeadForm() {
   return (
     <section className={styles.leadPage}>
       <Container>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <form
+          onSubmit={handleSubmit(onSubmit, scrollToFirstError)}
+          className={styles.form}
+        >
           <div className={styles.header}>
             <h1 className={styles.title}>Me conte um pouco sobre você</h1>
             <p className={styles.subtitle}>
@@ -304,37 +345,48 @@ export default function LeadForm() {
                 </button>
               ))}
             </div>
+            {errors.productAffinity && (
+              <Text
+                variant="caption-1"
+                color="critical"
+                className={styles.error}
+              >
+                {errors.productAffinity.message}
+              </Text>
+            )}
           </div>
 
           <div className={styles.infoSection}>
             <h2 className={styles.sectionTitle}>Suas informações</h2>
             <View direction="row" gap={4}>
               <View.Item columns={6}>
-                <FormControl>
-                  <FormControl.Label>Nome</FormControl.Label>
-                  <Controller
-                    name="name"
-                    control={control}
-                    render={({ field }) => (
-                      <TextField
-                        size="large"
-                        name="name"
-                        value={field.value || ''}
-                        onChange={({ value }) => field.onChange(value)}
-                        className={styles.input}
-                      />
+                <div ref={nameRef}>
+                  <FormControl>
+                    <FormControl.Label>Nome</FormControl.Label>
+                    <Controller
+                      name="name"
+                      control={control}
+                      render={({ field }) => (
+                        <TextField
+                          size="large"
+                          name="name"
+                          value={field.value || ''}
+                          onChange={({ value }) => field.onChange(value)}
+                          className={styles.input}
+                        />
+                      )}
+                    />
+                    {errors.name && (
+                      <Text
+                        variant="caption-1"
+                        color="critical"
+                        className={styles.error}
+                      >
+                        {errors.name.message}
+                      </Text>
                     )}
-                  />
-                  {errors.name && (
-                    <Text
-                      variant="caption-1"
-                      color="critical"
-                      className={styles.error}
-                    >
-                      {errors.name.message}
-                    </Text>
-                  )}
-                </FormControl>
+                  </FormControl>
+                </div>
               </View.Item>
 
               <View.Item columns={6}>
@@ -358,46 +410,48 @@ export default function LeadForm() {
                       />
                     )}
                   />
-                  {errors.email && (
+                  {errors.phone && (
                     <Text
                       variant="caption-1"
                       color="critical"
                       className={styles.error}
                     >
-                      {errors.email.message}
+                      {errors.phone.message}
                     </Text>
                   )}
                 </FormControl>
               </View.Item>
 
               <View.Item columns={6}>
-                <FormControl>
-                  <FormControl.Label>E-mail</FormControl.Label>
-                  <Controller
-                    name="email"
-                    control={control}
-                    render={({ field }) => (
-                      <TextField
-                        size="large"
-                        name="email"
-                        value={field.value || ''}
-                        onChange={({ value }) => field.onChange(value)}
-                        inputAttributes={{ type: 'email' }}
-                        placeholder="example@gmail.com"
-                        className={styles.input}
-                      />
+                <div ref={emailRef}>
+                  <FormControl>
+                    <FormControl.Label>E-mail</FormControl.Label>
+                    <Controller
+                      name="email"
+                      control={control}
+                      render={({ field }) => (
+                        <TextField
+                          size="large"
+                          name="email"
+                          value={field.value || ''}
+                          onChange={({ value }) => field.onChange(value)}
+                          inputAttributes={{ type: 'email' }}
+                          placeholder="example@gmail.com"
+                          className={styles.input}
+                        />
+                      )}
+                    />
+                    {errors.email && (
+                      <Text
+                        variant="caption-1"
+                        color="critical"
+                        className={styles.error}
+                      >
+                        {errors.email.message}
+                      </Text>
                     )}
-                  />
-                  {errors.email && (
-                    <Text
-                      variant="caption-1"
-                      color="critical"
-                      className={styles.error}
-                    >
-                      {errors.email.message}
-                    </Text>
-                  )}
-                </FormControl>
+                  </FormControl>
+                </div>
               </View.Item>
 
               <View.Item columns={6}>

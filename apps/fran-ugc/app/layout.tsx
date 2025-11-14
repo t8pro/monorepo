@@ -33,11 +33,10 @@ const materialSymbols = localFont({
   adjustFontFallback: false,
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://ugc.francieliazevedo.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
   title: {
     default: 'UGC na Prática',
     template: '%s | UGC na Prática',

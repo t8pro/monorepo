@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { NextRequest, NextResponse } from 'next/server';
 import { ebookGuideTemplate } from '@/app/templates/ebook-guide';
+import { generateEbookHash, storeEbookHash } from '@/lib/ebook-hash';
 import { getTransporter } from '@/lib/email';
 import { appendLeadToSheet } from '@/lib/google-sheets';
 
@@ -31,10 +32,13 @@ export async function POST(request: NextRequest) {
     const now = new Date();
     const timestamp = now.toISOString();
 
-    // Get ebook download link from environment or use default
-    const ebookLink =
-      process.env.EBOOK_DOWNLOAD_LINK ||
-      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ugc.francieliazevedo.com'}/ebook/download`;
+    // Generate hash for ebook download
+    const ebookHash = generateEbookHash(email);
+    storeEbookHash(ebookHash, email);
+
+    // Get ebook download link with hash
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+    const ebookLink = `${siteUrl}/ebook/${ebookHash}`;
 
     // Send email to user with ebook download link
     const handlebars = await import('handlebars');

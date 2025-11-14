@@ -28,7 +28,10 @@ export function getDriveClient(): drive_v3.Drive {
   const auth = new google.auth.JWT({
     email: creds.client_email,
     key: creds.private_key,
-    scopes: ['https://www.googleapis.com/auth/drive.file'],
+    scopes: [
+      'https://www.googleapis.com/auth/drive.file',
+      'https://www.googleapis.com/auth/drive.readonly',
+    ],
   });
   return google.drive({ version: 'v3', auth });
 }
