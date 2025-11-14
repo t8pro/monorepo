@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Text, TextField, Button, Container } from 'reshaped';
@@ -31,6 +32,7 @@ const PRODUCT_AFFINITIES = [
 
 export default function LeadForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
   const {
     control,
