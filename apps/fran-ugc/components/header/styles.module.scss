@@ -10,6 +10,8 @@
   background-color: #f9f2e7;
   border-radius: 24px;
   padding: 16px 24px;
+  position: relative;
+  gap: 24px;
 }
 
 .logo {
@@ -22,10 +24,44 @@
   }
 }
 
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.ctaButton {
+  text-decoration: none;
+}
+
+.menuToggle {
+  display: none;
+  all: unset;
+  cursor: pointer;
+  padding: 8px;
+  color: #181311;
+  font-size: 20px;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.menuIcon {
+  display: block;
+  font-size: 24px;
+  font-weight: 400;
+}
+
 .nav {
   display: flex;
   align-items: center;
   gap: 24px;
+  flex: 1;
+  justify-content: center;
 }
 
 .links {
@@ -72,17 +108,33 @@
 }
 
 // Responsive
-@media (max-width: 768px) {
+@media (max-width: 1080px) {
   .container {
-    flex-direction: column;
-    gap: 16px;
-    padding: 16px;
+    flex-wrap: wrap;
   }
 
   .nav {
+    order: 3;
+    display: none;
+    width: 100%;
     flex-direction: column;
     gap: 16px;
-    width: 100%;
+    padding-top: 16px;
+    border-top: 1px solid rgba(24, 19, 17, 0.1);
+    margin-top: 16px;
+    flex: none;
+
+    &.navOpen {
+      display: flex;
+    }
+  }
+
+  .headerActions {
+    margin-left: auto;
+  }
+
+  .menuToggle {
+    display: block;
   }
 
   .links {
@@ -93,9 +145,21 @@
 
   .link {
     text-align: center;
+    width: 100%;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
   }
 
-  .cta {
+  .ctaButton {
     width: 100%;
+
+    :global(button) {
+      width: 100%;
+    }
   }
 }
