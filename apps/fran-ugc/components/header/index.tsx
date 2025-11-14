@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Container } from 'reshaped';
+import { Button, Container } from 'reshaped';
 import styles from './styles.module.scss';
 
 const navLinks = [
@@ -41,8 +41,10 @@ export const Header = () => {
               ))}
             </div>
 
-            <Link href="#pricing" className={styles.cta}>
-              Ver Cupons
+            <Link href="#pricing">
+              <Button size="large" color="primary" variant="solid">
+                Inscreva-se
+              </Button>
             </Link>
           </nav>
         </div>

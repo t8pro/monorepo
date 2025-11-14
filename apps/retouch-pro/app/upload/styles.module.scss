@@ -33,7 +33,6 @@
 }
 
 .text {
-  font-family: var(--font-montserrat);
   font-size: 16px;
   font-weight: var(--font-weight-regular);
   color: #cbd4c6;
@@ -55,7 +54,6 @@
   border: 1px solid #67a15a;
   border-radius: 4px;
   color: #cbd4c6;
-  font-family: var(--font-montserrat);
   font-size: 16px;
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
@@ -76,7 +74,6 @@
   border: none;
   border-radius: 4px;
   color: #181a14;
-  font-family: var(--font-montserrat);
   font-size: 16px;
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
@@ -116,7 +113,6 @@
 }
 
 .packageTitle {
-  font-family: var(--font-montserrat);
   font-size: 18px;
   font-weight: var(--font-weight-semibold);
   color: #cbd4c6;
@@ -125,7 +121,6 @@
 }
 
 .packagePrice {
-  font-family: var(--font-montserrat);
   font-size: 14px;
   font-weight: var(--font-weight-regular);
   color: #cbd4c6;
@@ -141,7 +136,6 @@
 }
 
 .discountPrice {
-  font-family: var(--font-montserrat);
   font-size: 16px;
   font-weight: var(--font-weight-semibold);
   color: #cbd4c6;

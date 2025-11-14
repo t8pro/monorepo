@@ -27,7 +27,7 @@
 }
 
 .subtitle {
-  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-family: var(--font-figtree), sans-serif;
   font-size: 24px;
   line-height: 30px;
   font-weight: 700;
@@ -43,7 +43,7 @@
 }
 
 .authorLabel {
-  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-family: var(--font-figtree), sans-serif;
   font-size: 16px;
   font-weight: 600;
   color: #181311;
@@ -54,7 +54,7 @@
 }
 
 .description {
-  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-family: var(--font-figtree), sans-serif;
   font-size: 18px;
   line-height: 28px;
   color: rgba(31, 41, 55, 0.8);
@@ -76,7 +76,6 @@
   height: 48px;
   background-color: #c75d3b;
   color: white;
-  font-family: var(--font-lexend), var(--font-montserrat), sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
@@ -98,7 +97,6 @@
   height: 48px;
   background-color: rgba(199, 93, 59, 0.2);
   color: #c75d3b;
-  font-family: var(--font-lexend), var(--font-montserrat), sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
@@ -153,7 +151,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-family: var(--font-figtree), sans-serif;
   font-size: 16px;
   font-weight: 500;
   color: rgba(31, 41, 55, 0.8);

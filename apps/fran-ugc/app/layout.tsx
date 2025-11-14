@@ -1,34 +1,9 @@
 import type { Metadata } from 'next';
-import {
-  JetBrains_Mono,
-  Montserrat,
-  Plus_Jakarta_Sans,
-  Figtree,
-  Young_Serif,
-  Lexend,
-} from 'next/font/google';
+import { Figtree, Young_Serif } from 'next/font/google';
 import localFont from 'next/font/local';
 import { Providers } from './providers';
 import '@/styles/globals.scss';
-import 'reshaped/themes/slate/theme.css';
-
-const montserrat = Montserrat({
-  variable: '--font-montserrat',
-  subsets: ['latin'],
-  weight: ['500', '600', '700', '800'],
-});
-
-const jetBrainsMono = JetBrains_Mono({
-  variable: '--jet-brains-mono',
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-});
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: '--font-plus-jakarta-sans',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-});
+import '@/styles/themes/fran/theme.css';
 
 const figtree = Figtree({
   variable: '--font-figtree',
@@ -40,12 +15,6 @@ const youngSerif = Young_Serif({
   variable: '--font-young-serif',
   subsets: ['latin'],
   weight: ['400'],
-});
-
-const lexend = Lexend({
-  variable: '--font-lexend',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
 });
 
 const materialSymbols = localFont({
@@ -243,7 +212,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${montserrat.variable} ${jetBrainsMono.variable} ${plusJakartaSans.variable} ${figtree.variable} ${youngSerif.variable} ${lexend.variable} ${materialSymbols.variable}`}
+        className={`${figtree.variable} ${youngSerif.variable} ${materialSymbols.variable}`}
       >
         <Providers>{children}</Providers>
       </body>

@@ -22,7 +22,6 @@
 }
 
 .packageLabel {
-  font-family: var(--font-montserrat);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   color: var(--color-secondary-invert);
@@ -31,7 +30,6 @@
 }
 
 .packageName {
-  font-family: var(--font-montserrat);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   font-style: italic;
@@ -42,7 +40,6 @@
 }
 
 .packageDetails {
-  font-family: var(--font-montserrat);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
   font-style: italic;
@@ -89,7 +86,6 @@
 }
 
 .discountedPrice {
-  font-family: var(--font-montserrat);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   font-style: italic;

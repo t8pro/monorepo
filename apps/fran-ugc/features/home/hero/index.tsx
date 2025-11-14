@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaInstagram } from 'react-icons/fa';
-import { Container } from 'reshaped';
+import { Button, Container } from 'reshaped';
 import styles from './styles.module.scss';
 
 export const Hero = () => {
@@ -37,11 +37,16 @@ export const Hero = () => {
             </p>
 
             <div className={styles.buttons}>
-              <Link href="#pricing" className={styles.primaryButton}>
-                Quero Garantir Minha Vaga
+              <Link href="#pricing">
+                <Button size="large" color="primary" variant="solid">
+                  Quero Garantir Minha Vaga
+                </Button>
               </Link>
-              <Link href="#testimonials" className={styles.secondaryButton}>
-                Sobre mim
+
+              <Link href="#testimonials">
+                <Button size="large" variant="outline">
+                  Sobre mim
+                </Button>
               </Link>
             </div>
           </div>

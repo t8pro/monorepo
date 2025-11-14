@@ -4,7 +4,7 @@
 }
 
 .title {
-  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-family: var(--font-figtree), sans-serif;
   font-size: 36px;
   line-height: 44px;
   font-weight: 700;
@@ -41,7 +41,7 @@
   padding: 20px 24px;
   background: transparent;
   border: none;
-  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-family: var(--font-figtree), sans-serif;
   font-size: 18px;
   line-height: 26px;
   font-weight: 600;
@@ -74,7 +74,7 @@
   animation: slideDown 0.3s ease;
 
   p {
-    font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+    font-family: var(--font-figtree), sans-serif;
     font-size: 16px;
     line-height: 24px;
     color: rgba(31, 41, 55, 0.8);
@@ -105,7 +105,7 @@
   height: 56px;
   background-color: #c75d3b;
   color: white;
-  font-family: var(--font-lexend), var(--font-montserrat), sans-serif;
+  font-family: var(--font-lexend), sans-serif;
   font-weight: 700;
   font-size: 18px;
   text-decoration: none;
@@ -149,5 +149,3 @@
     font-size: 16px;
   }
 }
-
-

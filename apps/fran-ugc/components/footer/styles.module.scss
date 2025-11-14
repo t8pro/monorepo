@@ -19,7 +19,7 @@
 }
 
 .tagline {
-  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-family: var(--font-figtree), sans-serif;
   font-size: 14px;
   line-height: 22px;
   color: rgba(249, 242, 231, 0.7);
@@ -40,7 +40,7 @@
 }
 
 .linkTitle {
-  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-family: var(--font-figtree), sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #f9f2e7;
@@ -48,7 +48,7 @@
 }
 
 .link {
-  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-family: var(--font-figtree), sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: rgba(249, 242, 231, 0.7);
@@ -64,7 +64,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-family: var(--font-figtree), sans-serif;
   font-size: 14px;
   color: rgba(249, 242, 231, 0.7);
   text-decoration: none;
@@ -84,7 +84,7 @@
 }
 
 .copyright {
-  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-family: var(--font-figtree), sans-serif;
   font-size: 14px;
   text-align: center;
   color: rgba(249, 242, 231, 0.5);
@@ -117,4 +117,3 @@
     gap: 32px;
   }
 }
-

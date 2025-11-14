@@ -29,7 +29,6 @@ h5,
 h6 {
   line-height: var(--line-height-snug);
   font-weight: var(--font-weight-extrabold);
-  font-family: var(--font-montserrat);
 }
 
 p {

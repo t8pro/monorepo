@@ -60,7 +60,6 @@
 }
 
 .ebookTitle {
-  font-family: var(--font-montserrat);
   font-size: 48px;
   font-weight: var(--font-weight-bold);
   color: var(--color-secondary);
@@ -70,7 +69,6 @@
 }
 
 .ebookSubtitle {
-  font-family: var(--font-montserrat);
   font-size: 24px;
   font-weight: var(--font-weight-semibold);
   color: var(--color-secondary);
@@ -94,7 +92,6 @@
 .downloadButton {
   height: 48px;
   border-radius: var(--radius-sm);
-  font-family: var(--font-montserrat);
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-base);
   display: flex;

@@ -19,7 +19,6 @@
 }
 
 .title {
-  font-family: var(--font-montserrat);
   font-size: 40px;
   font-weight: var(--font-weight-bold);
   color: var(--color-secondary);
@@ -108,7 +107,6 @@
 }
 
 .cardTitle {
-  font-family: var(--font-montserrat);
   font-size: 24px;
   font-weight: var(--font-weight-bold);
   color: var(--color-secondary);
@@ -117,7 +115,6 @@
 }
 
 .price {
-  font-family: var(--font-montserrat);
   font-size: 48px;
   font-weight: var(--font-weight-bold);
   color: var(--color-secondary);
@@ -134,7 +131,6 @@
 }
 
 .pricePerPhoto {
-  font-family: var(--font-montserrat);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   color: var(--color-secondary);
@@ -144,7 +140,6 @@
 }
 
 .photoCount {
-  font-family: var(--font-montserrat);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   color: var(--color-secondary);
@@ -162,7 +157,6 @@
 }
 
 .description {
-  font-family: var(--font-montserrat);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   color: var(--color-secondary);
@@ -186,7 +180,6 @@
 }
 
 .featureText {
-  font-family: var(--font-montserrat);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
   color: var(--color-secondary);
@@ -198,7 +191,6 @@
 .cardButton {
   height: 40px;
   border-radius: var(--radius-sm);
-  font-family: var(--font-montserrat);
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-base);
   background: var(--color-primary);
@@ -309,7 +301,6 @@
 }
 
 .freeTrialText {
-  font-family: var(--font-montserrat);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-medium);
   color: var(--color-secondary);

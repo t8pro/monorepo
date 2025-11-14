@@ -86,8 +86,8 @@ export const Curriculum = () => {
               <Image
                 src="/ebook-image.png"
                 alt="Guia Prático UGC - E-book completo sobre como criar vídeos UGC e ganhar dinheiro"
-                width={400}
-                height={500}
+                width={600}
+                height={750}
                 className={styles.ebookImage}
               />
             </div>

@@ -8,11 +8,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 5",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "build:themes": "reshaped theming --output src/themes"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@tanstack/react-query": "^5.90.8",
+    "@t8pro/design-system": "*",
     "googleapis": "^166.0.0",
     "handlebars": "^4.7.8",
     "material-symbols": "^0.39.2",
