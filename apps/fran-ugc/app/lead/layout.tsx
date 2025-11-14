@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
-import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://francieliazevedo.com/ugc';
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://francieliazevedo.com/ugc';
 
 export const metadata: Metadata = {
   title: 'Receba seu guia gratuito de UGC',
@@ -37,4 +38,3 @@ export default function LeadLayout({
     </>
   );
 }
-

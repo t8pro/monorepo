@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React from 'react';
 import { Container } from 'reshaped';
 
@@ -47,7 +48,7 @@ export const Curriculum = () => {
             <h2 className={styles.title}>
               Ainda não existe conteúdo para começar?
             </h2>
-            
+
             <p className={styles.description}>
               Criamos um guia completo e gratuito para você dar os primeiros
               passos no mundo do UGC. Baixe agora e descubra como começar a
@@ -69,9 +70,13 @@ export const Curriculum = () => {
             </div>
 
             <div className={styles.cta}>
-              <a href="/lead" className={styles.ctaButton} aria-label="Baixar guia gratuito de UGC">
+              <Link
+                href="/lead"
+                className={styles.ctaButton}
+                aria-label="Baixar guia gratuito de UGC"
+              >
                 Baixar guia gratuito
-              </a>
+              </Link>
             </div>
           </div>
 

@@ -18,13 +18,17 @@ export const Header = () => {
     <header className={styles.header}>
       <Container>
         <div className={styles.container}>
-          <Link href="/" className={styles.logo} aria-label="UGC em Prática - Página inicial">
-            <Image 
-              src="/logo.svg" 
-              alt="UGC em Prática - Logo" 
-              width={32} 
-              height={22} 
-              priority 
+          <Link
+            href="/"
+            className={styles.logo}
+            aria-label="UGC em Prática - Página inicial"
+          >
+            <Image
+              src="/logo.svg"
+              alt="UGC em Prática - Logo"
+              width={32}
+              height={22}
+              priority
             />
           </Link>
 

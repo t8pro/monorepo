@@ -3,24 +3,32 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import {
-  Container,
-  View,
-  Text,
-  TextField,
-  Button,
-  Card,
-} from 'reshaped';
+import { Container, Text, TextField, Button } from 'reshaped';
 import { z } from 'zod';
 import styles from './styles.module.scss';
+import { LeadSuccess } from '@/features/lead/success';
 
 const formSchema = z.object({
+  unemployedOrSeekingIncome: z.enum(['sim', 'nao']).optional(),
+  likesAppearingInVideos: z.enum(['sim', 'nao']).optional(),
+  wantsCreativeGuide: z.enum(['sim', 'nao']).optional(),
+  productAffinity: z
+    .array(z.enum(['beleza', 'saude', 'fitness', 'alimentacao']))
+    .optional(),
   name: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
   email: z.string().email('Email inválido'),
   phone: z.string().optional(),
+  instagram: z.string().optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
+
+const PRODUCT_AFFINITIES = [
+  { value: 'beleza', label: 'Beleza' },
+  { value: 'saude', label: 'Saúde' },
+  { value: 'fitness', label: 'Fitness' },
+  { value: 'alimentacao', label: 'Alimentação' },
+] as const;
 
 export default function LeadPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,15 +37,32 @@ export default function LeadPage() {
   const {
     control,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      productAffinity: [],
+    },
   });
+
+  const productAffinity = watch('productAffinity') || [];
+
+  const toggleProductAffinity = (
+    value: 'beleza' | 'saude' | 'fitness' | 'alimentacao',
+  ) => {
+    const current = productAffinity;
+    const newAffinity = current.includes(value)
+      ? current.filter(item => item !== value)
+      : [...current, value];
+    setValue('productAffinity', newAffinity);
+  };
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/tell-me-more', {
+      const response = await fetch('/api/submit-lead', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,33 +88,7 @@ export default function LeadPage() {
     return (
       <section className={styles.leadPage}>
         <Container>
-          <View paddingTop={12} paddingBottom={12} align="center">
-            <View.Item>
-              <Card padding={6} className={styles.successCard}>
-                <View gap={4} align="center">
-                  <View.Item>
-                    <span
-                      className="material-symbols-rounded"
-                      style={{ fontSize: '64px', color: '#22c55e' }}
-                    >
-                      check_circle
-                    </span>
-                  </View.Item>
-                  <View.Item>
-                    <Text variant="featured-2" weight="bold" align="center">
-                      Obrigado!
-                    </Text>
-                  </View.Item>
-                  <View.Item>
-                    <Text variant="body-2" align="center">
-                      Recebemos suas informações. Em breve você receberá o guia
-                      por email.
-                    </Text>
-                  </View.Item>
-                </View>
-              </Card>
-            </View.Item>
-          </View>
+          <LeadSuccess />
         </Container>
       </section>
     );
@@ -98,116 +97,251 @@ export default function LeadPage() {
   return (
     <section className={styles.leadPage}>
       <Container>
-        <div className={styles.content}>
-          <div className={styles.textContent}>
-            <h1 className={styles.title}>
-              Transforme seu celular em uma fonte de renda
-            </h1>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+          <div className={styles.header}>
+            <h1 className={styles.title}>Me conte um pouco sobre você</h1>
             <p className={styles.subtitle}>
-              Receba o guia completo e gratuito para começar a ganhar dinheiro
-              criando vídeos UGC
+              Com essas informações você pode receber uma proposta personalizada
+              nossa
             </p>
           </div>
 
-          <Card padding={6} className={styles.formCard}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <View gap={4}>
-                <View.Item>
-                  <View gap={1}>
-                    <View.Item>
-                      <Controller
+          <div className={styles.questionsSection}>
+            <div className={styles.questionGroup}>
+              <h2 className={styles.question}>
+                Você está desempregada(o) ou procurando fazer renda sem sair de
+                casa?
+              </h2>
+              <div className={styles.yesNoButtons}>
+                <Controller
+                  name="unemployedOrSeekingIncome"
+                  control={control}
+                  render={({ field }) => (
+                    <>
+                      <button
+                        type="button"
+                        className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
+                        onClick={() => field.onChange('nao')}
+                      >
+                        Não
+                      </button>
+                      <button
+                        type="button"
+                        className={`${styles.yesNoButton} ${field.value === 'sim' ? styles.active : ''}`}
+                        onClick={() => field.onChange('sim')}
+                      >
+                        Sim
+                      </button>
+                    </>
+                  )}
+                />
+              </div>
+            </div>
+
+            <div className={styles.questionGroup}>
+              <h2 className={styles.question}>
+                Você gosta de aparecer em vídeos para internet?
+              </h2>
+              <div className={styles.yesNoButtons}>
+                <Controller
+                  name="likesAppearingInVideos"
+                  control={control}
+                  render={({ field }) => (
+                    <>
+                      <button
+                        type="button"
+                        className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
+                        onClick={() => field.onChange('nao')}
+                      >
+                        Não
+                      </button>
+                      <button
+                        type="button"
+                        className={`${styles.yesNoButton} ${field.value === 'sim' ? styles.active : ''}`}
+                        onClick={() => field.onChange('sim')}
+                      >
+                        Sim
+                      </button>
+                    </>
+                  )}
+                />
+              </div>
+            </div>
+
+            <div className={styles.questionGroup}>
+              <h2 className={styles.question}>
+                Você gostaria de receber um guia que te ensina a fazer um
+                criativo como exemplo.
+              </h2>
+              <p className={styles.questionDescription}>
+                Após gravar, você me encaminha o material que eu vou avaliar e
+                te responder se está no caminho certo! 😍 E pode ficar tranquila
+                que eu vou te passar exatamente o roteiro que você vai fazer.
+                Está no meu Guia.
+              </p>
+              <div className={styles.yesNoButtons}>
+                <Controller
+                  name="wantsCreativeGuide"
+                  control={control}
+                  render={({ field }) => (
+                    <>
+                      <button
+                        type="button"
+                        className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
+                        onClick={() => field.onChange('nao')}
+                      >
+                        Não
+                      </button>
+                      <button
+                        type="button"
+                        className={`${styles.yesNoButton} ${field.value === 'sim' ? styles.active : ''}`}
+                        onClick={() => field.onChange('sim')}
+                      >
+                        Sim
+                      </button>
+                    </>
+                  )}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.productAffinitySection}>
+            <h2 className={styles.sectionTitle}>
+              Quais são os produtos que você tem mais afinidade?
+            </h2>
+            <div className={styles.productButtons}>
+              {PRODUCT_AFFINITIES.map(product => (
+                <button
+                  key={product.value}
+                  type="button"
+                  className={`${styles.productButton} ${productAffinity.includes(product.value) ? styles.active : ''}`}
+                  onClick={() => toggleProductAffinity(product.value)}
+                >
+                  {product.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.infoSection}>
+            <h2 className={styles.sectionTitle}>Suas informações</h2>
+            <div className={styles.formFields}>
+              <div className={styles.formColumn}>
+                <div className={styles.fieldGroup}>
+                  <label className={styles.label}>Nome</label>
+                  <Controller
+                    name="name"
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
                         name="name"
-                        control={control}
-                        render={({ field }) => (
-                          <TextField
-                            name="name"
-                            placeholder="Seu nome completo"
-                            value={field.value || ''}
-                            onChange={({ value }) => field.onChange(value)}
-                          />
-                        )}
+                        value={field.value || ''}
+                        onChange={({ value }) => field.onChange(value)}
+                        className={styles.input}
                       />
-                    </View.Item>
-                    {errors.name && (
-                      <View.Item>
-                        <Text variant="caption-1" color="critical">
-                          {errors.name.message}
-                        </Text>
-                      </View.Item>
                     )}
-                  </View>
-                </View.Item>
+                  />
+                  {errors.name && (
+                    <Text
+                      variant="caption-1"
+                      color="critical"
+                      className={styles.error}
+                    >
+                      {errors.name.message}
+                    </Text>
+                  )}
+                </div>
 
-                <View.Item>
-                  <View gap={1}>
-                    <View.Item>
-                      <Controller
-                        name="email"
-                        control={control}
-                        render={({ field }) => (
-                          <TextField
-                            name="email"
-                            placeholder="Seu melhor email"
-                            value={field.value || ''}
-                            onChange={({ value }) => field.onChange(value)}
-                            inputAttributes={{ type: 'email' }}
-                          />
-                        )}
-                      />
-                    </View.Item>
-                    {errors.email && (
-                      <View.Item>
-                        <Text variant="caption-1" color="critical">
-                          {errors.email.message}
-                        </Text>
-                      </View.Item>
-                    )}
-                  </View>
-                </View.Item>
-
-                <View.Item>
-                  <View gap={1}>
-                    <View.Item>
-                      <Controller
+                <div className={styles.fieldGroup}>
+                  <label className={styles.label}>Telefone</label>
+                  <Controller
+                    name="phone"
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
                         name="phone"
-                        control={control}
-                        render={({ field }) => (
-                          <TextField
-                            name="phone"
-                            placeholder="Telefone (opcional)"
-                            value={field.value || ''}
-                            onChange={({ value }) => field.onChange(value)}
-                            inputAttributes={{ type: 'tel' }}
-                          />
-                        )}
+                        value={field.value || ''}
+                        onChange={({ value }) => field.onChange(value)}
+                        inputAttributes={{ type: 'tel' }}
+                        className={styles.input}
                       />
-                    </View.Item>
-                    {errors.phone && (
-                      <View.Item>
-                        <Text variant="caption-1" color="critical">
-                          {errors.phone.message}
-                        </Text>
-                      </View.Item>
                     )}
-                  </View>
-                </View.Item>
+                  />
+                  {errors.phone && (
+                    <Text
+                      variant="caption-1"
+                      color="critical"
+                      className={styles.error}
+                    >
+                      {errors.phone.message}
+                    </Text>
+                  )}
+                </div>
+              </div>
 
-                <View.Item>
-                  <Button
-                    type="submit"
-                    size="large"
-                    fullWidth
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? 'Enviando...' : 'Receber guia gratuito'}
-                  </Button>
-                </View.Item>
-              </View>
-            </form>
-          </Card>
-        </div>
+              <div className={styles.formColumn}>
+                <div className={styles.fieldGroup}>
+                  <label className={styles.label}>E-mail</label>
+                  <Controller
+                    name="email"
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        name="email"
+                        value={field.value || ''}
+                        onChange={({ value }) => field.onChange(value)}
+                        inputAttributes={{ type: 'email' }}
+                        className={styles.input}
+                      />
+                    )}
+                  />
+                  {errors.email && (
+                    <Text
+                      variant="caption-1"
+                      color="critical"
+                      className={styles.error}
+                    >
+                      {errors.email.message}
+                    </Text>
+                  )}
+                </div>
+
+                <div className={styles.fieldGroup}>
+                  <label className={styles.label}>@ do instagram</label>
+                  <Controller
+                    name="instagram"
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        name="instagram"
+                        value={field.value || ''}
+                        onChange={({ value }) => field.onChange(value)}
+                        className={styles.input}
+                      />
+                    )}
+                  />
+                  {errors.instagram && (
+                    <Text
+                      variant="caption-1"
+                      color="critical"
+                      className={styles.error}
+                    >
+                      {errors.instagram.message}
+                    </Text>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.submitSection}>
+            <Button type="submit" size="large" disabled={isSubmitting}>
+              {isSubmitting ? 'Enviando...' : 'Baixar Guia Gratuito!'}
+            </Button>
+          </div>
+        </form>
       </Container>
     </section>
   );
 }
-
