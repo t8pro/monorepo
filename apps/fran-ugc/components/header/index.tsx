@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import { Button, Container } from 'reshaped';
 import styles from './styles.module.scss';
 
@@ -28,11 +28,11 @@ export const Header = () => {
           <Link
             href="/"
             className={styles.logo}
-            aria-label="UGC em Prática - Página inicial"
+            aria-label="UGC na Prática - Página inicial"
           >
             <Image
               src="/logo.svg"
-              alt="UGC em Prática - Logo"
+              alt="UGC na Prática - Logo"
               width={32}
               height={22}
               priority
@@ -68,9 +68,7 @@ export const Header = () => {
               aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
               aria-expanded={isMenuOpen}
             >
-              <span className={styles.menuIcon}>
-                {isMenuOpen ? '✕' : '☰'}
-              </span>
+              <span className={styles.menuIcon}>{isMenuOpen ? '✕' : '☰'}</span>
             </button>
           </div>
         </div>

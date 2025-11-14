@@ -16,7 +16,7 @@ export const Footer = () => {
           <div className={styles.brand}>
             <Image
               src="/logo.svg"
-              alt="UGC em Prática - Logo"
+              alt="UGC na Prática - Logo"
               width={32}
               height={22}
               loading="lazy"

@@ -23,7 +23,7 @@ export const Hero = () => {
               <span className={styles.authorLabel}>por:</span>
               <Image
                 src="/signature.svg"
-                alt="Assinatura de Francieli Azevedo - Criadora do curso UGC em Prática"
+                alt="Assinatura de Francieli Azevedo - Criadora do curso UGC na Prática"
                 width={266}
                 height={61}
                 className={styles.signature}

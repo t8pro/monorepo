@@ -13,7 +13,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || 'https://ugc.francieliazevedo.com';
 
 export const metadata: Metadata = {
-  title: 'Método Descomplicado: Crie Vídeos com Seu Celular e Ganhe Dinheiro',
+  title: 'UGC na Prática - Curso Completo de User Generated Content',
   description:
     'Aprenda um método descomplicado de criar vídeos com seu celular, enviar para marcas e ganhar dinheiro trabalhando de casa. Curso completo de UGC (User Generated Content) com 6 módulos práticos. Transforme seu celular em uma fonte de renda.',
   alternates: {

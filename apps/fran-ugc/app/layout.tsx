@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: 'UGC na Prática',
-    template: '%s | UGC em Prática',
+    template: '%s | UGC na Prática',
   },
   description:
     'Aprenda um método descomplicado de criar vídeos com seu celular, enviar para marcas e ganhar dinheiro trabalhando de casa. Curso completo de UGC (User Generated Content) com 6 módulos práticos. Transforme seu celular em uma fonte de renda.',
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     { name: 'Francieli Azevedo', url: 'https://instagram.com/franazevedougc' },
   ],
   creator: 'Francieli Azevedo',
-  publisher: 'UGC em Prática',
+  publisher: 'UGC na Prática',
   formatDetection: {
     email: false,
     address: false,
@@ -70,8 +70,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'pt_BR',
     url: siteUrl,
-    siteName: 'UGC em Prática',
-    title: 'Método Descomplicado: Crie Vídeos com Seu Celular e Ganhe Dinheiro',
+    siteName: 'UGC na Prática',
+    title: 'UGC na Prática - Curso Completo de User Generated Content',
     description:
       'Aprenda um método descomplicado de criar vídeos com seu celular, enviar para marcas e ganhar dinheiro trabalhando de casa. Curso completo de UGC com 6 módulos práticos.',
     images: [
@@ -79,13 +79,13 @@ export const metadata: Metadata = {
         url: `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'UGC em Prática - Método Descomplicado de Criar Vídeos e Ganhar Dinheiro',
+        alt: 'UGC na Prática - Curso Completo de User Generated Content',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Método Descomplicado: Crie Vídeos com Seu Celular e Ganhe Dinheiro',
+    title: 'UGC na Prática - Curso Completo de User Generated Content',
     description:
       'Aprenda um método descomplicado de criar vídeos com seu celular, enviar para marcas e ganhar dinheiro trabalhando de casa.',
     creator: '@franazevedougc',
@@ -120,7 +120,7 @@ export default function RootLayout({
   const organizationStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'UGC em Prática',
+    name: 'UGC na Prática',
     url: siteUrl,
     logo: `${siteUrl}/logo.svg`,
     sameAs: ['https://instagram.com/franazevedougc'],
@@ -139,12 +139,12 @@ export default function RootLayout({
   const courseStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'Course',
-    name: 'UGC em Prática - Método Descomplicado de Criar Vídeos',
+    name: 'UGC na Prática',
     description:
       'Aprenda um método descomplicado de criar vídeos com seu celular, enviar para marcas e ganhar dinheiro trabalhando de casa. Curso completo de UGC com 6 módulos práticos.',
     provider: {
       '@type': 'Organization',
-      name: 'UGC em Prática',
+      name: 'UGC na Prática',
       url: siteUrl,
     },
     courseCode: 'UGC-PRATICA',
@@ -177,7 +177,7 @@ export default function RootLayout({
   const websiteStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'UGC em Prática',
+    name: 'UGC na Prática',
     url: siteUrl,
     potentialAction: {
       '@type': 'SearchAction',
