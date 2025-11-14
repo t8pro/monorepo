@@ -10,19 +10,19 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 24px;
   align-items: center;
 }
 
 .title {
   font-family: var(--font-young-serif), serif;
-  font-size: 56px;
-  line-height: 68px;
+  font-size: 32px;
+  line-height: 40px;
   color: #f9f2e7;
   margin: 0;
   text-align: center;
   max-width: 540px;
-  font-size: 56px;
+  font-size: 32px;
 }
 
 .priceCard {
@@ -173,11 +173,6 @@
 @media (max-width: 768px) {
   .darkSection {
     padding: 60px 0;
-  }
-
-  .title {
-    font-size: 44px;
-    line-height: 52px;
   }
 
   .priceCard {

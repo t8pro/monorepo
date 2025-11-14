@@ -4,6 +4,8 @@ import localFont from 'next/font/local';
 import { Providers } from './providers';
 import '@/styles/themes/fran/theme.css';
 import '@/styles/globals.scss';
+import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
 
 const figtree = Figtree({
   variable: '--font-figtree',
@@ -221,7 +223,13 @@ export default function RootLayout({
       <body
         className={`${figtree.variable} ${youngSerif.variable} ${materialSymbols.variable}`}
       >
-        <Providers>{children}</Providers>
+        <main>
+          <Providers>
+            <Header />
+            {children}
+            <Footer />
+          </Providers>
+        </main>
       </body>
     </html>
   );

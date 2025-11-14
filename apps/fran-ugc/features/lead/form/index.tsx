@@ -2,9 +2,17 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { Text, TextField, Button, Container } from 'reshaped';
+import {
+  Text,
+  TextField,
+  Button,
+  Container,
+  View,
+  FormControl,
+} from 'reshaped';
+import { withMask } from 'use-mask-input';
 import { z } from 'zod';
 import styles from './styles.module.scss';
 
@@ -44,6 +52,11 @@ export default function LeadForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
+  const question1Ref = useRef<HTMLDivElement>(null);
+  const question2Ref = useRef<HTMLDivElement>(null);
+  const question3Ref = useRef<HTMLDivElement>(null);
+  const productAffinityRef = useRef<HTMLDivElement>(null);
+
   const {
     control,
     handleSubmit,
@@ -58,6 +71,27 @@ export default function LeadForm() {
   });
 
   const productAffinity = watch('productAffinity') || [];
+
+  const scrollToNext = (currentQuestion: number) => {
+    setTimeout(() => {
+      if (currentQuestion === 1 && question2Ref.current) {
+        question2Ref.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      } else if (currentQuestion === 2 && question3Ref.current) {
+        question3Ref.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      } else if (currentQuestion === 3 && productAffinityRef.current) {
+        productAffinityRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    }, 100);
+  };
 
   const toggleProductAffinity = (
     value: 'beleza' | 'saude' | 'fitness' | 'alimentacao',
@@ -107,7 +141,7 @@ export default function LeadForm() {
           </div>
 
           <div className={styles.questionsSection}>
-            <div className={styles.questionGroup}>
+            <div ref={question1Ref} className={styles.questionGroup}>
               <h2 className={styles.question}>
                 Você está desempregada(o) ou procurando fazer renda sem sair de
                 casa?
@@ -120,17 +154,23 @@ export default function LeadForm() {
                     <div className={styles.buttonGroup}>
                       <button
                         type="button"
-                        className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
-                        onClick={() => field.onChange('nao')}
+                        className={`${styles.yesNoButton} ${field.value === 'sim' ? styles.active : ''}`}
+                        onClick={() => {
+                          field.onChange('sim');
+                          scrollToNext(1);
+                        }}
                       >
-                        Não
+                        Sim
                       </button>
                       <button
                         type="button"
-                        className={`${styles.yesNoButton} ${field.value === 'sim' ? styles.active : ''}`}
-                        onClick={() => field.onChange('sim')}
+                        className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
+                        onClick={() => {
+                          field.onChange('nao');
+                          scrollToNext(1);
+                        }}
                       >
-                        Sim
+                        Não
                       </button>
                     </div>
                   )}
@@ -147,7 +187,7 @@ export default function LeadForm() {
               </div>
             </div>
 
-            <div className={styles.questionGroup}>
+            <div ref={question2Ref} className={styles.questionGroup}>
               <h2 className={styles.question}>
                 Você gosta de aparecer em vídeos para internet?
               </h2>
@@ -159,17 +199,23 @@ export default function LeadForm() {
                     <div className={styles.buttonGroup}>
                       <button
                         type="button"
-                        className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
-                        onClick={() => field.onChange('nao')}
+                        className={`${styles.yesNoButton} ${field.value === 'sim' ? styles.active : ''}`}
+                        onClick={() => {
+                          field.onChange('sim');
+                          scrollToNext(2);
+                        }}
                       >
-                        Não
+                        Sim
                       </button>
                       <button
                         type="button"
-                        className={`${styles.yesNoButton} ${field.value === 'sim' ? styles.active : ''}`}
-                        onClick={() => field.onChange('sim')}
+                        className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
+                        onClick={() => {
+                          field.onChange('nao');
+                          scrollToNext(2);
+                        }}
                       >
-                        Sim
+                        Não
                       </button>
                     </div>
                   )}
@@ -186,7 +232,7 @@ export default function LeadForm() {
               </div>
             </div>
 
-            <div className={styles.questionGroup}>
+            <div ref={question3Ref} className={styles.questionGroup}>
               <h2 className={styles.question}>
                 Você gostaria de receber um guia que te ensina a fazer um
                 criativo como exemplo.
@@ -205,17 +251,23 @@ export default function LeadForm() {
                     <div className={styles.buttonGroup}>
                       <button
                         type="button"
-                        className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
-                        onClick={() => field.onChange('nao')}
+                        className={`${styles.yesNoButton} ${field.value === 'sim' ? styles.active : ''}`}
+                        onClick={() => {
+                          field.onChange('sim');
+                          scrollToNext(3);
+                        }}
                       >
-                        Não
+                        Sim
                       </button>
                       <button
                         type="button"
-                        className={`${styles.yesNoButton} ${field.value === 'sim' ? styles.active : ''}`}
-                        onClick={() => field.onChange('sim')}
+                        className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
+                        onClick={() => {
+                          field.onChange('nao');
+                          scrollToNext(3);
+                        }}
                       >
-                        Sim
+                        Não
                       </button>
                     </div>
                   )}
@@ -233,7 +285,10 @@ export default function LeadForm() {
             </div>
           </div>
 
-          <div className={styles.productAffinitySection}>
+          <div
+            ref={productAffinityRef}
+            className={styles.productAffinitySection}
+          >
             <h2 className={styles.sectionTitle}>
               Quais são os produtos que você tem mais afinidade?
             </h2>
@@ -253,15 +308,16 @@ export default function LeadForm() {
 
           <div className={styles.infoSection}>
             <h2 className={styles.sectionTitle}>Suas informações</h2>
-            <div className={styles.formFields}>
-              <div className={styles.formColumn}>
-                <div className={styles.fieldGroup}>
-                  <label className={styles.label}>Nome</label>
+            <View direction="row" gap={4}>
+              <View.Item columns={6}>
+                <FormControl>
+                  <FormControl.Label>Nome</FormControl.Label>
                   <Controller
                     name="name"
                     control={control}
                     render={({ field }) => (
                       <TextField
+                        size="large"
                         name="name"
                         value={field.value || ''}
                         onChange={({ value }) => field.onChange(value)}
@@ -278,47 +334,26 @@ export default function LeadForm() {
                       {errors.name.message}
                     </Text>
                   )}
-                </div>
+                </FormControl>
+              </View.Item>
 
-                <div className={styles.fieldGroup}>
-                  <label className={styles.label}>Telefone</label>
+              <View.Item columns={6}>
+                <FormControl>
+                  <FormControl.Label>Telefone</FormControl.Label>
                   <Controller
                     name="phone"
                     control={control}
                     render={({ field }) => (
                       <TextField
+                        size="large"
                         name="phone"
                         value={field.value || ''}
                         onChange={({ value }) => field.onChange(value)}
-                        inputAttributes={{ type: 'tel' }}
-                        className={styles.input}
-                      />
-                    )}
-                  />
-                  {errors.phone && (
-                    <Text
-                      variant="caption-1"
-                      color="critical"
-                      className={styles.error}
-                    >
-                      {errors.phone.message}
-                    </Text>
-                  )}
-                </div>
-              </div>
-
-              <div className={styles.formColumn}>
-                <div className={styles.fieldGroup}>
-                  <label className={styles.label}>E-mail</label>
-                  <Controller
-                    name="email"
-                    control={control}
-                    render={({ field }) => (
-                      <TextField
-                        name="email"
-                        value={field.value || ''}
-                        onChange={({ value }) => field.onChange(value)}
-                        inputAttributes={{ type: 'email' }}
+                        placeholder="(99) 9 9999-9999"
+                        inputAttributes={{
+                          type: 'tel',
+                          ref: withMask('(99) 9 9999-9999'),
+                        }}
                         className={styles.input}
                       />
                     )}
@@ -332,15 +367,48 @@ export default function LeadForm() {
                       {errors.email.message}
                     </Text>
                   )}
-                </div>
+                </FormControl>
+              </View.Item>
 
-                <div className={styles.fieldGroup}>
-                  <label className={styles.label}>@ do instagram</label>
+              <View.Item columns={6}>
+                <FormControl>
+                  <FormControl.Label>E-mail</FormControl.Label>
+                  <Controller
+                    name="email"
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        size="large"
+                        name="email"
+                        value={field.value || ''}
+                        onChange={({ value }) => field.onChange(value)}
+                        inputAttributes={{ type: 'email' }}
+                        placeholder="example@gmail.com"
+                        className={styles.input}
+                      />
+                    )}
+                  />
+                  {errors.email && (
+                    <Text
+                      variant="caption-1"
+                      color="critical"
+                      className={styles.error}
+                    >
+                      {errors.email.message}
+                    </Text>
+                  )}
+                </FormControl>
+              </View.Item>
+
+              <View.Item columns={6}>
+                <FormControl>
+                  <FormControl.Label>@ do instagram</FormControl.Label>
                   <Controller
                     name="instagram"
                     control={control}
                     render={({ field }) => (
                       <TextField
+                        size="large"
                         name="instagram"
                         value={field.value || ''}
                         onChange={({ value }) => field.onChange(value)}
@@ -357,9 +425,9 @@ export default function LeadForm() {
                       {errors.instagram.message}
                     </Text>
                   )}
-                </div>
-              </div>
-            </div>
+                </FormControl>
+              </View.Item>
+            </View>
           </div>
 
           <div className={styles.submitSection}>

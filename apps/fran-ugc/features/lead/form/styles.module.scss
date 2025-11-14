@@ -41,7 +41,7 @@
 .questionsSection {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 200px;
 }
 
 .questionGroup {
@@ -50,6 +50,7 @@
   gap: 24px;
   max-width: 521px;
   margin: 0 auto;
+  padding-top: 40px;
 }
 
 .question {
@@ -86,6 +87,7 @@
 
 .yesNoButton {
   all: unset;
+  box-sizing: border-box;
   padding: 16px 32px;
   height: 56px;
   min-width: 95px;
@@ -118,7 +120,7 @@
   flex-direction: column;
   gap: 24px;
   max-width: 415px;
-  margin: 0 auto;
+  margin: 56px auto;
 }
 
 .sectionTitle {
@@ -139,6 +141,7 @@
 
 .productButton {
   all: unset;
+  box-sizing: border-box;
   padding: 16px;
   height: 56px;
   width: 100%;
@@ -188,38 +191,6 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-}
-
-.label {
-  font-family: var(--font-figtree), sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  color: #c75d3b;
-  font-weight: 400;
-}
-
-.input {
-  :global(input) {
-    width: 100%;
-    height: 56px;
-    padding: 16px;
-    border: 1px solid #ababab;
-    border-radius: 8px;
-    font-family: var(--font-figtree), sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    color: #1f2937;
-    background-color: #ffffff;
-
-    &:focus {
-      outline: none;
-      border-color: #c75d3b;
-    }
-
-    &::placeholder {
-      color: #9ca3af;
-    }
-  }
 }
 
 .error {
