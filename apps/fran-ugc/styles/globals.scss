@@ -11,6 +11,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Container max-width override - keep backgrounds full width */
+/* Target reshaped Container component within sections, header, and footer */
+section > div:first-child,
+header > div:first-child,
+footer > div:first-child {
+  max-width: 1366px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /* Material Symbols */
 .material-symbols-rounded {
   font-family:

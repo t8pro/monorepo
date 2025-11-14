@@ -1,49 +1,73 @@
 'use client';
 
-import { Button, Text, Container, View } from 'reshaped';
+import Image from 'next/image';
 import Link from 'next/link';
+import { FaInstagram } from 'react-icons/fa';
+import { Container } from 'reshaped';
 import styles from './styles.module.scss';
 
 export const Hero = () => {
   return (
     <section className={styles.hero}>
       <Container>
-        <View className={styles.content}>
-          <View.Item>
-            <Text variant="featured-1" weight="bold" as="h1" className={styles.title}>
+        <div className={styles.content}>
+          <div className={styles.textContent}>
+            <h1 className={styles.title}>
+              Método Descomplicado: Crie Vídeos com Seu Celular e Ganhe Dinheiro
+            </h1>
+            
+            <h2 className={styles.subtitle}>
+              Trabalhe no seu próprio ritmo: <br />
+              ganhe criando conteúdo de casa
+            </h2>
+
+            <div className={styles.author}>
+              <span className={styles.authorLabel}>por:</span>
+              <Image
+                src="/signature.svg"
+                alt="Assinatura de Francieli Azevedo - Criadora do curso UGC em Prática"
+                width={266}
+                height={61}
+                className={styles.signature}
+                loading="lazy"
+              />
+            </div>
+
+            <p className={styles.description}>
               Vou te mostrar um método descomplicado de criar vídeos com seu
               celular, enviar para marcas e ganhar dinheiro trabalhando de casa.
-            </Text>
-          </View.Item>
+            </p>
 
-          <View.Item>
-            <Text variant="body-1" className={styles.subtitle}>
-              Descubra como transformar seu celular em uma máquina de ganhar
-              dinheiro criando conteúdo autêntico para marcas.
-            </Text>
-          </View.Item>
-
-          <View.Item>
-            <Link href="/tell-me-more">
-              <Button size="large" fullWidth>
-                Fazer o download do guia
-              </Button>
-            </Link>
-          </View.Item>
-
-          <View.Item>
-            <div className={styles.imagePlaceholder}>
-              <span className="material-symbols-rounded" style={{ fontSize: '120px' }}>
-                videocam
-              </span>
-              <Text variant="caption-1" className={styles.placeholderText}>
-                Imagem do curso será adicionada aqui
-              </Text>
+            <div className={styles.buttons}>
+              <Link href="#pricing" className={styles.primaryButton}>
+                Quero Garantir Minha Vaga
+              </Link>
+              <Link href="#testimonials" className={styles.secondaryButton}>
+                Sobre mim
+              </Link>
             </div>
-          </View.Item>
-        </View>
+          </div>
+
+          <div className={styles.imageContent}>
+            <div className={styles.imageWrapper}>
+              <Image
+                src="/hero-image.png"
+                alt="Francieli Azevedo - Especialista em UGC ensinando como criar vídeos profissionais com celular e ganhar dinheiro trabalhando de casa"
+                width={547}
+                height={384}
+                className={styles.heroImage}
+                priority
+                loading="eager"
+              />
+            </div>
+            
+            <div className={styles.socialMedia}>
+              <FaInstagram size={24} />
+              <span>@franazevedougc</span>
+            </div>
+          </div>
+        </div>
       </Container>
     </section>
   );
 };
-

@@ -1,16 +1,153 @@
 .faq {
+  background-color: #fff;
   padding: 80px 0;
-  background: linear-gradient(
-    135deg,
-    rgba(241, 232, 214, 0.3) 0%,
-    rgba(255, 255, 255, 0.5) 100%
-  );
 }
 
-.faqCard {
+.title {
+  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 700;
+  color: #181311;
+  text-align: center;
+  margin: 0 0 48px;
+}
+
+.faqList {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
+.faqItem {
+  background-color: #f9f2e7;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &.open {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+  color: #181311;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #c75d3b;
+  }
+
+  span {
+    flex: 1;
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  color: #c75d3b;
+  transition: transform 0.3s ease;
+
+  .open & {
+    transform: rotate(180deg);
+  }
+}
+
+.answer {
+  padding: 0 24px 24px;
+  animation: slideDown 0.3s ease;
+
+  p {
+    font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(31, 41, 55, 0.8);
+    margin: 0;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cta {
+  text-align: center;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 48px;
+  height: 56px;
+  background-color: #c75d3b;
+  color: white;
+  font-family: var(--font-lexend), var(--font-montserrat), sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #b34f2f;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .faq {
+    padding: 60px 0;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 32px;
+  }
+
+  .question {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 16px 20px;
+  }
+
+  .answer {
+    padding: 0 20px 20px;
+
+    p {
+      font-size: 15px;
+      line-height: 22px;
+    }
+  }
+
+  .ctaButton {
+    width: 100%;
+    font-size: 16px;
+  }
+}
 
 

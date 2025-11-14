@@ -1,77 +1,61 @@
 'use client';
 
-import { Container, View, Text, Card, Grid } from 'reshaped';
+import { FaRegClock, FaRegQuestionCircle, FaRegLightbulb } from 'react-icons/fa';
+import { Container } from 'reshaped';
 import styles from './styles.module.scss';
 
 const problems = [
   {
-    icon: 'indeterminate_question_box',
-    title: 'Métodos Complicados',
+    icon: FaRegClock,
+    title: 'Falta de Tempo?',
     description:
-      'Você já tentou seguir tutoriais complexos que não funcionam na prática?',
+      'Imagine ganhar dinheiro criando vídeos rápidos de 15 a 60 segundos, sem precisar aparecer ou ter seguidores.',
   },
   {
-    icon: 'money_off',
-    title: 'Falta de Oportunidades',
+    icon: FaRegQuestionCircle,
+    title: 'Não sabe por onde começar?',
     description:
-      'Não sabe como encontrar marcas que pagam bem pelo seu conteúdo?',
+      'Te mostro o passo a passo completo para criar conteúdo que as marcas querem e começar a faturar.',
   },
   {
-    icon: 'schedule',
-    title: 'Perda de Tempo',
+    icon: FaRegLightbulb,
+    title: 'Quer trabalhar de casa?',
     description:
-      'Gasta horas criando vídeos que não geram resultados ou dinheiro?',
-  },
-  {
-    icon: 'help',
-    title: 'Sem Direcionamento',
-    description: 'Não tem clareza sobre o que as marcas realmente querem ver?',
+      'Descubra como transformar seu celular em uma máquina de gerar renda trabalhando no seu tempo.',
   },
 ];
 
 export const Problem = () => {
   return (
-    <section className={styles.problem}>
+    <section className={styles.problem} id="problem">
       <Container>
-        <View gap={8} align="center">
-          <View.Item>
-            <Text variant="featured-2" weight="bold" as="h2" align="center">
-              Você já passou por isso?
-            </Text>
-          </View.Item>
+        <h2 className={styles.title}>
+          Você Quer Ganhar Dinheiro de Casa, Mas...
+        </h2>
 
-          <View.Item>
-            <Grid columns={{ s: 1, m: 2, l: 4 }} gap={4}>
-              {problems.map((problem, index) => (
-                <Grid.Item key={index}>
-                  <Card padding={4}>
-                    <View gap={3} align="center">
-                      <View.Item>
-                        <span
-                          className="material-symbols-rounded"
-                          style={{ fontSize: '48px' }}
-                        >
-                          {problem.icon}
-                        </span>
-                      </View.Item>
-                      <View.Item>
-                        <Text variant="body-2" weight="bold" align="center">
-                          {problem.title}
-                        </Text>
-                      </View.Item>
-                      <View.Item>
-                        <Text variant="caption-1" align="center">
-                          {problem.description}
-                        </Text>
-                      </View.Item>
-                    </View>
-                  </Card>
-                </Grid.Item>
-              ))}
-            </Grid>
-          </View.Item>
-        </View>
+        <div className={styles.grid}>
+          {problems.map((problem, index) => {
+            const Icon = problem.icon;
+            return (
+              <div key={index} className={styles.card}>
+                <div className={styles.iconWrapper}>
+                  <Icon size={32} />
+                </div>
+                <h3 className={styles.cardTitle}>{problem.title}</h3>
+                <p className={styles.cardDescription}>{problem.description}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className={styles.cta}>
+          <a href="#pricing" className={styles.ctaButton}>
+            Descubra como começar a ganhar!
+          </a>
+        </div>
       </Container>
     </section>
   );
 };
+
+

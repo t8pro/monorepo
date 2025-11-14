@@ -1,28 +1,28 @@
-import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { existsSync } from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Try to find the correct path to reshaped media.css
-const possiblePaths = [
-  path.resolve(
-    __dirname,
-    'node_modules/reshaped/dist/themes/reshaped/media.css',
-  ),
-  path.resolve(
-    __dirname,
-    '../../node_modules/reshaped/dist/themes/reshaped/media.css',
-  ),
-  path.resolve(
-    __dirname,
-    '../../../node_modules/reshaped/dist/themes/reshaped/media.css',
-  ),
-];
+// Find monorepo root by traversing up until we find node_modules/reshaped
+function findMonorepoRoot(startDir) {
+  let currentDir = startDir;
+  while (currentDir !== path.dirname(currentDir)) {
+    const nodeModulesPath = path.join(currentDir, 'node_modules', 'reshaped');
+    if (existsSync(nodeModulesPath)) {
+      return currentDir;
+    }
+    currentDir = path.dirname(currentDir);
+  }
+  return startDir;
+}
 
-const themeMediaCSSPath =
-  possiblePaths.find(p => fs.existsSync(p)) || possiblePaths[0];
+const monorepoRoot = findMonorepoRoot(__dirname);
+const themeMediaCSSPath = path.resolve(
+  monorepoRoot,
+  'node_modules/reshaped/dist/themes/reshaped/media.css',
+);
 
 const postcssConfig = {
   plugins: {

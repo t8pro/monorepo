@@ -1,11 +1,197 @@
 .curriculum {
+  background-color: #fff;
   padding: 80px 0;
-  background-color: #ffffff;
 }
 
-.accordionCard {
-  max-width: 800px;
-  margin: 0 auto;
+.content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 80px;
+  align-items: center;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.title {
+  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 700;
+  color: #914326;
+  margin: 0;
+}
+
+.description {
+  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  color: rgba(31, 41, 55, 0.8);
+  margin: 0;
+}
+
+.modules {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.module {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px;
+  background-color: #f9f2e7;
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateX(4px);
+  }
+}
+
+.moduleNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  background-color: #c75d3b;
+  color: white;
+  font-family: var(--font-lexend), var(--font-montserrat), sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 50%;
+}
+
+.moduleContent {
+  flex: 1;
+}
+
+.moduleTitle {
+  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: #181311;
+  margin: 0 0 4px;
+}
+
+.moduleDescription {
+  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(31, 41, 55, 0.7);
+  margin: 0;
+}
+
+.cta {
+  margin-top: 8px;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  height: 56px;
+  background-color: #c75d3b;
+  color: white;
+  font-family: var(--font-lexend), var(--font-montserrat), sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #b34f2f;
+  }
+}
+
+.imageContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  height: 500px;
+  background: linear-gradient(135deg, #f9f2e7 0%, #e8dcc4 100%);
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  
+  .material-symbols-rounded {
+    font-size: 120px;
+    color: #914326;
+  }
+  
+  p {
+    font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #914326;
+    margin: 0;
+  }
+}
+
+// Responsive
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .imageContent {
+    order: -1;
+  }
+  
+  .bookPlaceholder {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .curriculum {
+    padding: 60px 0;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .bookPlaceholder {
+    height: 300px;
+    
+    .material-symbols-rounded {
+      font-size: 80px;
+    }
+    
+    p {
+      font-size: 18px;
+    }
+  }
+
+  .ctaButton {
+    width: 100%;
+    font-size: 16px;
+  }
 }
 
 

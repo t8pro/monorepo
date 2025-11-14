@@ -1,106 +1,75 @@
 'use client';
 
-import { Container, View, Text, Card, Button, Badge } from 'reshaped';
 import Link from 'next/link';
+import { FaCheck } from 'react-icons/fa';
+import { Container } from 'reshaped';
 import styles from './styles.module.scss';
 
-const bonuses = [
+const benefits = [
+  'Acesso vitalício ao curso completo',
+  'Atualizações gratuitas do conteúdo',
+  '6 módulos práticos e diretos',
   'Templates de pitch prontos para usar',
   'Lista de marcas que contratam UGC',
   'Grupo exclusivo de alunos',
   'Suporte por 6 meses',
+  'Certificado de conclusão',
 ];
 
 export const Pricing = () => {
   return (
-    <section className={styles.pricing}>
+    <section className={styles.pricing} id="pricing">
       <Container>
-        <View gap={8} align="center">
-          <View.Item>
-            <Text variant="featured-2" weight="bold" as="h2" align="center">
-              Investimento
-            </Text>
-          </View.Item>
+        <div className={styles.darkSection}>
+          <div className={styles.content}>
+            <h2 className={styles.title}>
+              Pronto para <br />
+              Começar a <br />
+              Ganhar?
+            </h2>
 
-          <View.Item>
-            <Card padding={8} className={styles.pricingCard}>
-              <View gap={6} align="center">
-                <View.Item>
-                  <Badge color="positive">Oferta Especial</Badge>
-                </View.Item>
+            <div className={styles.priceCard}>
+              <div className={styles.badge}>Oferta de Lançamento</div>
 
-                <View.Item>
-                  <View direction="row" gap={2} align="baseline" justify="center">
-                    <View.Item>
-                      <Text variant="caption-1" color="neutral-faded" decoration="line-through">
-                        R$ 497
-                      </Text>
-                    </View.Item>
-                    <View.Item>
-                      <Text variant="featured-1" weight="bold">
-                        R$ 297
-                      </Text>
-                    </View.Item>
-                  </View>
-                  <Text variant="caption-1" color="neutral-faded" align="center">
-                    Pagamento único
-                  </Text>
-                </View.Item>
+              <div className={styles.priceWrapper}>
+                <span className={styles.currency}>R$</span>
+                <span className={styles.price}>29,64</span>
+              </div>
 
-                <View.Item>
-                  <View gap={3} className={styles.bonusesList}>
-                    <View.Item>
-                      <Text variant="body-2" weight="bold">
-                        O que está incluído:
-                      </Text>
-                    </View.Item>
-                    {bonuses.map((bonus, index) => (
-                      <View.Item key={index}>
-                        <View direction="row" gap={2} align="center">
-                          <View.Item>
-                            <span className="material-symbols-rounded" style={{ fontSize: '20px', color: '#22c55e' }}>
-                              check_circle
-                            </span>
-                          </View.Item>
-                          <View.Item grow>
-                            <Text variant="body-2">{bonus}</Text>
-                          </View.Item>
-                        </View>
-                      </View.Item>
-                    ))}
-                  </View>
-                </View.Item>
+              <p className={styles.installments}>
+                Ou 12x de R$ 2,86 no cartão
+              </p>
 
-                <View.Item>
-                  <Link href="/tell-me-more">
-                    <Button size="large" fullWidth>
-                      Quero começar agora
-                    </Button>
-                  </Link>
-                </View.Item>
+              <div className={styles.originalPrice}>
+                <span>De R$ 497,00 por apenas</span>
+              </div>
 
-                <View.Item>
-                  <View direction="row" gap={2} align="center" justify="center">
-                    <View.Item>
-                      <span className="material-symbols-rounded" style={{ fontSize: '20px', color: '#22c55e' }}>
-                        verified
-                      </span>
-                    </View.Item>
-                    <View.Item>
-                      <Text variant="caption-1" align="center">
-                        Garantia de 7 dias ou seu dinheiro de volta
-                      </Text>
-                    </View.Item>
-                  </View>
-                </View.Item>
-              </View>
-            </Card>
-          </View.Item>
-        </View>
+              <div className={styles.benefits}>
+                <h3 className={styles.benefitsTitle}>O que você vai receber:</h3>
+                <ul className={styles.benefitsList}>
+                  {benefits.map((benefit, index) => (
+                    <li key={index}>
+                      <FaCheck />
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <Link href="/lead" className={styles.ctaButton}>
+                Garantir Minha Vaga Agora
+              </Link>
+
+              <div className={styles.guarantee}>
+                <FaCheck />
+                <span>Garantia de 7 dias ou seu dinheiro de volta</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </Container>
     </section>
   );
 };
-
 
 

@@ -1,83 +1,75 @@
 'use client';
 
-import { Container, View, Text, Card, Grid, Avatar } from 'reshaped';
+import Image from 'next/image';
+import { Container } from 'reshaped';
 import styles from './styles.module.scss';
-
-const testimonials = [
-  {
-    name: 'Maria Silva',
-    role: 'Criadora de Conteúdo',
-    content: 'Em 2 meses já consegui fechar 5 contratos com marcas. O método é realmente prático e funciona!',
-    avatar: '👩',
-  },
-  {
-    name: 'João Santos',
-    role: 'Empreendedor Digital',
-    content: 'Finalmente consegui transformar minha paixão por criar vídeos em uma fonte de renda real.',
-    avatar: '👨',
-  },
-  {
-    name: 'Ana Costa',
-    role: 'Influenciadora',
-    content: 'As técnicas de negociação me ajudaram a aumentar meus ganhos em 300%. Recomendo muito!',
-    avatar: '👩‍💼',
-  },
-];
 
 export const Testimonials = () => {
   return (
-    <section className={styles.testimonials}>
+    <section className={styles.testimonials} id="testimonials">
       <Container>
-        <View gap={8} align="center">
-          <View.Item>
-            <Text variant="featured-2" weight="bold" as="h2" align="center">
-              O que nossos alunos dizem
-            </Text>
-          </View.Item>
+        <div className={styles.content}>
+          <div className={styles.textContent}>
+            <h2 className={styles.title}>Quem é Franciele Azevedo?</h2>
 
-          <View.Item>
-            <Grid columns={{ s: 1, m: 3 }} gap={4}>
-              {testimonials.map((testimonial, index) => (
-                <Grid.Item key={index}>
-                  <Card padding={5}>
-                    <View gap={4}>
-                      <View.Item>
-                        <Text variant="body-2" style={{ fontStyle: 'italic' }}>
-                          "{testimonial.content}"
-                        </Text>
-                      </View.Item>
-                      <View.Item>
-                        <View direction="row" gap={3} align="center">
-                          <View.Item>
-                            <Avatar size="small">{testimonial.avatar}</Avatar>
-                          </View.Item>
-                          <View.Item grow>
-                            <View gap={1}>
-                              <View.Item>
-                                <Text variant="body-2" weight="bold">
-                                  {testimonial.name}
-                                </Text>
-                              </View.Item>
-                              <View.Item>
-                                <Text variant="caption-1" color="neutral-faded">
-                                  {testimonial.role}
-                                </Text>
-                              </View.Item>
-                            </View>
-                          </View.Item>
-                        </View>
-                      </View.Item>
-                    </View>
-                  </Card>
-                </Grid.Item>
-              ))}
-            </Grid>
-          </View.Item>
-        </View>
+            <div className={styles.bio}>
+              <p>
+                Sou criadora de conteúdo especializada em UGC (User Generated
+                Content) e ajudo pessoas a transformarem seus celulares em uma
+                verdadeira fonte de renda.
+              </p>
+
+              <p>
+                Com anos de experiência trabalhando com marcas nacionais e
+                internacionais, desenvolvi um método descomplicado que ensina
+                qualquer pessoa a criar vídeos profissionais e lucrativos.
+              </p>
+
+              <p>
+                Já ajudei centenas de alunos a darem seus primeiros passos no
+                mundo do UGC, e muitos deles já estão faturando todos os meses
+                criando conteúdo autêntico para marcas.
+              </p>
+
+              <p>
+                Minha missão é democratizar o acesso ao mercado de UGC e
+                mostrar que você não precisa de seguidores, equipamentos caros
+                ou experiência prévia para começar a ganhar dinheiro criando
+                conteúdo.
+              </p>
+            </div>
+
+            <div className={styles.signature}>
+              <Image
+                src="/signature.svg"
+                alt="Francieli Azevedo"
+                width={200}
+                height={50}
+              />
+            </div>
+          </div>
+
+          <div className={styles.imageContent}>
+            <div className={styles.imageWrapper}>
+              <Image
+                src="/hero-image.png"
+                alt="Franciele Azevedo"
+                width={400}
+                height={500}
+                className={styles.profileImage}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.cta}>
+          <a href="#pricing" className={styles.ctaButton}>
+            Quero começar agora
+          </a>
+        </div>
       </Container>
     </section>
   );
 };
-
 
 

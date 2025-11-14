@@ -1,59 +1,197 @@
 .hero {
-  padding: 80px 0;
-  background: linear-gradient(
-    135deg,
-    rgba(241, 232, 214, 0.8) 0%,
-    rgba(203, 212, 198, 0.3) 100%
-  );
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
+  background-color: #f1e3cb;
+  padding: 80px 0 120px;
+  position: relative;
+  overflow: hidden;
 }
 
 .content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.textContent {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   gap: 24px;
 }
 
 .title {
-  max-width: 900px;
+  font-family: var(--font-young-serif), serif;
+  font-size: 48px;
+  line-height: 60px;
+  color: #914326;
+  margin: 0;
 }
 
 .subtitle {
-  max-width: 700px;
-  opacity: 0.8;
+  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 700;
+  color: #181311;
+  margin: 0;
 }
 
-.imagePlaceholder {
-  width: 100%;
-  max-width: 600px;
-  aspect-ratio: 16 / 9;
-  background: #f3f4f6;
-  border-radius: 12px;
+.author {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: -8px;
+}
+
+.authorLabel {
+  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #181311;
+}
+
+.signature {
+  display: block;
+}
+
+.description {
+  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  color: rgba(31, 41, 55, 0.8);
+  margin: 8px 0 0;
+  max-width: 534px;
+}
+
+.buttons {
+  display: flex;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.primaryButton {
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-top: 24px;
-  color: #9ca3af;
+  padding: 0 16px;
+  height: 48px;
+  background-color: #c75d3b;
+  color: white;
+  font-family: var(--font-lexend), var(--font-montserrat), sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #b34f2f;
+  }
 }
 
-.placeholderText {
-  opacity: 0.7;
+.secondaryButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  height: 48px;
+  background-color: rgba(199, 93, 59, 0.2);
+  color: #c75d3b;
+  font-family: var(--font-lexend), var(--font-montserrat), sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: rgba(199, 93, 59, 0.3);
+  }
+}
+
+.imageContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 547px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f9f2e7 0%, #e8dcc4 100%);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.heroImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.socialMedia {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(31, 41, 55, 0.8);
+  
+  svg {
+    color: #c75d3b;
+  }
+}
+
+// Responsive
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .imageContent {
+    align-items: center;
+  }
+
+  .description {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 40px 0;
-    min-height: auto;
+    padding: 40px 0 60px;
   }
 
-  .content {
-    gap: 20px;
+  .title {
+    font-size: 36px;
+    line-height: 48px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
   }
 }
-

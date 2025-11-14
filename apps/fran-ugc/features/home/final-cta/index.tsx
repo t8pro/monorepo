@@ -1,7 +1,7 @@
 'use client';
 
-import { Container, View, Text, Button, Card } from 'reshaped';
 import Link from 'next/link';
+import { Container, View, Text, Button, Card } from 'reshaped';
 import styles from './styles.module.scss';
 
 export const FinalCTA = () => {
@@ -17,14 +17,16 @@ export const FinalCTA = () => {
             </View.Item>
 
             <View.Item>
-              <Text variant="body-1" align="center" maxWidth="600px">
-                Comece hoje mesmo a transformar seu celular em uma fonte de renda.
-                O guia completo está esperando por você.
-              </Text>
+              <div style={{ maxWidth: '600px' }}>
+                <Text variant="body-1" align="center">
+                  Comece hoje mesmo a transformar seu celular em uma fonte de renda.
+                  O guia completo está esperando por você.
+                </Text>
+              </div>
             </View.Item>
 
             <View.Item>
-              <Link href="/tell-me-more">
+              <Link href="/lead">
                 <Button size="large" fullWidth>
                   Fazer o download do guia agora
                 </Button>
@@ -51,6 +53,8 @@ export const FinalCTA = () => {
     </section>
   );
 };
+
+
 
 
 

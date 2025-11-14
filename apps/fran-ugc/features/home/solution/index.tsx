@@ -1,91 +1,68 @@
 'use client';
 
-import { Container, View, Text, Card, Grid } from 'reshaped';
+import { FaVideo, FaHandshake, FaDollarSign } from 'react-icons/fa';
+import { Container } from 'reshaped';
 import styles from './styles.module.scss';
 
-const benefits = [
+const steps = [
   {
-    icon: 'smartphone',
-    title: 'Crie com Seu Celular',
-    description: 'Aprenda técnicas profissionais usando apenas o celular que você já tem.',
+    icon: FaVideo,
+    number: '1',
+    title: 'Crie com o Celular',
+    description:
+      'Aprenda a criar vídeos profissionais usando apenas seu smartphone, sem precisar de equipamentos caros.',
   },
   {
-    icon: 'trending_up',
-    title: 'Aumente Sua Renda',
-    description: 'Descubra como ganhar dinheiro criando conteúdo autêntico para marcas.',
+    icon: FaHandshake,
+    number: '2',
+    title: 'Encontre as Marcas',
+    description:
+      'Descubra onde e como encontrar marcas que pagam bem por conteúdo UGC e como fazer pitches irresistíveis.',
   },
   {
-    icon: 'home',
-    title: 'Trabalhe de Casa',
-    description: 'Tenha flexibilidade e liberdade trabalhando no conforto da sua casa.',
-  },
-  {
-    icon: 'school',
-    title: 'Método Comprovado',
-    description: 'Siga um método testado e aprovado por criadores de conteúdo.',
-  },
-  {
-    icon: 'groups',
-    title: 'Conecte-se com Marcas',
-    description: 'Aprenda como encontrar e se conectar com marcas que pagam bem.',
-  },
-  {
-    icon: 'rocket_launch',
-    title: 'Resultados Rápidos',
-    description: 'Veja resultados práticos desde as primeiras semanas.',
+    icon: FaDollarSign,
+    number: '3',
+    title: 'Ganhe Dinheiro',
+    description:
+      'Comece a faturar criando vídeos autênticos no seu tempo e transforme isso em uma renda recorrente.',
   },
 ];
 
 export const Solution = () => {
   return (
-    <section className={styles.solution}>
+    <section className={styles.solution} id="solution">
       <Container>
-        <View gap={8} align="center">
-          <View.Item>
-            <Text variant="featured-2" weight="bold" as="h2" align="center">
-              O que você vai aprender
-            </Text>
-          </View.Item>
+        <h2 className={styles.title}>Como Funciona: o UGC em prática?</h2>
+        
+        <p className={styles.subtitle}>
+          Um método descomplicado em 3 passos para você começar a ganhar
+          dinheiro criando conteúdo para marcas.
+        </p>
 
-          <View.Item>
-            <Text variant="body-1" align="center" maxWidth="700px">
-              Um método descomplicado e prático para criar vídeos profissionais,
-              conectar-se com marcas e transformar seu celular em uma fonte de renda.
-            </Text>
-          </View.Item>
+        <div className={styles.steps}>
+          {steps.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <div key={index} className={styles.step}>
+                <div className={styles.stepNumber}>{step.number}</div>
+                <div className={styles.stepIcon}>
+                  <Icon size={40} />
+                </div>
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+                <p className={styles.stepDescription}>{step.description}</p>
+              </div>
+            );
+          })}
+        </div>
 
-          <View.Item>
-            <Grid columns={{ s: 1, m: 2, l: 3 }} gap={4}>
-              {benefits.map((benefit, index) => (
-                <Grid.Item key={index}>
-                  <Card padding={5}>
-                    <View gap={3}>
-                      <View.Item>
-                        <span className="material-symbols-rounded" style={{ fontSize: '40px', color: '#679a58' }}>
-                          {benefit.icon}
-                        </span>
-                      </View.Item>
-                      <View.Item>
-                        <Text variant="body-2" weight="bold">
-                          {benefit.title}
-                        </Text>
-                      </View.Item>
-                      <View.Item>
-                        <Text variant="caption-1">
-                          {benefit.description}
-                        </Text>
-                      </View.Item>
-                    </View>
-                  </Card>
-                </Grid.Item>
-              ))}
-            </Grid>
-          </View.Item>
-        </View>
+        <div className={styles.cta}>
+          <a href="#curriculum" className={styles.ctaButton}>
+            Ver conteúdo completo do curso
+          </a>
+        </div>
       </Container>
     </section>
   );
 };
-
 
 

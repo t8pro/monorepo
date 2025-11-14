@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
-import { Container, View, Text, Card, Accordion } from 'reshaped';
+import React, { useState, useEffect } from 'react';
+import { FaChevronDown } from 'react-icons/fa';
+import { Container } from 'reshaped';
 import styles from './styles.module.scss';
 
 const faqs = [
@@ -38,37 +39,80 @@ const faqs = [
 ];
 
 export const FAQ = () => {
-  return (
-    <section className={styles.faq}>
-      <Container>
-        <View gap={8} align="center">
-          <View.Item>
-            <Text variant="featured-2" weight="bold" as="h2" align="center">
-              Perguntas Frequentes
-            </Text>
-          </View.Item>
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-          <View.Item>
-            <Card padding={0} className={styles.faqCard}>
-              <Accordion gap={4} iconSize={6}>
-                {faqs.map((faq, index) => (
-                  <React.Fragment key={index}>
-                    <Accordion.Trigger>
-                      <Text variant="featured-3" weight="medium">
-                        {faq.question}
-                      </Text>
-                    </Accordion.Trigger>
-                    <Accordion.Content>
-                      <View padding={4}>
-                        <Text variant="body-2">{faq.answer}</Text>
-                      </View>
-                    </Accordion.Content>
-                  </React.Fragment>
-                ))}
-              </Accordion>
-            </Card>
-          </View.Item>
-        </View>
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  useEffect(() => {
+    const faqStructuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(faqStructuredData);
+    script.id = 'faq-structured-data';
+    
+    // Remove existing script if present
+    const existingScript = document.getElementById('faq-structured-data');
+    if (existingScript) {
+      existingScript.remove();
+    }
+    
+    document.head.appendChild(script);
+
+    return () => {
+      const scriptToRemove = document.getElementById('faq-structured-data');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
+    };
+  }, []);
+
+  return (
+    <section className={styles.faq} id="faq">
+      <Container>
+        <h2 className={styles.title}>Perguntas Frequentes</h2>
+
+        <div className={styles.faqList}>
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className={`${styles.faqItem} ${openIndex === index ? styles.open : ''}`}
+            >
+              <button
+                className={styles.question}
+                onClick={() => toggleFAQ(index)}
+                type="button"
+              >
+                <span>{faq.question}</span>
+                <FaChevronDown className={styles.icon} />
+              </button>
+              {openIndex === index && (
+                <div className={styles.answer}>
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.cta}>
+          <a href="#pricing" className={styles.ctaButton}>
+            Começar Agora
+          </a>
+        </div>
       </Container>
     </section>
   );

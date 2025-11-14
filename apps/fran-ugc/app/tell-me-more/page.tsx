@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import {
   Container,
   View,
@@ -29,7 +29,7 @@ export default function TellMeMore() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
@@ -53,6 +53,7 @@ export default function TellMeMore() {
         throw new Error('Erro ao enviar formulário');
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Error submitting form:', error);
       alert('Erro ao enviar formulário. Tente novamente.');
     } finally {
@@ -116,38 +117,110 @@ export default function TellMeMore() {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <View gap={4}>
                   <View.Item>
-                    <TextField
-                      placeholder="Seu nome completo"
-                      {...register('name')}
-                      error={errors.name?.message}
-                    />
+                    <View gap={1}>
+                      <View.Item>
+                        <Controller
+                          name="name"
+                          control={control}
+                          render={({ field }) => (
+                            <TextField
+                              name="name"
+                              placeholder="Seu nome completo"
+                              value={field.value || ''}
+                              onChange={({ value }) => field.onChange(value)}
+                            />
+                          )}
+                        />
+                      </View.Item>
+                      {errors.name && (
+                        <View.Item>
+                          <Text variant="caption-1" color="critical">
+                            {errors.name.message}
+                          </Text>
+                        </View.Item>
+                      )}
+                    </View>
                   </View.Item>
 
                   <View.Item>
-                    <TextField
-                      type="email"
-                      placeholder="Seu melhor email"
-                      {...register('email')}
-                      error={errors.email?.message}
-                    />
+                    <View gap={1}>
+                      <View.Item>
+                        <Controller
+                          name="email"
+                          control={control}
+                          render={({ field }) => (
+                            <TextField
+                              name="email"
+                              placeholder="Seu melhor email"
+                              value={field.value || ''}
+                              onChange={({ value }) => field.onChange(value)}
+                              inputAttributes={{ type: 'email' }}
+                            />
+                          )}
+                        />
+                      </View.Item>
+                      {errors.email && (
+                        <View.Item>
+                          <Text variant="caption-1" color="critical">
+                            {errors.email.message}
+                          </Text>
+                        </View.Item>
+                      )}
+                    </View>
                   </View.Item>
 
                   <View.Item>
-                    <TextField
-                      type="tel"
-                      placeholder="Telefone (opcional)"
-                      {...register('phone')}
-                      error={errors.phone?.message}
-                    />
+                    <View gap={1}>
+                      <View.Item>
+                        <Controller
+                          name="phone"
+                          control={control}
+                          render={({ field }) => (
+                            <TextField
+                              name="phone"
+                              placeholder="Telefone (opcional)"
+                              value={field.value || ''}
+                              onChange={({ value }) => field.onChange(value)}
+                              inputAttributes={{ type: 'tel' }}
+                            />
+                          )}
+                        />
+                      </View.Item>
+                      {errors.phone && (
+                        <View.Item>
+                          <Text variant="caption-1" color="critical">
+                            {errors.phone.message}
+                          </Text>
+                        </View.Item>
+                      )}
+                    </View>
                   </View.Item>
 
                   <View.Item>
-                    <TextArea
-                      placeholder="Conte-nos sobre seus objetivos com UGC (opcional)"
-                      rows={4}
-                      {...register('goals')}
-                      error={errors.goals?.message}
-                    />
+                    <View gap={1}>
+                      <View.Item>
+                        <Controller
+                          name="goals"
+                          control={control}
+                          render={({ field }) => (
+                            <TextArea
+                              name="goals"
+                              placeholder="Conte-nos sobre seus objetivos com UGC (opcional)"
+                              value={field.value || ''}
+                              onChange={({ value }) => field.onChange(value)}
+                              inputAttributes={{ rows: 4 }}
+                            />
+                          )}
+                        />
+                      </View.Item>
+                      {errors.goals && (
+                        <View.Item>
+                          <Text variant="caption-1" color="critical">
+                            {errors.goals.message}
+                          </Text>
+                        </View.Item>
+                      )}
+                    </View>
                   </View.Item>
 
                   <View.Item>

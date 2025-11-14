@@ -33,7 +33,7 @@
       "dependsOn": ["^build"],
       "outputs": [".eslintcache"]
     },
-    "typecheck": {
+    "check-types": {
       "dependsOn": ["^build"],
       "outputs": ["tsconfig.tsbuildinfo"]
     },
