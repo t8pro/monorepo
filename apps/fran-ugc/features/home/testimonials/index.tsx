@@ -52,7 +52,7 @@ export const Testimonials = () => {
           <div className={styles.imageContent}>
             <div className={styles.imageWrapper}>
               <Image
-                src="/hero-image.png"
+                src="/about-me.png"
                 alt="Franciele Azevedo"
                 width={400}
                 height={500}

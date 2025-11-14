@@ -12,9 +12,7 @@ export const Hero = () => {
       <Container>
         <div className={styles.content}>
           <div className={styles.textContent}>
-            <h1 className={styles.title}>
-              Método Descomplicado: Crie Vídeos com Seu Celular e Ganhe Dinheiro
-            </h1>
+            <h1 className={styles.title}>UGC na Prática </h1>
 
             <h2 className={styles.subtitle}>
               Trabalhe no seu próprio ritmo: <br />
@@ -59,6 +57,15 @@ export const Hero = () => {
                 priority
                 loading="eager"
               />
+              <div className={styles.signatureOverlay}>
+                <Image
+                  src="/signature-white.svg"
+                  alt="Assinatura de Francieli Azevedo"
+                  width={266}
+                  height={61}
+                  className={styles.signatureWhite}
+                />
+              </div>
             </div>
 
             <div className={styles.socialMedia}>

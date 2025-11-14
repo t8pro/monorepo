@@ -135,6 +135,20 @@
   height: auto;
 }
 
+.signatureOverlay {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.signatureWhite {
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
 .socialMedia {
   display: flex;
   align-items: center;
@@ -143,7 +157,7 @@
   font-size: 16px;
   font-weight: 500;
   color: rgba(31, 41, 55, 0.8);
-  
+
   svg {
     color: #c75d3b;
   }

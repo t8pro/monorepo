@@ -62,8 +62,7 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default:
-      'Método Descomplicado: Crie Vídeos com Seu Celular e Ganhe Dinheiro | UGC em Prática',
+    default: 'UGC na Prática',
     template: '%s | UGC em Prática',
   },
   description:

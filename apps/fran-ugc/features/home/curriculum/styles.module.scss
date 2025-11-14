@@ -119,30 +119,19 @@
   justify-content: center;
 }
 
-.bookPlaceholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
+.imageWrapper {
+  position: relative;
   width: 100%;
-  height: 500px;
-  background: linear-gradient(135deg, #f9f2e7 0%, #e8dcc4 100%);
+  max-width: 400px;
   border-radius: 24px;
+  overflow: hidden;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  
-  .material-symbols-rounded {
-    font-size: 120px;
-    color: #914326;
-  }
-  
-  p {
-    font-family: var(--font-figtree), var(--font-montserrat), sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: #914326;
-    margin: 0;
-  }
+}
+
+.ebookImage {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 // Responsive
@@ -154,10 +143,6 @@
 
   .imageContent {
     order: -1;
-  }
-  
-  .bookPlaceholder {
-    height: 400px;
   }
 }
 
@@ -174,18 +159,6 @@
   .description {
     font-size: 16px;
     line-height: 24px;
-  }
-
-  .bookPlaceholder {
-    height: 300px;
-    
-    .material-symbols-rounded {
-      font-size: 80px;
-    }
-    
-    p {
-      font-size: 18px;
-    }
   }
 
   .ctaButton {

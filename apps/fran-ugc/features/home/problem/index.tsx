@@ -1,31 +1,32 @@
 'use client';
 
+import Link from 'next/link';
 import {
   FaRegClock,
   FaRegQuestionCircle,
   FaRegLightbulb,
 } from 'react-icons/fa';
-import { Container } from 'reshaped';
+import { Button, Container, Text, View } from 'reshaped';
 import styles from './styles.module.scss';
 
 const problems = [
   {
     icon: FaRegClock,
-    title: 'Falta de Tempo?',
+    title: 'Não Sabe Editar Vídeos?',
     description:
-      'Imagine ganhar dinheiro criando vídeos rápidos de 15 a 60 segundos, sem precisar aparecer ou ter seguidores.',
+      'Ótimo! Nosso método não exige nenhuma habilidade de edição. Se você sabe usar a câmera do celular, está pronto para começar.',
   },
   {
     icon: FaRegQuestionCircle,
-    title: 'Não sabe por onde começar?',
+    title: 'Não Tem Tempo?',
     description:
-      'Te mostro o passo a passo completo para criar conteúdo que as marcas querem e começar a faturar.',
+      'Dedique apenas alguns minutos por dia. É perfeito para quem tem uma rotina corrida e quer uma renda extra sem comprometer o tempo.',
   },
   {
     icon: FaRegLightbulb,
-    title: 'Quer trabalhar de casa?',
+    title: 'Acha que Precisa de Equipamento Caro?',
     description:
-      'Descubra como transformar seu celular em uma máquina de gerar renda trabalhando no seu tempo.',
+      'Seu celular é a única ferramenta que você precisa. Sem câmeras, microfones ou computadores potentes.',
   },
 ];
 
@@ -33,9 +34,15 @@ export const Problem = () => {
   return (
     <section className={styles.problem} id="problem">
       <Container>
-        <h2 className={styles.title}>
+        <Text as="h2" variant="title-6" className={styles.title}>
           Você Quer Ganhar Dinheiro de Casa, Mas...
-        </h2>
+        </Text>
+
+        <Text as="p" className={styles.subtitle}>
+          Se você se identifica com algum desses pontos, você está no lugar
+          certo. Nosso método foi criado para superar exatamente estes
+          obstáculos.
+        </Text>
 
         <div className={styles.grid}>
           {problems.map((problem, index) => {
@@ -52,11 +59,23 @@ export const Problem = () => {
           })}
         </div>
 
-        <div className={styles.cta}>
-          <a href="#pricing" className={styles.ctaButton}>
-            Descubra como começar a ganhar!
-          </a>
-        </div>
+        <Text as="h3" variant="title-6" className={styles.title}>
+          Quer entender como é possível?
+        </Text>
+
+        <View direction="row" gap={2} align="center" justify="center">
+          <Link href="/lead">
+            <Button size="large">
+              Faça o download do Guia UGC na prática e entenda
+            </Button>
+          </Link>
+
+          <Link href="https://kiwify.com.br">
+            <Button variant="outline" size="large">
+              Quero ir logo para a prática
+            </Button>
+          </Link>
+        </View>
       </Container>
     </section>
   );

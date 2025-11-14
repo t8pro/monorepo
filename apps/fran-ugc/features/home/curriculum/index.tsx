@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { Container } from 'reshaped';
@@ -81,9 +82,14 @@ export const Curriculum = () => {
           </div>
 
           <div className={styles.imageContent}>
-            <div className={styles.bookPlaceholder}>
-              <span className="material-symbols-rounded">menu_book</span>
-              <p>Guia Prático UGC</p>
+            <div className={styles.imageWrapper}>
+              <Image
+                src="/ebook-image.png"
+                alt="Guia Prático UGC - E-book completo sobre como criar vídeos UGC e ganhar dinheiro"
+                width={400}
+                height={500}
+                className={styles.ebookImage}
+              />
             </div>
           </div>
         </div>

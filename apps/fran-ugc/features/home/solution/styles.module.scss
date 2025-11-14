@@ -31,44 +31,23 @@
 }
 
 .step {
-  position: relative;
   text-align: center;
 }
 
-.stepNumber {
-  position: absolute;
-  top: -24px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 48px;
-  height: 48px;
+.stepImage {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #c75d3b;
-  color: white;
-  font-family: var(--font-lexend), var(--font-montserrat), sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  border-radius: 50%;
-  z-index: 1;
+  margin: 0 auto 24px;
+  width: 100%;
+  max-width: 320px;
 }
 
-.stepIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 120px;
-  height: 120px;
-  margin: 24px auto 24px;
-  background-color: white;
-  border-radius: 50%;
-  color: #c75d3b;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-
-  svg {
-    flex-shrink: 0;
-  }
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .stepTitle {
@@ -136,14 +115,8 @@
     margin-bottom: 48px;
   }
 
-  .stepIcon {
-    width: 100px;
-    height: 100px;
-    
-    svg {
-      width: 32px;
-      height: 32px;
-    }
+  .stepImage {
+    max-width: 150px;
   }
 
   .ctaButton {
@@ -151,5 +124,3 @@
     font-size: 16px;
   }
 }
-
-
