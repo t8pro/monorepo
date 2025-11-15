@@ -1,9 +1,6 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
-import { useRef, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import {
   Text,
   TextField,
@@ -11,168 +8,36 @@ import {
   Container,
   View,
   FormControl,
+  Checkbox,
 } from 'reshaped';
 import { withMask } from 'use-mask-input';
-import { z } from 'zod';
+import { PRODUCT_AFFINITIES } from './constants';
+import { useLeadForm } from './hook';
 import styles from './styles.module.scss';
 
-const formSchema = z.object({
-  unemployedOrSeekingIncome: z.enum(['sim', 'nao'], {
-    required_error: 'Por favor, responda esta pergunta',
-  }),
-  likesAppearingInVideos: z.enum(['sim', 'nao'], {
-    required_error: 'Por favor, responda esta pergunta',
-  }),
-  wantsCreativeGuide: z.enum(['sim', 'nao'], {
-    required_error: 'Por favor, responda esta pergunta',
-  }),
-  productAffinity: z
-    .array(z.enum(['beleza', 'saude', 'fitness', 'alimentacao']))
-    .min(1, 'Por favor, selecione pelo menos um produto'),
-  name: z
-    .string({ required_error: 'Campo obrigatório' })
-    .min(2, 'Nome deve ter pelo menos 2 caracteres'),
-  email: z
-    .string({ required_error: 'Campo obrigatório' })
-    .email('Email inválido'),
-  phone: z.string().optional(),
-  instagram: z.string().optional(),
-});
-
-type FormData = z.infer<typeof formSchema>;
-
-const PRODUCT_AFFINITIES = [
-  { value: 'beleza', label: 'Beleza' },
-  { value: 'saude', label: 'Saúde' },
-  { value: 'fitness', label: 'Fitness' },
-  { value: 'alimentacao', label: 'Alimentação' },
-] as const;
-
 export default function LeadForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const router = useRouter();
-
-  const question1Ref = useRef<HTMLDivElement>(null);
-  const question2Ref = useRef<HTMLDivElement>(null);
-  const question3Ref = useRef<HTMLDivElement>(null);
-  const productAffinityRef = useRef<HTMLDivElement>(null);
-  const nameRef = useRef<HTMLDivElement>(null);
-  const emailRef = useRef<HTMLDivElement>(null);
-
   const {
     control,
     handleSubmit,
-    watch,
-    setValue,
-    formState: { errors },
-  } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      productAffinity: [],
+    productAffinity,
+    toggleProductAffinity,
+    handleScrollToNext,
+    isSubmitting,
+    errors,
+    refs: {
+      question1Ref,
+      question2Ref,
+      question3Ref,
+      productAffinityRef,
+      nameRef,
+      emailRef,
     },
-  });
-
-  const productAffinity = watch('productAffinity') || [];
-
-  const scrollToNext = (currentQuestion: number) => {
-    setTimeout(() => {
-      if (currentQuestion === 1 && question2Ref.current) {
-        question2Ref.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      } else if (currentQuestion === 2 && question3Ref.current) {
-        question3Ref.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      } else if (currentQuestion === 3 && productAffinityRef.current) {
-        productAffinityRef.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      }
-    }, 100);
-  };
-
-  const toggleProductAffinity = (
-    value: 'beleza' | 'saude' | 'fitness' | 'alimentacao',
-  ) => {
-    const current = productAffinity;
-    const newAffinity = current.includes(value)
-      ? current.filter(item => item !== value)
-      : [...current, value];
-    setValue('productAffinity', newAffinity);
-  };
-
-  const scrollToFirstError = () => {
-    setTimeout(() => {
-      if (errors.unemployedOrSeekingIncome && question1Ref.current) {
-        question1Ref.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      } else if (errors.likesAppearingInVideos && question2Ref.current) {
-        question2Ref.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      } else if (errors.wantsCreativeGuide && question3Ref.current) {
-        question3Ref.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      } else if (errors.productAffinity && productAffinityRef.current) {
-        productAffinityRef.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      } else if (errors.name && nameRef.current) {
-        nameRef.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      } else if (errors.email && emailRef.current) {
-        emailRef.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      }
-    }, 100);
-  };
-
-  const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true);
-    try {
-      const response = await fetch('/api/submit-lead', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        router.push('/lead/thank-you');
-      } else {
-        throw new Error('Erro ao enviar formulário');
-      }
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Error submitting form:', error);
-      alert('Erro ao enviar formulário. Tente novamente.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  } = useLeadForm();
 
   return (
     <section className={styles.leadPage}>
       <Container>
-        <form
-          onSubmit={handleSubmit(onSubmit, scrollToFirstError)}
-          className={styles.form}
-        >
+        <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.header}>
             <h1 className={styles.title}>Me conte um pouco sobre você</h1>
             <p className={styles.subtitle}>
@@ -198,7 +63,7 @@ export default function LeadForm() {
                         className={`${styles.yesNoButton} ${field.value === 'sim' ? styles.active : ''}`}
                         onClick={() => {
                           field.onChange('sim');
-                          scrollToNext(1);
+                          handleScrollToNext(1);
                         }}
                       >
                         Sim
@@ -208,7 +73,7 @@ export default function LeadForm() {
                         className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
                         onClick={() => {
                           field.onChange('nao');
-                          scrollToNext(1);
+                          handleScrollToNext(1);
                         }}
                       >
                         Não
@@ -243,7 +108,7 @@ export default function LeadForm() {
                         className={`${styles.yesNoButton} ${field.value === 'sim' ? styles.active : ''}`}
                         onClick={() => {
                           field.onChange('sim');
-                          scrollToNext(2);
+                          handleScrollToNext(2);
                         }}
                       >
                         Sim
@@ -253,7 +118,7 @@ export default function LeadForm() {
                         className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
                         onClick={() => {
                           field.onChange('nao');
-                          scrollToNext(2);
+                          handleScrollToNext(2);
                         }}
                       >
                         Não
@@ -295,7 +160,7 @@ export default function LeadForm() {
                         className={`${styles.yesNoButton} ${field.value === 'sim' ? styles.active : ''}`}
                         onClick={() => {
                           field.onChange('sim');
-                          scrollToNext(3);
+                          handleScrollToNext(3);
                         }}
                       >
                         Sim
@@ -305,7 +170,7 @@ export default function LeadForm() {
                         className={`${styles.yesNoButton} ${field.value === 'nao' ? styles.active : ''}`}
                         onClick={() => {
                           field.onChange('nao');
-                          scrollToNext(3);
+                          handleScrollToNext(3);
                         }}
                       >
                         Não
@@ -361,7 +226,7 @@ export default function LeadForm() {
             <View direction="row" gap={4}>
               <View.Item columns={6}>
                 <div ref={nameRef}>
-                  <FormControl>
+                  <FormControl hasError={!!errors.name}>
                     <FormControl.Label>Nome</FormControl.Label>
                     <Controller
                       name="name"
@@ -377,20 +242,16 @@ export default function LeadForm() {
                       )}
                     />
                     {errors.name && (
-                      <Text
-                        variant="caption-1"
-                        color="critical"
-                        className={styles.error}
-                      >
+                      <FormControl.Error>
                         {errors.name.message}
-                      </Text>
+                      </FormControl.Error>
                     )}
                   </FormControl>
                 </div>
               </View.Item>
 
               <View.Item columns={6}>
-                <FormControl>
+                <FormControl hasError={!!errors.phone}>
                   <FormControl.Label>Telefone</FormControl.Label>
                   <Controller
                     name="phone"
@@ -411,20 +272,16 @@ export default function LeadForm() {
                     )}
                   />
                   {errors.phone && (
-                    <Text
-                      variant="caption-1"
-                      color="critical"
-                      className={styles.error}
-                    >
+                    <FormControl.Error>
                       {errors.phone.message}
-                    </Text>
+                    </FormControl.Error>
                   )}
                 </FormControl>
               </View.Item>
 
               <View.Item columns={6}>
                 <div ref={emailRef}>
-                  <FormControl>
+                  <FormControl hasError={!!errors.email}>
                     <FormControl.Label>E-mail</FormControl.Label>
                     <Controller
                       name="email"
@@ -442,20 +299,16 @@ export default function LeadForm() {
                       )}
                     />
                     {errors.email && (
-                      <Text
-                        variant="caption-1"
-                        color="critical"
-                        className={styles.error}
-                      >
+                      <FormControl.Error>
                         {errors.email.message}
-                      </Text>
+                      </FormControl.Error>
                     )}
                   </FormControl>
                 </div>
               </View.Item>
 
               <View.Item columns={6}>
-                <FormControl>
+                <FormControl hasError={!!errors.instagram}>
                   <FormControl.Label>@ do instagram</FormControl.Label>
                   <Controller
                     name="instagram"
@@ -471,17 +324,59 @@ export default function LeadForm() {
                     )}
                   />
                   {errors.instagram && (
-                    <Text
-                      variant="caption-1"
-                      color="critical"
-                      className={styles.error}
-                    >
+                    <FormControl.Error>
                       {errors.instagram.message}
-                    </Text>
+                    </FormControl.Error>
                   )}
                 </FormControl>
               </View.Item>
             </View>
+          </div>
+
+          <div className={styles.consentSection}>
+            <FormControl hasError={!!errors.dataConsent} group>
+              <Controller
+                name="dataConsent"
+                control={control}
+                render={({ field }) => (
+                  <Checkbox
+                    name="dataConsent"
+                    checked={field.value || false}
+                    onChange={({ event }) => {
+                      if (event) {
+                        field.onChange(event.target.checked);
+                      }
+                    }}
+                  >
+                    <span>
+                      Aceito compartilhar meus dados conforme a{' '}
+                      <a
+                        href="/politica-de-privacidade"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.consentLink}
+                      >
+                        Política de Privacidade
+                      </a>{' '}
+                      e a{' '}
+                      <a
+                        href="/termos-de-uso"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.consentLink}
+                      >
+                        LGPD
+                      </a>
+                    </span>
+                  </Checkbox>
+                )}
+              />
+              {errors.dataConsent && (
+                <FormControl.Error>
+                  {errors.dataConsent.message}
+                </FormControl.Error>
+              )}
+            </FormControl>
           </div>
 
           <div className={styles.submitSection}>
