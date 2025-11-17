@@ -47,7 +47,7 @@ export const Curriculum = () => {
         <div className={styles.content}>
           <div className={styles.textContent}>
             <h2 className={styles.title}>
-              Ainda não existe conteúdo para começar?
+              Ainda não se sente confiante para começar?
             </h2>
 
             <p className={styles.description}>
