@@ -14,12 +14,12 @@
     "@stripe/react-stripe-js": "^5.3.0",
     "@stripe/stripe-js": "^8.4.0",
     "@t8pro/design-system": "*",
-    "@tanstack/react-query": "^5.90.8",
+    "@tanstack/react-query": "^5.90.10",
     "browser-image-compression": "^2.0.2",
     "googleapis": "^166.0.0",
     "handlebars": "^4.7.8",
-    "material-symbols": "^0.39.2",
-    "next": "^16.0.2",
+    "material-symbols": "^0.39.3",
+    "next": "^16.0.3",
     "nodemailer": "^7.0.10",
     "ogl": "^1.0.11",
     "react": "19.2.0",
@@ -27,7 +27,7 @@
     "react-icons": "^5.5.0",
     "react-toastify": "^11.0.5",
     "sass": "^1.94.0",
-    "stripe": "^19.3.0"
+    "stripe": "^19.3.1"
   },
   "devDependencies": {
     "@t8pro/eslint-config": "*",
@@ -35,7 +35,7 @@
     "@types/handlebars": "^4.1.0",
     "@types/node": "^24.10.1",
     "@types/nodemailer": "^7.0.3",
-    "@types/react": "19.2.4",
+    "@types/react": "19.2.5",
     "@types/react-dom": "19.2.3",
     "eslint": "^9.39.1",
     "typescript": "5.9.3"
