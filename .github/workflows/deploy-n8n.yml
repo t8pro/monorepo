@@ -1,0 +1,79 @@
+name: Deploy N8N to Google Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/n8n/**'
+  workflow_dispatch:
+
+env:
+  PROJECT_ID: n8npro-480719
+  REGION: us-central1
+  SERVICE_NAME: n8n-service
+
+jobs:
+  deploy:
+    name: Deploy to Cloud Run
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./apps/n8n
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy ${{ env.SERVICE_NAME }} \
+            --source . \
+            --platform managed \
+            --region ${{ env.REGION }} \
+            --project ${{ env.PROJECT_ID }} \
+            --allow-unauthenticated \
+            --memory 1Gi \
+            --cpu 1 \
+            --timeout 3600 \
+            --min-instances 0 \
+            --max-instances 10 \
+            --set-env-vars "N8N_HOST=0.0.0.0" \
+            --set-env-vars "N8N_PORT=8080" \
+            --set-env-vars "N8N_PROTOCOL=https" \
+            --set-env-vars "NODE_ENV=production" \
+            --set-secrets "N8N_ENCRYPTION_KEY=N8N_ENCRYPTION_KEY:latest" \
+            --set-secrets "N8N_USER_MANAGEMENT_JWT_SECRET=N8N_JWT_SECRET:latest"
+
+      - name: Get Service URL
+        id: get-url
+        run: |
+          SERVICE_URL=$(gcloud run services describe ${{ env.SERVICE_NAME }} \
+            --platform managed \
+            --region ${{ env.REGION }} \
+            --project ${{ env.PROJECT_ID }} \
+            --format 'value(status.url)')
+          echo "url=$SERVICE_URL" >> $GITHUB_OUTPUT
+          echo "🔗 N8N deployed to: $SERVICE_URL"
+
+      - name: Summary
+        run: |
+          echo "## ✅ Deploy Completed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 **Service URL:** ${{ steps.get-url.outputs.url }}" >> $GITHUB_STEP_SUMMARY
+          echo "📦 **Project:** ${{ env.PROJECT_ID }}" >> $GITHUB_STEP_SUMMARY
+          echo "🌍 **Region:** ${{ env.REGION }}" >> $GITHUB_STEP_SUMMARY

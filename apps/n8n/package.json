@@ -3,10 +3,17 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
-    "dev": "n8n"
+    "dev": "n8n",
+    "start": "node start.js",
+    "build": "echo 'No build needed for N8N'"
   },
   "dependencies": {
     "n8n": "^1.122.5"
-  }
+  },
+  "devDependencies": {}
 }
