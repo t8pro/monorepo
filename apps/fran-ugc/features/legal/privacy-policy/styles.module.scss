@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: var(--rs-space-8) var(--rs-space-4);
+  min-height: 100vh;
+  background-color: var(--rs-color-background-neutral-faded);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--rs-space-6) var(--rs-space-4);
+  }
+}
