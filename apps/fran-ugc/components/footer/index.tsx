@@ -56,14 +56,14 @@ export const Footer = () => {
             <div className={styles.linkGroup}>
               <h3 className={styles.linkTitle}>Redes Sociais</h3>
               <a
-                href="https://instagram.com/franazevedougc"
+                href="https://instagram.com/byfranazevedo"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className={styles.socialLink}
                 aria-label="Instagram de Francieli Azevedo - Abre em nova aba"
               >
                 <FaInstagram size={20} />
-                <span>@franazevedougc</span>
+                <span>@byfranazevedo</span>
               </a>
             </div>
           </div>

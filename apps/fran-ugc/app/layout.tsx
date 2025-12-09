@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     'Reels',
   ],
   authors: [
-    { name: 'Francieli Azevedo', url: 'https://instagram.com/franazevedougc' },
+    { name: 'Francieli Azevedo', url: 'https://instagram.com/byfranazevedo' },
   ],
   creator: 'Francieli Azevedo',
   publisher: 'UGC na Prática',
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     title: 'UGC na Prática - Curso Completo de User Generated Content',
     description:
       'Aprenda um método descomplicado de criar vídeos com seu celular, enviar para marcas e ganhar dinheiro trabalhando de casa.',
-    creator: '@franazevedougc',
+    creator: '@byfranazevedo',
     images: [`${siteUrl}/og-image.jpg`],
   },
   robots: {
@@ -130,11 +130,11 @@ export default function RootLayout({
     name: 'UGC na Prática',
     url: siteUrl,
     logo: `${siteUrl}/logo.svg`,
-    sameAs: ['https://instagram.com/franazevedougc'],
+    sameAs: ['https://instagram.com/byfranazevedo'],
     founder: {
       '@type': 'Person',
       name: 'Francieli Azevedo',
-      url: 'https://instagram.com/franazevedougc',
+      url: 'https://instagram.com/byfranazevedo',
     },
     contactPoint: {
       '@type': 'ContactPoint',
