@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
 const navLinks = [
   { label: 'Você quer ganhar?', href: '#problem' },
   { label: 'Como funciona?', href: '#solution' },
-  { label: 'Conteúdo do curso', href: '#curriculum' },
+  { label: 'Conteúdo do curso', href: '#modules' },
   { label: 'Investimento', href: '#pricing' },
   { label: 'Sobre mim', href: '#testimonials' },
 ];

@@ -35,7 +35,7 @@ export const Footer = () => {
               <Link href="/#solution" className={styles.link}>
                 Como funciona?
               </Link>
-              <Link href="/#curriculum" className={styles.link}>
+              <Link href="/#modules" className={styles.link}>
                 Conteúdo do curso
               </Link>
               <Link href="/#pricing" className={styles.link}>
