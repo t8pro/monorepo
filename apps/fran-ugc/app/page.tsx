@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Hero } from '@/features/home/hero';
+import { Modules } from '@/features/home/modules';
 
 // Lazy load below-the-fold components
 const Problem = dynamic(() =>
@@ -9,9 +10,9 @@ const Problem = dynamic(() =>
 const Solution = dynamic(() =>
   import('@/features/home/solution').then(mod => ({ default: mod.Solution })),
 );
-const Curriculum = dynamic(() =>
+const EbookGuide = dynamic(() =>
   import('@/features/home/curriculum').then(mod => ({
-    default: mod.Curriculum,
+    default: mod.EbookGuide,
   })),
 );
 const FAQ = dynamic(() =>
@@ -47,7 +48,8 @@ export default function Home() {
       <Hero />
       <Problem />
       <Solution />
-      <Curriculum />
+      <EbookGuide />
+      <Modules />
       <FAQ />
       <Pricing />
       <Testimonials />

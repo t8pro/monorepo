@@ -6,14 +6,11 @@ import { Container } from 'reshaped';
 import styles from './styles.module.scss';
 
 const benefits = [
-  'Acesso vitalício ao curso completo',
   'Atualizações gratuitas do conteúdo',
-  '6 módulos práticos e diretos',
-  'Templates de pitch prontos para usar',
+  'Módulos práticos e diretos',
   'Lista de marcas que contratam UGC',
   'Grupo exclusivo de alunos',
-  'Suporte por 6 meses',
-  'Certificado de conclusão',
+  'Suporte',
 ];
 
 export const Pricing = () => {
@@ -29,13 +26,13 @@ export const Pricing = () => {
 
               <div className={styles.priceWrapper}>
                 <span className={styles.currency}>R$</span>
-                <span className={styles.price}>29,64</span>
+                <span className={styles.price}>97,00</span>
               </div>
 
-              <p className={styles.installments}>Ou 12x de R$ 2,86 no cartão</p>
+              <p className={styles.installments}>em até 12x no cartão</p>
 
               <div className={styles.originalPrice}>
-                <span>De R$ 497,00 por apenas</span>
+                <span>De R$ 197,00 por apenas</span>
               </div>
 
               <div className={styles.benefits}>
@@ -52,7 +49,10 @@ export const Pricing = () => {
                 </ul>
               </div>
 
-              <Link href="/lead" className={styles.ctaButton}>
+              <Link
+                href="https://pay.kiwify.com.br/offEio7"
+                className={styles.ctaButton}
+              >
                 Garantir Minha Vaga Agora
               </Link>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { Container } from 'reshaped';
 import styles from './styles.module.scss';
 
@@ -14,28 +15,35 @@ export const Testimonials = () => {
 
             <div className={styles.bio}>
               <p>
-                Sou criadora de conteúdo especializada em UGC (User Generated
-                Content) e ajudo pessoas a transformarem seus celulares em uma
-                verdadeira fonte de renda.
+                Oi! Eu sou a Francieli Azevedo — mãe, criadora de conteúdo UGC e
+                uma mulher apaixonada por autenticidade, criatividade e pela
+                vida simples com a minha família.
               </p>
 
               <p>
-                Com anos de experiência trabalhando com marcas nacionais e
-                internacionais, desenvolvi um método descomplicado que ensina
-                qualquer pessoa a criar vídeos profissionais e lucrativos.
+                Nascida e criada em Campo Grande / MS, sempre tive um olhar
+                curioso para as pequenas coisas que contam grandes histórias. E
+                hoje uso essa sensibilidade para ajudar marcas a se conectarem
+                com pessoas reais, de forma verdadeira e emocional.
               </p>
 
               <p>
-                Já ajudei centenas de alunos a darem seus primeiros passos no
-                mundo do UGC, e muitos deles já estão faturando todos os meses
-                criando conteúdo autêntico para marcas.
+                Minha jornada começou muito antes do UGC. Sempre gostei de me
+                cuidar,e essa relação comigo mesma se refletiu naturalmente no
+                conteúdo que produzo. Como mãe, aprendi a valorizar o tempo, a
+                praticidade e o que realmente importa. Por isso, trabalho com
+                marcas que desejam mais do que publicidade: querem conexão. Me
+                especializei em criar vídeos e fotos que parecem conversas, não
+                anúncios. Conteúdos que geram confiança porque nascem da vida
+                real.
               </p>
 
               <p>
-                Minha missão é democratizar o acesso ao mercado de UGC e mostrar
-                que você não precisa de seguidores, equipamentos caros ou
-                experiência prévia para começar a ganhar dinheiro criando
-                conteúdo.
+                Hoje, ajudo empresas a humanizarem sua comunicação através de
+                UGC — com naturalidade, presença e criatividade.E faço isso com
+                muito carinho, porque acredito profundamente que histórias reais
+                têm o poder de transformar negócios e aproximar pessoas. Vamos
+                contar histórias que importam?
               </p>
             </div>
 
@@ -63,9 +71,12 @@ export const Testimonials = () => {
         </div>
 
         <div className={styles.cta}>
-          <a href="#pricing" className={styles.ctaButton}>
+          <Link
+            href="https://pay.kiwify.com.br/offEio7"
+            className={styles.ctaButton}
+          >
             Quero começar agora
-          </a>
+          </Link>
         </div>
       </Container>
     </section>

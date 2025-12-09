@@ -8,21 +8,21 @@ import styles from './styles.module.scss';
 const steps = [
   {
     image: '/how-works-1.png',
-    title: 'Crie com o Celular',
+    title: '1. Grave com seu Celular',
     description:
-      'Aprenda a criar vídeos profissionais usando apenas seu smartphone, sem precisar de equipamentos caros.',
+      'Siga nossos roteiros e grave vídeos curtos e simples sobre produtos e serviços.',
   },
   {
     image: '/how-works-2.png',
-    title: 'Encontre as Marcas',
+    title: '2. Envie para as Marcas',
     description:
-      'Descubra onde e como encontrar marcas que pagam bem por conteúdo UGC e como fazer pitches irresistíveis.',
+      'Nós te mostramos como encontrar as marcas que pagam e como enviar seu material.',
   },
   {
     image: '/how-works-3.png',
-    title: 'Ganhe Dinheiro',
+    title: '3. Receba o Pagamento',
     description:
-      'Comece a faturar criando vídeos autênticos no seu tempo e transforme isso em uma renda recorrente.',
+      'Receba o dinheiro diretamente na sua conta, sem burocracia e sem intermediários.',
   },
 ];
 
@@ -35,8 +35,9 @@ export const Solution = () => {
         </Text>
 
         <p className={styles.subtitle}>
-          Um método descomplicado em 3 passos para você começar a ganhar
-          dinheiro criando conteúdo para marcas.
+          Simplificamos o processo para que qualquer pessoa possa começar a
+          faturar. São 3 passos simples que separam você de uma nova fonte de
+          renda.
         </p>
 
         <div className={styles.steps}>
@@ -58,9 +59,9 @@ export const Solution = () => {
         </div>
 
         <div className={styles.cta}>
-          <Link href="#curriculum">
+          <Link href="https://pay.kiwify.com.br/offEio7">
             <Button size="large" color="primary" variant="solid">
-              <strong>Ver conteúdo completo do curso</strong>
+              <strong>Quero Garantir Minha Vaga</strong>
             </Button>
           </Link>
         </div>
