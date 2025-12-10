@@ -31,7 +31,7 @@ export const Solution = () => {
     <section className={styles.solution} id="solution">
       <Container>
         <Text as="h2" variant="title-6" className={styles.title}>
-          Como Funciona: o UGC em prática?
+          Como Funciona: o UGC na prática?
         </Text>
 
         <p className={styles.subtitle}>
