@@ -11,11 +11,11 @@ export const Testimonials = () => {
       <Container>
         <div className={styles.content}>
           <div className={styles.textContent}>
-            <h2 className={styles.title}>Quem é Franciele Azevedo?</h2>
+            <h2 className={styles.title}>Quem é Francieli Azevedo?</h2>
 
             <div className={styles.bio}>
               <p>
-                Oi! Eu sou a Francieli Azevedo — mãe, criadora de conteúdo UGC e
+                Oi! Eu sou a Francieli Azevedo, mãe, criadora de conteúdo UGC e
                 uma mulher apaixonada por autenticidade, criatividade e pela
                 vida simples com a minha família.
               </p>
@@ -40,7 +40,7 @@ export const Testimonials = () => {
 
               <p>
                 Hoje, ajudo empresas a humanizarem sua comunicação através de
-                UGC — com naturalidade, presença e criatividade.E faço isso com
+                UGC com naturalidade, presença e criatividade.E faço isso com
                 muito carinho, porque acredito profundamente que histórias reais
                 têm o poder de transformar negócios e aproximar pessoas. Vamos
                 contar histórias que importam?
@@ -61,7 +61,7 @@ export const Testimonials = () => {
             <div className={styles.imageWrapper}>
               <Image
                 src="/about-me.png"
-                alt="Franciele Azevedo"
+                alt="Francieli Azevedo"
                 width={400}
                 height={500}
                 className={styles.profileImage}

@@ -71,10 +71,14 @@ export const Hero = () => {
               />
             </div>
 
-            <div className={styles.socialMedia}>
+            <Link
+              href="https://www.instagram.com/byfranazevedo"
+              target="_blank"
+              className={styles.socialMedia}
+            >
               <FaInstagram size={24} />
-              <span>@franazevedougc</span>
-            </div>
+              <span>@byfranazevedo</span>
+            </Link>
           </div>
         </div>
       </Container>

@@ -48,11 +48,11 @@ export default function Home() {
       <Hero />
       <Problem />
       <Solution />
+      <Testimonials />
+      <Pricing />
       <EbookGuide />
       <Modules />
       <FAQ />
-      <Pricing />
-      <Testimonials />
     </>
   );
 }
