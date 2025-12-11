@@ -10,7 +10,7 @@ const steps = [
     image: '/how-works-1.png',
     title: '1. Grave com seu Celular',
     description:
-      'Siga nossos roteiros e grave vídeos curtos e simples sobre produtos e serviços.',
+      'Siga o nosso treinamento e grave vídeos curtos e simples sobre produtos ou serviços.',
   },
   {
     image: '/how-works-2.png',
@@ -59,7 +59,7 @@ export const Solution = () => {
         </div>
 
         <div className={styles.cta}>
-          <Link href="https://pay.kiwify.com.br/offEio7">
+          <Link href="#pricing">
             <Button size="large" color="primary" variant="solid">
               <strong>Quero Garantir Minha Vaga</strong>
             </Button>

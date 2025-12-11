@@ -71,10 +71,7 @@ export const Testimonials = () => {
         </div>
 
         <div className={styles.cta}>
-          <Link
-            href="https://pay.kiwify.com.br/offEio7"
-            className={styles.ctaButton}
-          >
+          <Link href="#pricing" className={styles.ctaButton}>
             Quero começar agora
           </Link>
         </div>

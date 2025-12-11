@@ -69,7 +69,7 @@ export const Problem = () => {
             </Button>
           </Link>
 
-          <Link href="https://kiwify.com.br">
+          <Link href="#pricing">
             <Button variant="outline" size="large">
               Quero ir logo para a prática
             </Button>
