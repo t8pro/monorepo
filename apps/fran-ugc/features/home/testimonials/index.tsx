@@ -21,10 +21,11 @@ export const Testimonials = () => {
               </p>
 
               <p>
-                Nascida e criada em Campo Grande / MS, sempre tive um olhar
-                curioso para as pequenas coisas que contam grandes histórias. E
-                hoje uso essa sensibilidade para ajudar marcas a se conectarem
-                com pessoas reais, de forma verdadeira e emocional.
+                Nascida em Pimenta Bueno, Rondônia e criada em Campo Grande /
+                MS, sempre tive um olhar curioso para as pequenas coisas que
+                contam grandes histórias. E hoje uso essa sensibilidade para
+                ajudar marcas a se conectarem com pessoas reais, de forma
+                verdadeira e emocional.
               </p>
 
               <p>

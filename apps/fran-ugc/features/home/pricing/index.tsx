@@ -32,7 +32,7 @@ export const Pricing = () => {
               <p className={styles.installments}>em até 12x no cartão</p>
 
               <div className={styles.originalPrice}>
-                <span>De R$ 197,00 por apenas</span>
+                <span>De R$ 397,00 por apenas</span>
               </div>
 
               <div className={styles.benefits}>
