@@ -40,6 +40,14 @@ export const Testimonials = () => {
               </p>
 
               <p>
+                Com a experiência de ter guiado mais de 30 mentoradas, trago
+                conhecimento validado para cada projeto. Essa vivência como
+                mentora me permite ter uma visão estratégica aprofundada,
+                garantindo conteúdos que não apenas engajam, mas conectam de
+                verdade.
+              </p>
+
+              <p>
                 Hoje, ajudo empresas a humanizarem sua comunicação através de
                 UGC com naturalidade, presença e criatividade.E faço isso com
                 muito carinho, porque acredito profundamente que histórias reais
