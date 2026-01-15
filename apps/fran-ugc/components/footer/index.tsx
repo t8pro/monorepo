@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaInstagram } from 'react-icons/fa';
+import { FaInstagram, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 import { Container } from 'reshaped';
 import styles from './styles.module.scss';
 
@@ -64,6 +64,28 @@ export const Footer = () => {
               >
                 <FaInstagram size={20} />
                 <span>@byfranazevedo</span>
+              </a>
+            </div>
+
+            <div className={styles.linkGroup}>
+              <h3 className={styles.linkTitle}>Contato</h3>
+              <a
+                href="https://wa.me/+5567998777776"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="WhatsApp - Abre em nova aba"
+              >
+                <FaWhatsapp size={20} />
+                <span>+55 67 99877-7776</span>
+              </a>
+              <a
+                href="mailto:contato@francieliazevedo.com"
+                className={styles.socialLink}
+                aria-label="Enviar email"
+              >
+                <FaEnvelope size={20} />
+                <span>contato@francieliazevedo.com</span>
               </a>
             </div>
           </div>

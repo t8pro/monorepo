@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { Text, View } from 'reshaped';
 import styles from './styles.module.scss';
 
@@ -365,12 +366,18 @@ export const PrivacyPolicy = () => {
                   <View gap={1}>
                     <View.Item>
                       <Text variant="body-2">
-                        <strong>E-mail:</strong> contato@ugcnapratica.com.br
+                        <strong>E-mail:</strong> contato@francieliazevedo.com
                       </Text>
                     </View.Item>
                     <View.Item>
                       <Text variant="body-2">
-                        <strong>WhatsApp:</strong> (XX) XXXXX-XXXX
+                        <strong>WhatsApp:</strong>{' '}
+                        <Link
+                          href="https://wa.me/+5567998777776"
+                          target="_blank"
+                        >
+                          +55 67 99877-7776
+                        </Link>
                       </Text>
                     </View.Item>
                   </View>

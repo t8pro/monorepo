@@ -120,18 +120,6 @@ export const PurchaseSuccess = () => {
                       as atualizações futuras do curso sem custo adicional
                     </Text>
                   </View.Item>
-                  <View.Item>
-                    <Text variant="body-3">
-                      • <strong>Suporte:</strong> Estamos à disposição no grupo
-                      do WhatsApp para tirar suas dúvidas
-                    </Text>
-                  </View.Item>
-                  <View.Item>
-                    <Text variant="body-3">
-                      • <strong>Certificado:</strong> Ao concluir o curso, você
-                      receberá um certificado de conclusão
-                    </Text>
-                  </View.Item>
                 </View>
               </View.Item>
             </View>
