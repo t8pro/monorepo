@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 
 export const WhatsAppButton = () => (
   <Link
-    href="https://wa.me/+17723071422"
+    href="https://wa.me/+5567998777776"
     target="_blank"
     className={styles.button}
     aria-label="Chat on WhatsApp"
