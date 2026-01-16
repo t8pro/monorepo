@@ -6,6 +6,7 @@ import '@/styles/themes/fran/theme.css';
 import '@/styles/globals.scss';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
+import { WhatsAppButton } from '@/components/whats-app';
 
 const figtree = Figtree({
   variable: '--font-figtree',
@@ -225,6 +226,7 @@ export default function RootLayout({
         <main>
           <Providers>
             <Header />
+            <WhatsAppButton />
             {children}
             <Footer />
           </Providers>
