@@ -5,17 +5,9 @@
 1. `PhotoProvider.finalizeOrder` calculates the package, stores metadata locally, and hits `/api/payment-intent`.
 2. `/api/payment-intent` uses the server-side `stripe` SDK (API version `2025-08-27.basil`) to create a PaymentIntent with metadata about package and photo count.
 3. Client receives `clientSecret`, opens the Stripe checkout modal (`features/upload-images/stripe-checkout`), and confirms the payment via `stripe.confirmPayment`.
-4. On success, the app calls `processPhotosAfterPayment`, which uploads photos, pushes them to Drive, and triggers email notifications.
+4. On success, the app calls `processPhotosAfterPayment`, which processes photos and triggers email notifications.
 
 **Environment**: `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `STRIPE_SECRET_KEY`.
-
-## Google Drive
-
-1. Service-account credentials are hydrated in `lib/google-drive.ts` (private key is line-break repaired).
-2. `/api/google-drive/upload` (paid) and `/api/upload-free/submit` (free) create a timestamped folder, upload images, and set link-sharing to "anyone with the link".
-3. Folder URLs are returned to the client and optionally embedded into email notifications.
-
-**Environment**: `GCP_PROJECT_ID`, `GCP_PRIVATE_KEY_ID`, `GCP_PRIVATE_KEY`, `GCP_CLIENT_EMAIL`, `GCP_CLIENT_ID`, `GCP_CLIENT_X509_CERT_URL`, optionally `GOOGLE_DRIVE_PARENT_FOLDER_ID`.
 
 ## Email Delivery
 
@@ -37,4 +29,3 @@
 ## Storage & Persistence
 
 - **Browser**: `photoStorage` saves selected photos in IndexedDB and metadata in Session Storage (`PENDING_UPLOAD_STORAGE_KEY`) to survive checkout navigation.
-- **Server**: Google Drive holds uploaded assets; additional persistence (database/CRM) can be layered into the API routes without touching client code.

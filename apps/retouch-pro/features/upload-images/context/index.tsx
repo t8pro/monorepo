@@ -258,7 +258,6 @@ export const PhotoProvider = ({ children }: PhotoProviderProps) => {
         | 'idle'
         | 'compressing'
         | 'uploading'
-        | 'drive_upload'
         | 'sending_email'
         | 'completed',
       message?: string,
@@ -676,7 +675,7 @@ export const PhotoProvider = ({ children }: PhotoProviderProps) => {
           'processPhotosAfterPayment: All photos uploaded successfully',
         );
 
-        // Compute package info (used for Drive metadata + email)
+        // Compute package info (used for email)
         const packageInfo = {
           name: packageType,
           discountedPrice:
@@ -690,58 +689,10 @@ export const PhotoProvider = ({ children }: PhotoProviderProps) => {
                   : 6),
         } as const;
 
-        // Upload to Google Drive, then send order email with link
-        setProcessingStep(
-          'drive_upload',
-          'Your Payment was successful. \nUploading images. Do not close this window...',
-        );
-        console.log(
-          'processPhotosAfterPayment: Your Payment was successful. Uploading images. Do not close this window...',
-        );
-        const driveForm = new FormData();
-        driveForm.append('name', userData.name);
-        driveForm.append('email', userData.email);
-        driveForm.append('environment', userData.environment);
-        driveForm.append('packageType', packageType);
-        driveForm.append(
-          'totalAmount',
-          String(packageInfo.discountedPrice ?? 0),
-        );
-        driveForm.append('photoCount', String(selectedCount));
-        photos.forEach((p, i) => driveForm.append(`photo_${i}`, p.file));
-
-        const driveRes = await fetch('/api/google-drive/upload', {
-          method: 'POST',
-          body: driveForm,
-        });
-
-        if (!driveRes.ok) {
-          let driveMessage = '';
-          try {
-            driveMessage = await driveRes.text();
-          } catch {
-            throw new Error(
-              driveMessage || 'Failed to upload to Google Drive (server error)',
-            );
-          }
-          console.error(
-            'processPhotosAfterPayment: Drive upload failed:',
-            driveRes.status,
-            driveRes.statusText,
-            driveMessage,
-          );
-          throw new Error(
-            driveMessage || 'Failed to upload to Google Drive (server error)',
-          );
-        }
-
-        const driveJson = await driveRes.json();
-        const folderLink: string | undefined = driveJson?.folderLink;
-
         // Send order email after successful photo processing
         setProcessingStep('sending_email', 'Sending confirmation email...');
         console.log('processPhotosAfterPayment: Sending order email...');
-        await sendOrderEmail(packageInfo, userData, photos, folderLink);
+        await sendOrderEmail(packageInfo, userData, photos);
         console.log('processPhotosAfterPayment: Order email sent successfully');
 
         // Mark as completed

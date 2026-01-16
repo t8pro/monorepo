@@ -11,15 +11,6 @@
         "EMAIL_USER",
         "EMAIL_PASS",
         "ADMIN_EMAIL",
-        "GOOGLE_DRIVE_PARENT_FOLDER_ID",
-        "GOOGLE_SHEETS_SPREADSHEET_ID",
-        "GOOGLE_SHEETS_SHEET_NAME",
-        "GCP_PRIVATE_KEY",
-        "GCP_PRIVATE_KEY_ID",
-        "GCP_PROJECT_ID",
-        "GCP_CLIENT_X509_CERT_URL",
-        "GCP_CLIENT_ID",
-        "GCP_CLIENT_EMAIL",
         "NODE_ENV"
       ]
     },

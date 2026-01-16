@@ -10,19 +10,18 @@ Este app foi construído para ajudar restaurantes a melhorarem as fotos dos seus
 
 - Na home, o visitante pode anexar fotos e é encaminhado para a página de upload com as imagens escolhidas.
 - Após informar quantidade e dados de contato, o pagamento é realizado via Stripe. As fotos ficam salvas no IndexedDB para suportar redirecionamentos (ex.: Amazon Pay) e são restauradas quando o checkout confirma sucesso.
-- Com o pagamento aprovado, as imagens são enviadas ao backend, que usa a API do Google Drive para armazená-las. Em seguida, um e-mail é disparado para `contact@t8pro.us` com o link da pasta, arquivos enviados e dados do cliente.
+- Com o pagamento aprovado, as imagens são enviadas ao backend e um e-mail é disparado para `contact@t8pro.us` com os arquivos enviados e dados do cliente.
 - A home ainda apresenta planos, download do e-book gratuito e o rodapé de navegação; a página de upload repete a tabela de preços e o rodapé para consistência.
 
 ### Jornada gratuita
 
-- Na área de planos existe a opção “Teste grátis”. O cliente acessa a página dedicada, anexa uma única foto e informa nome, e-mail, telefone e empresa.
-- A foto segue para o Google Drive e um e-mail automático é enviado para `contact@t8pro.us` com a imagem e os dados informados, permitindo que o time execute a retouch gratuita.
+- Na área de planos existe a opção "Teste grátis". O cliente acessa a página dedicada, anexa uma única foto e informa nome, e-mail, telefone e empresa.
+- Um e-mail automático é enviado para `contact@t8pro.us` com os dados informados, permitindo que o time execute a retouch gratuita.
 
 ## Project Highlights
 
 - App Router + React 19 with server/client component mix.
 - Stripe-powered checkout for multi-tier photo retouch packages.
-- Google Drive service-account uploads for asset delivery.
 - Nodemailer + Handlebars transactional emails for both leads and internal ops.
 - Shared design tokens and components via `@t8pro/design-system`.
 
@@ -46,12 +45,11 @@ yarn check-types --filter @t8pro/retouch-pro
 
 Create an `.env.local` in this directory (or configure via workspace tooling) with the following keys:
 
-| Domain       | Variables                                                                                                                                                              |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Stripe       | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `STRIPE_SECRET_KEY`                                                                                                              |
-| Email        | `EMAIL_USER`, `EMAIL_PASS`                                                                                                                                             |
-| Google Drive | `GCP_PROJECT_ID`, `GCP_PRIVATE_KEY_ID`, `GCP_PRIVATE_KEY`, `GCP_CLIENT_EMAIL`, `GCP_CLIENT_ID`, `GCP_CLIENT_X509_CERT_URL`, `GOOGLE_DRIVE_PARENT_FOLDER_ID` (optional) |
-| App Metadata | `APP_URL` (used in email templates)                                                                                                                                    |
+| Domain       | Variables                                                 |
+| ------------ | --------------------------------------------------------- |
+| Stripe       | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `STRIPE_SECRET_KEY` |
+| Email        | `EMAIL_USER`, `EMAIL_PASS`                                |
+| App Metadata | `APP_URL` (used in email templates)                       |
 
 Refer to the docs below for integration specifics and error handling expectations.
 

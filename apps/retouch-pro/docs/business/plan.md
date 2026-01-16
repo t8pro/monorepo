@@ -27,7 +27,6 @@
 - ✅ Three-tier pricing system: Quick Fix ($60/6 photos), Growth Accelerator ($100/12 photos), Premium ($144/24 photos)
 - ✅ Free trial flow (1 photo) with form submission
 - ✅ Paid checkout with Stripe Payment Intents
-- ✅ Google Drive integration for photo storage (both free and paid)
 - ✅ Email notification system (Nodemailer + Handlebars templates)
 - ✅ Thank you pages for both free trial and paid orders
 - ✅ Responsive mobile-first design
@@ -36,7 +35,6 @@
 
 **Technical Infrastructure:**
 
-- ✅ Google Drive service account configured
 - ✅ Stripe Payment Intents API integrated
 - ✅ Email service with Gmail SMTP
 - ✅ IndexedDB for client-side photo persistence
@@ -166,7 +164,6 @@ To become the leading photo enhancement service for restaurants, helping them pr
 - **State Management:** React Hooks, IndexedDB
 - **Backend:** Next.js API Routes (App Router)
 - **Payment:** Stripe
-- **Storage:** Google Drive API
 - **Email:** Nodemailer + Handlebars
 - **Hosting:** Vercel (recommended)
 - **Monitoring:** Sentry, Google Analytics
@@ -193,18 +190,12 @@ To become the leading photo enhancement service for restaurants, helping them pr
           ├─────────────────┐
           │                 │
           ▼                 ▼
-┌──────────────┐    ┌──────────────┐
-│   Stripe     │    │ Google Drive │
-│   Payment    │    │   Storage    │
-└──────────────┘    └──────────────┘
-          │                 │
-          ▼                 ▼
-┌──────────────────────────────┐
-│      Nodemailer Email        │
-│                              │
-│  - Customer notifications    │
-│  - Internal alerts           │
-└──────────────────────────────┘
+┌──────────────┐    ┌──────────────────────────────┐
+│   Stripe     │    │      Nodemailer Email        │
+│   Payment    │    │                              │
+└──────────────┘    │  - Customer notifications    │
+                    │  - Internal alerts           │
+                    └──────────────────────────────┘
 ```
 
 ---
@@ -218,7 +209,6 @@ All core features have been implemented:
 - ✅ Monorepo setup and configuration
 - ✅ Design system integration
 - ✅ App Router architecture
-- ✅ Google Drive integration
 - ✅ Email service setup
 - ✅ Free trial complete flow
 - ✅ Paid checkout complete flow
@@ -324,7 +314,7 @@ All core features have been implemented:
   - Test free trial flow 5 times
   - Verify all email deliveries
   - Test payment failures and refunds
-  - Validate Google Drive organization
+  - Validate Cloud Storage organization
 - [ ] Marketing preparation
   - Finalize copy and messaging
   - Prepare social media content
@@ -382,7 +372,7 @@ All core features have been implemented:
 ### Order Processing Workflow
 
 1. **Order Received:** Email notification to contact@t8pro.us
-2. **Photo Download:** Team downloads photos from Google Drive link
+2. **Photo Download:** Team downloads photos from Cloud Storage link
 3. **Retouching:** Professional editors enhance photos per package tier
 4. **Quality Check:** Supervisor reviews all retouched photos
 5. **Delivery:** Photos uploaded back to Drive, customer notified via email
@@ -447,7 +437,7 @@ All core features have been implemented:
 
 | Risk                               | Impact   | Mitigation                                     |
 | ---------------------------------- | -------- | ---------------------------------------------- |
-| Google Drive API failures          | High     | Implement retry logic, backup storage          |
+| Cloud Storage API failures          | High     | Implement retry logic, backup storage          |
 | Stripe payment failures            | Critical | Webhook retry, manual reconciliation           |
 | Email delivery failures            | Medium   | Multiple email providers, SMS backup           |
 | IndexedDB compatibility            | Low      | Feature detection, fallback to session storage |
@@ -512,7 +502,7 @@ All core features have been implemented:
 
 - [ ] Set up development environment and monorepo
 - [ ] Configure environment variables for all integrations
-- [ ] Create Google Drive folder structure
+- [ ] Create Cloud Storage folder structure
 - [ ] Set up Stripe test account and products
 - [ ] Configure email service and test templates
 - [ ] Create initial page components and routing
@@ -522,7 +512,7 @@ All core features have been implemented:
 - [ ] Launch free trial funnel
 - [ ] Begin lead generation
 - [ ] Test email automation
-- [ ] Validate Google Drive integration
+- [ ] Validate Cloud Storage integration
 - [ ] Collect initial feedback
 - [ ] Iterate on UI/UX
 
@@ -556,15 +546,6 @@ STRIPE_SECRET_KEY=sk_test_xxxxx
 # Email
 EMAIL_USER=noreply@t8pro.us
 EMAIL_PASS=xxxxx
-
-# Google Drive
-GCP_PROJECT_ID=retouch-pro-xxxxx
-GCP_PRIVATE_KEY_ID=xxxxx
-GCP_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
-GCP_CLIENT_EMAIL=service-account@retouch-pro.iam.gserviceaccount.com
-GCP_CLIENT_ID=xxxxx
-GCP_CLIENT_X509_CERT_URL=https://www.googleapis.com/robot/v1/metadata/x509/...
-GOOGLE_DRIVE_PARENT_FOLDER_ID=xxxxx
 
 # App
 APP_URL=https://retouchpro.t8.us
@@ -661,7 +642,7 @@ NODE_ENV=production
 
 ### POST /api/upload
 
-**Purpose:** Upload photos to Google Drive
+**Purpose:** Upload photos to Cloud Storage
 
 **Request Body:**
 
@@ -726,7 +707,7 @@ NODE_ENV=production
 4. Upload 1-24 photos for paid order
 5. Pay via Stripe ($60, $100, or $144 packages)
 6. Receive thank you page after payment
-7. Photos automatically uploaded to Google Drive folder
+7. Photos automatically uploaded to Cloud Storage folder
 
 ### ⚠️ Manual Steps Required by Team:
 

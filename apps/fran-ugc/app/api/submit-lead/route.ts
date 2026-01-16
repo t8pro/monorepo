@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import { NextRequest, NextResponse } from 'next/server';
+import path from 'path';
 import { ebookGuideTemplate } from '@/app/templates/ebook-guide';
 import { generateEbookHash, storeEbookHash } from '@/lib/ebook-hash';
 import { getTransporter } from '@/lib/email';
-import { appendLeadToSheet } from '@/lib/google-sheets';
 
 export async function POST(request: NextRequest) {
   try {
@@ -49,39 +49,21 @@ export async function POST(request: NextRequest) {
       ebookLink,
     });
 
+    // Path to the ebook PDF file
+    const ebookPath = path.join(process.cwd(), 'public', 'ebook.pdf');
+
     await transporter.sendMail({
       from: `Fran UGC <${process.env.EMAIL_USER}>`,
       to: email,
       subject: 'Seu Guia Gratuito de UGC está Pronto! 📚',
       html: emailHtml,
+      attachments: [
+        {
+          filename: 'guia-ugc-gratuito.pdf',
+          path: ebookPath,
+        },
+      ],
     });
-
-    // Save lead to Google Sheets
-    const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
-    if (spreadsheetId) {
-      try {
-        await appendLeadToSheet(
-          spreadsheetId,
-          {
-            timestamp,
-            name,
-            email,
-            phone,
-            instagram,
-            unemployedOrSeekingIncome,
-            likesAppearingInVideos,
-            wantsCreativeGuide,
-            productAffinity: Array.isArray(productAffinity)
-              ? productAffinity.join(', ')
-              : productAffinity || '',
-          },
-          process.env.GOOGLE_SHEETS_SHEET_NAME || 'Sheet1',
-        );
-      } catch (sheetsError) {
-        // Log error but don't fail the request if Sheets fails
-        console.error('Error saving to Google Sheets:', sheetsError);
-      }
-    }
 
     // Optional: Send notification email to admin
     if (process.env.ADMIN_EMAIL) {

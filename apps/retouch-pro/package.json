@@ -16,7 +16,6 @@
     "@t8pro/design-system": "*",
     "@tanstack/react-query": "^5.90.12",
     "browser-image-compression": "^2.0.2",
-    "googleapis": "^166.0.0",
     "handlebars": "^4.7.8",
     "material-symbols": "^0.39.4",
     "next": "^16.0.8",

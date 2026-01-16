@@ -155,12 +155,12 @@ Checklist:
 
 Acceptance Criteria:
 
-- Upload to Drive; internal and customer emails
-- Redirect to success; DB record “pending”
+- Internal and customer emails
+- Redirect to success; DB record "pending"
 
 Checklist:
 
-- [x] API endpoint; Drive foldering
+- [x] API endpoint
 - [x] Email templates (internal/customer); Nodemailer
 - [x] Success redirect; DB record; retries/logging
 
@@ -210,13 +210,13 @@ Checklist:
 
 Acceptance Criteria:
 
-- On success, upload photos to Drive folder
+- On success, process photos
 - Internal/customer notifications; retries; cleanup
 
 Checklist:
 
 - [x] Webhook handler; IndexedDB retrieval pattern
-- [x] Drive folder naming; batch upload; progress
+- [x] Batch upload; progress
 - [x] Retry logic; email templates; cleanup
 
 ### User Story 4.4: Receive Order Confirmation
@@ -234,19 +234,8 @@ Checklist:
 
 ## EPIC 5: Backend Integrations
 
-### User Story 5.1: Google Drive Service Account
 
-Acceptance Criteria:
-
-- Service account auth via env; parent folder permissions
-- Error logging; rate limiting
-
-Checklist:
-
-- [x] GCP setup; auth helpers; Drive wrapper
-- [x] Retry/backoff; monitoring
-
-### User Story 5.2: Email Service
+### User Story 5.1: Email Service
 
 Acceptance Criteria:
 
@@ -258,7 +247,7 @@ Checklist:
 - [x] Transport init; templates; sending service
 - [x] Rendering, attachments, queue/backoff
 
-### User Story 5.3: Stripe Integration
+### User Story 5.2: Stripe Integration
 
 Acceptance Criteria:
 
@@ -328,7 +317,6 @@ Checklist:
 - POST `/api/webhooks/stripe` – handle Stripe webhooks
 - POST `/api/upload-photos` – upload multiple photos to Drive
 - POST `/api/upload-single-photo` – upload a single photo
-- POST `/api/google-drive/upload` – internal Drive upload helper
 - POST `/api/upload-free/submit` – submit free-trial upload
 - POST `/api/upload-free/verify` – verify free-trial submission
 - POST `/api/send-order-email` – send order confirmation email

@@ -20,9 +20,8 @@
   1. Photos and user data are cached locally (IndexedDB + session storage) to survive redirects (`features/upload-images/context/index.tsx:357`).
   2. A Stripe PaymentIntent is created with package metadata (`app/api/payment-intent/route.ts:5`).
   3. After confirmation, each photo is sequentially re-uploaded using `/api/upload-single-photo` for further processing hooks (`features/upload-images/context/index.tsx:508`).
-  4. All photos are bundled and pushed to Google Drive with a timestamped folder name `<email> <YYYY-MM-DD HH:mm:ss> <environmentNumber>` where environments map to 1/2/3 (`lib/order-naming.ts:3`).
-  5. An internal order email, including optional Drive folder link, is sent to `contact@t8pro.us` (`app/api/send-order-email/route.ts:1`).
-- Processing states communicate progress (`compressing`, `uploading`, `drive_upload`, `sending_email`, `completed`) and surface toasts on error (`features/upload-images/context/index.tsx:241`).
+  4. An internal order email is sent to `contact@t8pro.us` (`app/api/send-order-email/route.ts:1`).
+- Processing states communicate progress (`compressing`, `uploading`, `sending_email`, `completed`) and surface toasts on error (`features/upload-images/context/index.tsx:241`).
 
 ## Free Trial Upload
 
@@ -30,7 +29,7 @@
 - Allowed MIME types must start with `image/`; files over 10 MB are rejected (`features/upload-free/hooks.ts:63`).
 - Images are compressed toward a 2 MB target before submission (`features/upload-free/hooks.ts:36`).
 - Required fields: name, email, phone, company (`app/api/upload-free/submit/route.ts:18`).
-- Submissions create a Google Drive folder `<email> <timestamp> FREE`, upload the photo, and notify the team via a Handlebars template email (`app/api/upload-free/submit/route.ts:33`).
+- Submissions notify the team via a Handlebars template email (`app/api/upload-free/submit/route.ts:33`).
 - Verification endpoint currently returns `exists: false`; integrate with CRM when duplicate prevention is ready (`app/api/upload-free/verify/route.ts:9`).
 
 ## Ebook Lead Magnet
@@ -44,11 +43,6 @@
 - Metadata stored on the intent includes `packageType` and `photoCount` for downstream reconciliation (`app/api/payment-intent/route.ts:31`).
 - Checkout flow uses `stripe.confirmPayment` with `redirect: 'if_required'`; successful payments without redirect rely on client polling to continue processing (`features/upload-images/stripe-checkout/index.tsx:31`).
 
-## Google Drive Integration
-
-- Service account credentials must be fully populated; missing keys raise configuration errors (`lib/google-drive.ts:4`).
-- Folders are shared as "anyone with the link can view" to simplify delivery (`app/api/google-drive/upload/route.ts:64`).
-- File uploads stream buffers via Node `Readable` to avoid memory spikes (`lib/google-drive.ts:53`).
 
 ## Email Notifications
 

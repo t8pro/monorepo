@@ -5,13 +5,6 @@ import {
   type UploadFreeTemplateData,
 } from '@/app/templates/upload-free';
 import { getTransporter } from '@/lib/email';
-import {
-  getDriveClient,
-  createFolder,
-  uploadFile,
-  setFolderAnyoneWithLinkViewer,
-  getFolderLink,
-} from '@/lib/google-drive';
 
 export async function POST(request: Request) {
   try {
@@ -33,28 +26,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Photo is required' }, { status: 400 });
     }
 
-    // Build folder name: "{email} {YYYY-MM-DD HH:mm:ss} FREE"
-    const pad = (n: number) => String(n).padStart(2, '0');
     const now = new Date();
-    const ts = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-    const folderName = `${email} ${ts} FREE`;
-
-    const parentFolderId =
-      process.env.GOOGLE_DRIVE_PARENT_FOLDER_ID || undefined;
-    const drive = getDriveClient();
-
-    const folderId = await createFolder(drive, folderName, parentFolderId);
-    await setFolderAnyoneWithLinkViewer(drive, folderId);
-
-    // Upload single photo
-    const arrayBuffer = await file.arrayBuffer();
-    await uploadFile(drive, folderId, {
-      name: file.name || 'photo',
-      mimeType: file.type || 'application/octet-stream',
-      buffer: Buffer.from(arrayBuffer),
-    });
-
-    const folderLink = getFolderLink(folderId);
 
     // Send HTML email using handlebars template
     const transporter = getTransporter();
@@ -69,7 +41,7 @@ export async function POST(request: Request) {
       fileName: file.name,
       fileSizeKB: Math.round((file.size || 0) / 1024),
       submittedAt: now.toISOString(),
-      folderLink,
+      folderLink: '', // No longer using Google Drive
     });
 
     await transporter.sendMail({
@@ -82,7 +54,6 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       receivedAt: now.toISOString(),
-      folderLink,
     });
   } catch (error) {
     console.error('upload-free submit error:', error);

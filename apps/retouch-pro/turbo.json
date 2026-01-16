@@ -11,14 +11,7 @@
         "STRIPE_WEBHOOK_SECRET",
         "EMAIL_USER",
         "EMAIL_PASS",
-        "APP_URL",
-        "GOOGLE_DRIVE_PARENT_FOLDER_ID",
-        "GCP_PRIVATE_KEY",
-        "GCP_PRIVATE_KEY_ID",
-        "GCP_PROJECT_ID",
-        "GCP_CLIENT_X509_CERT_URL",
-        "GCP_CLIENT_ID",
-        "GCP_CLIENT_EMAIL"
+        "APP_URL"
       ]
     },
     "dev": {

@@ -12,29 +12,29 @@ export const ebookGuideTemplate = `
       >
         <h1
           style='color: white; margin: 0; font-size: 28px; font-weight: bold;'
-        >📚 Seu Guia Gratuito está Pronto!</h1>
+        >📚 Seu Guia Gratuito de UGC!</h1>
       </div>
 
       <!-- Content -->
       <div style='padding: 40px 30px;'>
-        <h2 style='color: #914326; margin-top: 0; font-size: 24px;'>Olá, {{name}}!</h2>
+        <h2 style='color: #914326; margin-top: 0; font-size: 24px;'>Oi, {{name}}! Tudo bem?</h2>
 
         <p
           style='color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 20px;'
         >
-          Analisando seu perfil, você se encaixa muito bem no nosso processo! 🎉
+          Aqui é a Fran! Fico muito feliz que você tenha se interessado pelo mundo do UGC (User Generated Content).
         </p>
 
         <p
           style='color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 20px;'
         >
-          Estamos muito felizes que você tenha passado por aqui e respondido essas questões. Você se encaixa super bem no que buscamos!
+          Preparei esse guia especialmente para você dar os primeiros passos e entender como é possível <strong>transformar seu celular em uma fonte de renda</strong> criando vídeos para marcas.
         </p>
 
         <p
           style='color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 30px;'
         >
-          Aqui está o e-book completo que vai te ensinar como transformar seu celular em uma fonte de renda criando vídeos UGC. Você vai aprender desde o básico até como enviar seus vídeos para marcas e começar a ganhar dinheiro.
+          O PDF está em anexo neste e-mail! Você também pode baixar clicando no botão abaixo:
         </p>
 
         <!-- Download Button -->
@@ -48,20 +48,26 @@ export const ebookGuideTemplate = `
         </div>
 
         <p
-          style='color: #999; font-size: 14px; line-height: 1.5; margin-top: 30px;'
+          style='color: #666; font-size: 16px; line-height: 1.6; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e9ecef;'
         >
-          Se o botão não funcionar, você pode copiar e colar este link no seu navegador:<br />
-          <a
-            href='{{ebookLink}}'
-            style='color: #c75d3b; word-break: break-all;'
-          >{{ebookLink}}</a>
+          Depois de ler o guia, se quiser se aprofundar mais e aprender tudo sobre UGC, me chama! Vou adorar te ajudar nessa jornada.
         </p>
 
-        <p
-          style='color: #666; font-size: 14px; line-height: 1.6; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e9ecef;'
-        >
-          <strong>Dica:</strong> Após baixar o guia, não esqueça de praticar! O sucesso vem com a prática constante. 😊
-        </p>
+        <!-- Contact Section -->
+        <div style='background-color: #fbf8f4; border-radius: 8px; padding: 20px; margin-top: 20px;'>
+          <p style='color: #914326; font-size: 16px; font-weight: bold; margin: 0 0 15px 0;'>
+            Vamos nos conectar?
+          </p>
+          <p style='color: #666; font-size: 15px; line-height: 1.8; margin: 0;'>
+            <a href='https://instagram.com/byfranazevedo' target='_blank' style='color: #c75d3b; text-decoration: none;'>
+              📸 Instagram: @byfranazevedo
+            </a>
+            <br />
+            <a href='https://wa.me/+5567998777776' target='_blank' style='color: #c75d3b; text-decoration: none;'>
+              📱 WhatsApp: (67) 99877-7776
+            </a>
+          </p>
+        </div>
       </div>
 
       <!-- Footer -->
@@ -69,8 +75,8 @@ export const ebookGuideTemplate = `
         style='background-color: #fbf8f4; padding: 20px 30px; text-align: center; border-top: 1px solid #e9ecef;'
       >
         <p style='color: #666; font-size: 14px; margin: 0;'>
-          Obrigada por confiar em nós!<br />
-          Se tiver alguma dúvida, entre em contato conosco.
+          Um abraço,<br />
+          <strong>Fran Azevedo</strong>
         </p>
       </div>
     </div>

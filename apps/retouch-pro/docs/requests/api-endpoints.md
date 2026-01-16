@@ -9,7 +9,6 @@ All endpoints live under `app/api/<scope>/route.ts` and run on the Next.js App R
 | `/api/payment-intent`      | POST   | Create a Stripe PaymentIntent for the paid upload flow. | JSON `{ amount: number; currency: string; packageType: string; photoCount: number }`                                                                                            | Returns `{ clientSecret }`. Requires `STRIPE_SECRET_KEY`.                               |
 | `/api/upload-single-photo` | POST   | Process a single paid photo after payment.              | `FormData` fields `paymentIntentId`, `packageType`, `photoIndex`, `totalPhotos`, `photoId`, `photoName`, `photoType`, `photoSize`, `photoWidth`, `photoHeight`, `photo` (File). | Currently simulates processing; extend to persist assets.                               |
 | `/api/upload-photos`       | POST   | (Legacy) Batch-processing endpoint for paid uploads.    | Sequential `FormData` entries `photo_<n>` and metadata keys.                                                                                                                    | Placeholder implementation—new flow uploads sequentially per photo.                     |
-| `/api/google-drive/upload` | POST   | Create Drive folder and push processed photos.          | `FormData` with customer metadata (`name`, `email`, `environment`, `packageType`, `totalAmount`, `photoCount`) + `photo_<n>` files.                                             | Uses service account credentials (`GCP_*`) and returns folder metadata + sharable link. |
 | `/api/send-order-email`    | POST   | Send internal notification email post-upload.           | `FormData` with user info, pricing, optional `folderLink`, and photo attachments.                                                                                               | Relies on SMTP creds (`EMAIL_USER`, `EMAIL_PASS`).                                      |
 
 ## Free Upload Funnel
@@ -17,7 +16,7 @@ All endpoints live under `app/api/<scope>/route.ts` and run on the Next.js App R
 | Route                     | Method | Purpose                                           | Body Shape                                                    | Notes                                                                                   |
 | ------------------------- | ------ | ------------------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `/api/upload-free/verify` | POST   | Check eligibility for the free retouch offer.     | JSON `{ email: string }`                                      | Currently stubbed (`exists: false`); replace with CRM lookup when available.            |
-| `/api/upload-free/submit` | POST   | Accept one free photo upload and notify the team. | `FormData` with `name`, `email`, `phone`, `company`, `photo`. | Creates Drive folder (`... FREE` suffix) and emails the team using Handlebars template. |
+| `/api/upload-free/submit` | POST   | Accept one free photo upload and notify the team. | `FormData` with `name`, `email`, `phone`, `company`, `photo`. | Emails the team using Handlebars template. |
 
 ## Marketing
 

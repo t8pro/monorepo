@@ -20,7 +20,7 @@
 
 - **Landing experience**: `app/page.tsx` composes feature modules (`Hero`, `BeforeAfter`, `Ebook`, `Pricing`).
 - **Checkout journeys**: dedicated route groups under `app/upload`, `app/upload/thank-you`, and `app/upload-free`.
-- **API routes**: colocated in `app/api/**/route.ts` to keep server-side handlers near their consumers (payments, Drive uploads, email, ebook fulfilment).
+- **API routes**: colocated in `app/api/**/route.ts` to keep server-side handlers near their consumers (payments, email, ebook fulfilment).
 - **Templates**: HTML email templates live under `app/templates/` for easy reuse across API routes.
 
 ## Feature Slices
@@ -32,6 +32,5 @@
 ## Server Utilities
 
 - `lib/email.ts` memoises Nodemailer transports.
-- `lib/google-drive.ts` wraps Google Drive SDK operations.
 - `lib/order-naming.ts` standardises timestamped folder names.
 - These utilities are imported by API routes to avoid duplicating configuration and to keep secrets server-only.

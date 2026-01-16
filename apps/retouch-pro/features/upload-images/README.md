@@ -1,6 +1,6 @@
 # Upload Images Feature
 
-End-to-end paid upload experience powering `/upload`. Handles photo selection, client-side processing, Stripe checkout, Google Drive uploads, and email notifications.
+End-to-end paid upload experience powering `/upload`. Handles photo selection, client-side processing, Stripe checkout, and email notifications.
 
 ## Structure
 
@@ -13,7 +13,7 @@ End-to-end paid upload experience powering `/upload`. Handles photo selection, c
 - `hooks/use-payment-result.tsx` – handles Stripe redirect results to resume processing.
 - `checkout-modal/` & `stripe-checkout/` – modal and embedded checkout flows that wrap Stripe Elements when `clientSecret` is available.
 - `selected-images-header/`, `selected-images-footer/`, `photo-card/` – presentation components backed by context actions.
-- `processing-modal/` – displays step-by-step progress (compressing, uploading, Drive sync, email) after payment.
+- `processing-modal/` – displays step-by-step progress (compressing, uploading, email) after payment.
 - `styles.module.scss` – base styling for the selection view.
 
 ## Key Flows
@@ -22,7 +22,7 @@ End-to-end paid upload experience powering `/upload`. Handles photo selection, c
 2. **User details** – Name, email, and environment selection are required before payment (validation lives in `context/index.tsx`).
 3. **Package calculation** – Package tier auto-selects based on photo count (`No Package`, `Quick Fix`, `Growth Accelerator`, `Premium`) and determines pricing/messages. See `docs/business/rules.md`.
 4. **Checkout** – `finalizeOrder` creates a PaymentIntent via `/api/payment-intent`; `CheckoutModal` or `StripeCheckout` mounts Elements to capture payment.
-5. **Post-payment processing** – `processPhotosAfterPayment` uploads each photo to `/api/upload-single-photo`, syncs the full set to Google Drive (`/api/google-drive/upload`), then sends an internal email (`/api/send-order-email`). `ProcessingModal` surfaces status transitions.
+5. **Post-payment processing** – `processPhotosAfterPayment` uploads each photo to `/api/upload-single-photo`, then sends an internal email (`/api/send-order-email`). `ProcessingModal` surfaces status transitions.
 6. **Resilience** – Payment redirects and refreshes restore photos/user data from storage (`use-payment-result`, `photoStorage.loadPhotos()`), ensuring users can resume without re-uploading.
 
 ## Extending

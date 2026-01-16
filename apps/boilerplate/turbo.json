@@ -7,14 +7,7 @@
       "outputs": [".next/**", "!.next/cache/**"],
       "env": [
         "EMAIL_USER",
-        "EMAIL_PASS",
-        "GOOGLE_DRIVE_PARENT_FOLDER_ID",
-        "GCP_PRIVATE_KEY",
-        "GCP_PRIVATE_KEY_ID",
-        "GCP_PROJECT_ID",
-        "GCP_CLIENT_X509_CERT_URL",
-        "GCP_CLIENT_ID",
-        "GCP_CLIENT_EMAIL"
+        "EMAIL_PASS"
       ]
     },
     "dev": {
