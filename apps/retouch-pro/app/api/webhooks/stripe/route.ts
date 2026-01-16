@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
+import { getTransporter } from '@/lib/email';
 
 function getStripe() {
   const apiKey = process.env.STRIPE_SECRET_KEY;
@@ -10,6 +11,85 @@ function getStripe() {
   return new Stripe(apiKey, {
     apiVersion: '2025-10-29.clover',
   });
+}
+
+const LEAD_NOTIFICATION_EMAIL = 'contato@francieliazevedo.com.br';
+
+async function sendLeadNotificationEmail(orderData: {
+  customerName: string;
+  customerEmail: string;
+  environment: string;
+  packageType: string;
+  photoCount: number;
+  amount: number;
+  currency: string;
+  paymentIntentId: string;
+}) {
+  try {
+    const transporter = getTransporter();
+
+    const environmentLabels: Record<string, string> = {
+      original: 'Manter ambiente original da foto',
+      white_studio: 'Usar estúdio infinito branco',
+      restaurant: 'Usar ambiente de restaurante',
+    };
+
+    const htmlContent = `
+      <h2>🎉 Novo Pedido de Retoque Recebido!</h2>
+      <p>Um novo pagamento foi confirmado. Aqui estão os detalhes do lead:</p>
+
+      <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Nome do Cliente</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${orderData.customerName}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>E-mail</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd;"><a href="mailto:${orderData.customerEmail}">${orderData.customerEmail}</a></td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Preferência de Ambiente</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${environmentLabels[orderData.environment] || orderData.environment}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Pacote</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${orderData.packageType}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Quantidade de Fotos</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${orderData.photoCount}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Valor Pago</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${orderData.currency.toUpperCase()} ${orderData.amount.toFixed(2)}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>ID do Pagamento</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${orderData.paymentIntentId}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Data/Hora</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })}</td>
+        </tr>
+      </table>
+
+      <p style="margin-top: 20px; color: #666;">
+        <em>O cliente fará o upload das fotos em seguida. Você receberá outro e-mail quando as fotos forem enviadas.</em>
+      </p>
+    `;
+
+    await transporter.sendMail({
+      from: `Retouch Pro <${process.env.EMAIL_USER}>`,
+      to: LEAD_NOTIFICATION_EMAIL,
+      subject: `🆕 Novo Pedido - ${orderData.customerName} (${orderData.packageType})`,
+      html: htmlContent,
+    });
+
+    console.log(`Lead notification email sent to ${LEAD_NOTIFICATION_EMAIL}`);
+  } catch (error) {
+    console.error('Failed to send lead notification email:', error);
+    // Don't throw - email failure shouldn't break the webhook
+  }
 }
 
 // Store processed webhook IDs to prevent duplicate processing (in-memory cache)
@@ -128,6 +208,18 @@ export async function POST(request: NextRequest) {
         });
 
         console.log(`Order ${orderId} marked as confirmed, waiting for photos`);
+
+        // Send lead notification email
+        await sendLeadNotificationEmail({
+          customerName: customerName || 'Customer',
+          customerEmail,
+          environment,
+          packageType,
+          photoCount: parseInt(photoCount),
+          amount: paymentIntent.amount / 100,
+          currency: paymentIntent.currency,
+          paymentIntentId: orderId,
+        });
 
         // Mark webhook as processed
         processedWebhooks.add(webhookId);
