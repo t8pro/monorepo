@@ -1,12 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-10-29.clover',
-});
+function getStripe() {
+  const apiKey = process.env.STRIPE_SECRET_KEY;
+  if (!apiKey) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
+  return new Stripe(apiKey, {
+    apiVersion: '2025-10-29.clover',
+  });
+}
 
 export async function POST(request: NextRequest) {
   try {
+    const stripe = getStripe();
     const { amount, currency, packageType, photoCount } = await request.json();
 
     if (!amount || !currency || !packageType || !photoCount) {
