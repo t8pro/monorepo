@@ -31,7 +31,6 @@ export type PhotoState = {
     | 'idle'
     | 'compressing'
     | 'uploading'
-    | 'drive_upload'
     | 'sending_email'
     | 'completed';
   processingMessage: string;

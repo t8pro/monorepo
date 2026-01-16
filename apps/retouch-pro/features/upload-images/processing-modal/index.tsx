@@ -23,8 +23,6 @@ export const ProcessingModal = () => {
         return 'compress';
       case 'uploading':
         return 'cloud_upload';
-      case 'drive_upload':
-        return 'folder_shared';
       case 'sending_email':
         return 'mail';
       case 'completed':
@@ -40,8 +38,6 @@ export const ProcessingModal = () => {
         return 'Compressing Images';
       case 'uploading':
         return 'Uploading Photos';
-      case 'drive_upload':
-        return 'Sending Photos to Retouch Team';
       case 'sending_email':
         return 'Sending Email';
       case 'completed':
