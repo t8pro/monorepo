@@ -27,6 +27,17 @@ const steps = [
 ];
 
 export const Solution = () => {
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    id: string,
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', '#' + id);
+    }
+  };
   return (
     <section className={styles.solution} id="solution">
       <Container>
@@ -59,7 +70,7 @@ export const Solution = () => {
         </div>
 
         <div className={styles.cta}>
-          <Link href="#pricing">
+          <Link href="#pricing" onClick={e => handleScroll(e, 'pricing')}>
             <Button size="large" color="primary" variant="solid">
               <strong>Quero Garantir Minha Vaga</strong>
             </Button>

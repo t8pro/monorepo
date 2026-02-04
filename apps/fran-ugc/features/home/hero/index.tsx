@@ -7,6 +7,18 @@ import { Button, Container } from 'reshaped';
 import styles from './styles.module.scss';
 
 export const Hero = () => {
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    id: string,
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', '#' + id);
+    }
+  };
+
   return (
     <section className={styles.hero}>
       <Container>
@@ -37,13 +49,16 @@ export const Hero = () => {
             </p>
 
             <div className={styles.buttons}>
-              <Link href="#pricing">
+              <Link href="#pricing" onClick={e => handleScroll(e, 'pricing')}>
                 <Button size="large" color="primary" variant="solid">
                   <strong>Quero Garantir Minha Vaga</strong>
                 </Button>
               </Link>
 
-              <Link href="#testimonials">
+              <Link
+                href="#testimonials"
+                onClick={e => handleScroll(e, 'testimonials')}
+              >
                 <Button size="large" variant="outline">
                   Sobre mim
                 </Button>

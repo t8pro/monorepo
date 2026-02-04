@@ -26,6 +26,17 @@ const problems = [
 ];
 
 export const Problem = () => {
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    id: string,
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', '#' + id);
+    }
+  };
   return (
     <section className={styles.problem} id="problem">
       <Container>
@@ -63,7 +74,7 @@ export const Problem = () => {
         </Text>
 
         <View direction="row" gap={4} align="center" justify="center">
-          <Link href="#pricing">
+          <Link href="#pricing" onClick={e => handleScroll(e, 'pricing')}>
             <Button variant="solid" size="large" color="primary">
               Quero ir logo para a prática
             </Button>

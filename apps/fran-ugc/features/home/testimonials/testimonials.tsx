@@ -98,7 +98,17 @@ export const Testimonials = () => {
         </div>
 
         <div className={styles.ctaWrapper}>
-          <Link href="#pricing">
+          <Link
+            href="#pricing"
+            onClick={e => {
+              e.preventDefault();
+              const element = document.getElementById('pricing');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                window.history.pushState(null, '', '#pricing');
+              }
+            }}
+          >
             <Button size="large" variant="solid" className={styles.ctaButton}>
               <strong>Quero ter esses resultados</strong>
             </Button>

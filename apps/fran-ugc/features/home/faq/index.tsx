@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import { Container } from 'reshaped';
@@ -40,6 +41,18 @@ const faqs = [
 
 export const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    id: string,
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', '#' + id);
+    }
+  };
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -109,9 +122,13 @@ export const FAQ = () => {
         </div>
 
         <div className={styles.cta}>
-          <a href="#pricing" className={styles.ctaButton}>
+          <Link
+            href="#pricing"
+            className={styles.ctaButton}
+            onClick={e => handleScroll(e, 'pricing')}
+          >
             Começar Agora
-          </a>
+          </Link>
         </div>
       </Container>
     </section>

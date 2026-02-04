@@ -21,6 +21,26 @@ export const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    href: string,
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(href.replace('#', ''));
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+      window.history.pushState(null, '', href);
+    }
+  };
+
   return (
     <header className={styles.header}>
       <Container>
@@ -46,7 +66,10 @@ export const Header = () => {
                   key={link.href}
                   href={link.href}
                   className={styles.link}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={e => {
+                    handleScroll(e, link.href);
+                    setIsMenuOpen(false);
+                  }}
                 >
                   {link.label}
                 </Link>
@@ -55,7 +78,11 @@ export const Header = () => {
           </nav>
 
           <div className={styles.headerActions}>
-            <Link href="#pricing" className={styles.ctaButton}>
+            <Link
+              href="#pricing"
+              className={styles.ctaButton}
+              onClick={e => handleScroll(e, '#pricing')}
+            >
               <Button size="large" color="primary" variant="solid">
                 Inscreva-se
               </Button>

@@ -6,6 +6,18 @@ import { Container } from 'reshaped';
 import styles from './styles.module.scss';
 
 export const AboutMe = () => {
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    id: string,
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', '#' + id);
+    }
+  };
+
   return (
     <section className={styles.aboutMe} id="about-me">
       <Container>
@@ -80,7 +92,11 @@ export const AboutMe = () => {
         </div>
 
         <div className={styles.cta}>
-          <Link href="#pricing" className={styles.ctaButton}>
+          <Link
+            href="#pricing"
+            className={styles.ctaButton}
+            onClick={e => handleScroll(e, 'pricing')}
+          >
             Quero começar agora
           </Link>
         </div>
