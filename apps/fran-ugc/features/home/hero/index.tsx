@@ -55,10 +55,7 @@ export const Hero = () => {
                 </Button>
               </Link>
 
-              <Link
-                href="#testimonials"
-                onClick={e => handleScroll(e, 'testimonials')}
-              >
+              <Link href="#aboutme" onClick={e => handleScroll(e, 'aboutme')}>
                 <Button size="large" variant="outline">
                   Sobre mim
                 </Button>

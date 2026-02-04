@@ -48,7 +48,7 @@ export const Footer = () => {
               <Link href="/#faq" className={styles.link}>
                 Perguntas Frequentes
               </Link>
-              <Link href="/#testimonials" className={styles.link}>
+              <Link href="/#aboutme" className={styles.link}>
                 Sobre mim
               </Link>
             </div>

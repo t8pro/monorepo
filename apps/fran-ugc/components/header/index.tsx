@@ -11,7 +11,7 @@ const navLinks = [
   { label: 'Como funciona?', href: '#solution' },
   { label: 'Conteúdo do curso', href: '#modules' },
   { label: 'Investimento', href: '#pricing' },
-  { label: 'Sobre mim', href: '#testimonials' },
+  { label: 'Sobre mim', href: '#aboutme' },
 ];
 
 export const Header = () => {

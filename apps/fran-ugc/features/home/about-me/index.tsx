@@ -19,7 +19,7 @@ export const AboutMe = () => {
   };
 
   return (
-    <section className={styles.aboutMe} id="about-me">
+    <section className={styles.aboutMe} id="aboutme">
       <Container>
         <div className={styles.content}>
           <div className={styles.textContent}>
