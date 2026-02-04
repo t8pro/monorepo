@@ -21,9 +21,16 @@ const FAQ = dynamic(() =>
 const Pricing = dynamic(() =>
   import('@/features/home/pricing').then(mod => ({ default: mod.Pricing })),
 );
+
 const Testimonials = dynamic(() =>
   import('@/features/home/testimonials').then(mod => ({
     default: mod.Testimonials,
+  })),
+);
+
+const AboutMe = dynamic(() =>
+  import('@/features/home/about-me').then(mod => ({
+    default: mod.AboutMe,
   })),
 );
 
@@ -50,6 +57,7 @@ export default function Home() {
       <Solution />
       <Modules />
       <Pricing />
+      <AboutMe />
       <Testimonials />
       <EbookGuide />
       <FAQ />

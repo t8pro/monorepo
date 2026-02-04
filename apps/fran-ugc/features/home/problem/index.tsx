@@ -62,16 +62,16 @@ export const Problem = () => {
           Quer entender como é possível?
         </Text>
 
-        <View direction="row" gap={2} align="center" justify="center">
-          <Link href="/lead">
-            <Button size="large" color="primary" variant="solid">
-              <strong>Baixe nosso guia grátis</strong>
+        <View direction="row" gap={4} align="center" justify="center">
+          <Link href="#pricing">
+            <Button variant="solid" size="large" color="primary">
+              Quero ir logo para a prática
             </Button>
           </Link>
 
-          <Link href="#pricing">
-            <Button variant="outline" size="large">
-              Quero ir logo para a prática
+          <Link href="/lead">
+            <Button size="large" variant="faded">
+              <strong>Baixe nosso guia grátis</strong>
             </Button>
           </Link>
         </View>
