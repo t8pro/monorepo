@@ -11,6 +11,11 @@ const AUDIOS = [
 
 const TEXT_TESTIMONIALS = [
   {
+    name: 'Ingrid Aleixes',
+    text: 'Fiz o curso de UGC da Fran Azevedo e preciso compartilhar o quanto essa experiência foi boa pra mim. É um curso leve, gostoso de acompanhar e, ao mesmo tempo, extremamente claro. Não é cansativo, não é enrolado, pelo contrário: a cada aula dá vontade de continuar assistindo. A Fran é muito objetiva e realista, o que faz toda a diferença pra quem está começando. Você entende de verdade o que é, como funciona e, principalmente, como dar os primeiros passos sem confusão. Me senti muito segura e confiante depois desse curso. Recomendo com toda certeza!',
+    featured: true,
+  },
+  {
     name: 'Elaine Lacerda',
     text: 'O UGC na Prática me mostrou que eu não preciso ser famosa pra ganhar dinheiro. Em 3 semanas fechei contrato com uma loja de maquiagem. Estou amando!',
   },
@@ -80,8 +85,8 @@ export const Testimonials = () => {
         </div>
 
         <div className={styles.printsSection}>
-          <div className={styles.grid}>
-            {TEXT_TESTIMONIALS.map((testimonial, index) => (
+          {TEXT_TESTIMONIALS.filter(t => t.featured).map(
+            (testimonial, index) => (
               <div key={index} className={styles.testimonialCard}>
                 <div className={styles.cardHeader}>
                   <div className={styles.cardAvatar}>
@@ -93,7 +98,25 @@ export const Testimonials = () => {
                   &quot;{testimonial.text}&quot;
                 </p>
               </div>
-            ))}
+            ),
+          )}
+
+          <div className={styles.grid}>
+            {TEXT_TESTIMONIALS.filter(t => !t.featured).map(
+              (testimonial, index) => (
+                <div key={index} className={styles.testimonialCard}>
+                  <div className={styles.cardHeader}>
+                    <div className={styles.cardAvatar}>
+                      {testimonial.name.charAt(0)}
+                    </div>
+                    <span className={styles.cardName}>{testimonial.name}</span>
+                  </div>
+                  <p className={styles.cardText}>
+                    &quot;{testimonial.text}&quot;
+                  </p>
+                </div>
+              ),
+            )}
           </div>
         </div>
 
