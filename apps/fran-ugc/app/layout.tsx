@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { Figtree, Young_Serif } from 'next/font/google';
 import localFont from 'next/font/local';
+import { Suspense } from 'react';
 import { Providers } from './providers';
 import '@/styles/themes/fran/theme.css';
 import '@/styles/globals.scss';
+import { FacebookPixel } from '@/components/FacebookPixel';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { WhatsAppButton } from '@/components/whats-app';
@@ -225,6 +227,9 @@ export default function RootLayout({
       >
         <main>
           <Providers>
+            <Suspense fallback={null}>
+              <FacebookPixel />
+            </Suspense>
             <Header />
             <WhatsAppButton />
             {children}
