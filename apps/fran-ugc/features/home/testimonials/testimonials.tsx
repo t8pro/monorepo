@@ -43,7 +43,7 @@ const TEXT_TESTIMONIALS = [
 
 export const Testimonials = () => {
   return (
-    <section className={styles.root}>
+    <section id="testimonials" className={styles.root}>
       <div className={styles.container}>
         <div className={styles.title}>
           <span>Depoimentos Reais</span>

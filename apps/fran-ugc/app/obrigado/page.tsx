@@ -6,7 +6,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 export const metadata: Metadata = {
   title: 'Obrigado pela sua compra! - UGC na Pr�tica',
   description:
-    'Parab�ns pela compra do curso UGC na Pr�tica! Verifique seu e-mail para receber as credenciais de acesso � plataforma.',
+    'Parabéns pela compra do curso UGC na Prática! Verifique seu e-mail para receber as credenciais de acesso à plataforma.',
   alternates: {
     canonical: `${siteUrl}/obrigado`,
   },

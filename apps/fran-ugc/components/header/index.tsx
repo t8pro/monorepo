@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'Você quer ganhar?', href: '#problem' },
   { label: 'Como funciona?', href: '#solution' },
   { label: 'Conteúdo do curso', href: '#modules' },
+  { label: 'Depoimentos', href: '#testimonials' },
   { label: 'Investimento', href: '#pricing' },
   { label: 'Sobre mim', href: '#aboutme' },
 ];
