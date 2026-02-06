@@ -38,7 +38,12 @@ export const Footer = () => {
               <Link href="/#modules" className={styles.link}>
                 Conteúdo do curso
               </Link>
-              <Link href="/#pricing" className={styles.link}>
+              <Link
+                href="/#pricing"
+                className={styles.link}
+                data-gtm-category="engagement"
+                data-gtm-label="footer_nav_pricing"
+              >
                 Investimento
               </Link>
             </div>

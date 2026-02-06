@@ -70,7 +70,12 @@ export const Solution = () => {
         </div>
 
         <div className={styles.cta}>
-          <Link href="#pricing" onClick={e => handleScroll(e, 'pricing')}>
+          <Link
+            href="#pricing"
+            onClick={e => handleScroll(e, 'pricing')}
+            data-gtm-category="engagement"
+            data-gtm-label="solution_cta_pricing"
+          >
             <Button size="large" color="primary" variant="solid">
               <strong>Quero Garantir Minha Vaga</strong>
             </Button>

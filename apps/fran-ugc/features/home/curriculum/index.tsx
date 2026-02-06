@@ -27,6 +27,8 @@ export const EbookGuide = () => {
                 href="/lead"
                 className={styles.ctaButton}
                 aria-label="Baixar guia gratuito de UGC"
+                data-gtm-category="ebook"
+                data-gtm-label="ebook_download_curriculum"
               >
                 Baixar guia gratuito
               </Link>

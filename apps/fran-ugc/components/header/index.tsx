@@ -11,7 +11,12 @@ const navLinks = [
   { label: 'Como funciona?', href: '#solution' },
   { label: 'Conteúdo do curso', href: '#modules' },
   { label: 'Depoimentos', href: '#testimonials' },
-  { label: 'Investimento', href: '#pricing' },
+  {
+    label: 'Investimento',
+    href: '#pricing',
+    gtmCategory: 'engagement',
+    gtmLabel: 'header_nav_pricing',
+  },
   { label: 'Sobre mim', href: '#aboutme' },
 ];
 
@@ -71,6 +76,8 @@ export const Header = () => {
                     handleScroll(e, link.href);
                     setIsMenuOpen(false);
                   }}
+                  data-gtm-category={link.gtmCategory}
+                  data-gtm-label={link.gtmLabel}
                 >
                   {link.label}
                 </Link>
@@ -83,6 +90,8 @@ export const Header = () => {
               href="#pricing"
               className={styles.ctaButton}
               onClick={e => handleScroll(e, '#pricing')}
+              data-gtm-category="engagement"
+              data-gtm-label="header_cta_pricing"
             >
               <Button size="large" color="primary" variant="solid">
                 Inscreva-se

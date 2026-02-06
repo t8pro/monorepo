@@ -26,7 +26,11 @@ export const FinalCTA = () => {
             </View.Item>
 
             <View.Item>
-              <Link href="/lead">
+              <Link
+                href="/lead"
+                data-gtm-category="ebook"
+                data-gtm-label="ebook_download_final"
+              >
                 <Button size="large" fullWidth>
                   Fazer o download do guia agora
                 </Button>

@@ -52,6 +52,9 @@ export const Pricing = () => {
               <Link
                 href="https://pay.kiwify.com.br/offEio7"
                 className={styles.ctaButton}
+                data-gtm-category="conversion"
+                data-gtm-label="pricing_checkout"
+                data-gtm-action="checkout_start"
               >
                 Garantir Minha Vaga Agora
               </Link>

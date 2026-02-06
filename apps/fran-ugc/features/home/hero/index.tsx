@@ -49,7 +49,12 @@ export const Hero = () => {
             </p>
 
             <div className={styles.buttons}>
-              <Link href="#pricing" onClick={e => handleScroll(e, 'pricing')}>
+              <Link
+                href="#pricing"
+                onClick={e => handleScroll(e, 'pricing')}
+                data-gtm-category="engagement"
+                data-gtm-label="hero_cta_pricing"
+              >
                 <Button size="large" color="primary" variant="solid">
                   <strong>Quero Garantir Minha Vaga</strong>
                 </Button>

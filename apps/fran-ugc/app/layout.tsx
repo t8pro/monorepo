@@ -6,6 +6,7 @@ import { Suspense } from 'react';
 import { Providers } from './providers';
 import '@/styles/themes/fran/theme.css';
 import '@/styles/globals.scss';
+import { DataLayer } from '@/components/DataLayer';
 import { FacebookPixel } from '@/components/FacebookPixel';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
@@ -229,6 +230,7 @@ export default function RootLayout({
       >
         <main>
           <Providers>
+            <DataLayer />
             <Suspense fallback={null}>
               <FacebookPixel />
             </Suspense>

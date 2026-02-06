@@ -74,13 +74,22 @@ export const Problem = () => {
         </Text>
 
         <View direction="row" gap={4} align="center" justify="center">
-          <Link href="#pricing" onClick={e => handleScroll(e, 'pricing')}>
+          <Link
+            href="#pricing"
+            onClick={e => handleScroll(e, 'pricing')}
+            data-gtm-category="engagement"
+            data-gtm-label="problem_cta_pricing"
+          >
             <Button variant="solid" size="large" color="primary">
               Quero ir logo para a prática
             </Button>
           </Link>
 
-          <Link href="/lead">
+          <Link
+            href="/lead"
+            data-gtm-category="ebook"
+            data-gtm-label="problem_cta_ebook"
+          >
             <Button size="large" variant="faded">
               <strong>Baixe nosso guia grátis</strong>
             </Button>
