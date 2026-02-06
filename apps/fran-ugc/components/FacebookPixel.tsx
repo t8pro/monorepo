@@ -10,9 +10,8 @@ export const FacebookPixel = () => {
 
   useEffect(() => {
     // This hook is for tracking page views on route changes for SPA behavior
-    // @ts-expect-error fbq is added by the script
+
     if (typeof window.fbq === 'function') {
-      // @ts-expect-error fbq is added by the script
       window.fbq('track', 'PageView');
     }
   }, [pathname, searchParams]);
