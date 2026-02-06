@@ -1,3 +1,4 @@
+import { GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Figtree, Young_Serif } from 'next/font/google';
 import localFont from 'next/font/local';
@@ -201,6 +202,7 @@ export default function RootLayout({
 
   return (
     <html lang="pt-BR" data-rs-theme="fran" suppressHydrationWarning>
+      <GoogleTagManager gtmId="GTM-P9H6BTL3" />
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script
