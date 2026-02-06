@@ -41,7 +41,7 @@ const materialSymbols = localFont({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export const metadata: Metadata = {
-  ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
+  metadataBase: new URL(siteUrl || 'http://localhost:3000'),
   title: {
     default: 'UGC na Prática',
     template: '%s | UGC na Prática',
@@ -230,7 +230,9 @@ export default function RootLayout({
       >
         <main>
           <Providers>
-            <DataLayer />
+            <Suspense fallback={null}>
+              <DataLayer />
+            </Suspense>
             <Suspense fallback={null}>
               <FacebookPixel />
             </Suspense>
