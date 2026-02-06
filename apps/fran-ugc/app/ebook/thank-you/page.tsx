@@ -35,7 +35,12 @@ export default function EbookThankYouPage() {
               Agora que você já tem o guia gratuito, que tal fazer parte do
               curso completo e transformar seu celular em uma fonte de renda?
             </p>
-            <Link href="/#pricing" className={styles.ctaLink}>
+            <Link
+              href="https://pay.kiwify.com.br/offEio7"
+              className={styles.ctaLink}
+              data-gtm-category="conversion"
+              data-gtm-label="ebook_thank_you_cta_pricing"
+            >
               <Button size="large" color="primary" variant="solid">
                 Quero fazer parte do curso
               </Button>

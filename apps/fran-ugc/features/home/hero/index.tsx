@@ -50,9 +50,8 @@ export const Hero = () => {
 
             <div className={styles.buttons}>
               <Link
-                href="#pricing"
-                onClick={e => handleScroll(e, 'pricing')}
-                data-gtm-category="engagement"
+                href="https://pay.kiwify.com.br/offEio7"
+                data-gtm-category="conversion"
                 data-gtm-label="hero_cta_pricing"
               >
                 <Button size="large" color="primary" variant="solid">
@@ -60,9 +59,14 @@ export const Hero = () => {
                 </Button>
               </Link>
 
-              <Link href="#aboutme" onClick={e => handleScroll(e, 'aboutme')}>
+              <Link
+                href="#pricing"
+                onClick={e => handleScroll(e, 'pricing')}
+                data-gtm-category="engagement"
+                data-gtm-label="hero_cta_pricing"
+              >
                 <Button size="large" variant="outline">
-                  Sobre mim
+                  Saber mais
                 </Button>
               </Link>
             </div>

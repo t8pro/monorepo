@@ -26,17 +26,6 @@ const problems = [
 ];
 
 export const Problem = () => {
-  const handleScroll = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    id: string,
-  ) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      window.history.pushState(null, '', '#' + id);
-    }
-  };
   return (
     <section className={styles.problem} id="problem">
       <Container>
@@ -75,9 +64,8 @@ export const Problem = () => {
 
         <View direction="row" gap={4} align="center" justify="center">
           <Link
-            href="#pricing"
-            onClick={e => handleScroll(e, 'pricing')}
-            data-gtm-category="engagement"
+            href="https://pay.kiwify.com.br/offEio7"
+            data-gtm-category="conversion"
             data-gtm-label="problem_cta_pricing"
           >
             <Button variant="solid" size="large" color="primary">

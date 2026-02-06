@@ -24,16 +24,15 @@ export const Pricing = () => {
             <div className={styles.priceCard}>
               <div className={styles.badge}>Oferta de Lançamento</div>
 
+              <div className={styles.originalPrice}>
+                <span>De R$ 397,00 por apenas</span>
+              </div>
               <div className={styles.priceWrapper}>
                 <span className={styles.currency}>R$</span>
                 <span className={styles.price}>97,00</span>
               </div>
 
               <p className={styles.installments}>em até 12x no cartão</p>
-
-              <div className={styles.originalPrice}>
-                <span>De R$ 397,00 por apenas</span>
-              </div>
 
               <div className={styles.benefits}>
                 <h3 className={styles.benefitsTitle}>

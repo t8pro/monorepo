@@ -6,18 +6,6 @@ import { Container } from 'reshaped';
 import styles from './styles.module.scss';
 
 export const AboutMe = () => {
-  const handleScroll = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    id: string,
-  ) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      window.history.pushState(null, '', '#' + id);
-    }
-  };
-
   return (
     <section className={styles.aboutMe} id="aboutme">
       <Container>
@@ -93,9 +81,10 @@ export const AboutMe = () => {
 
         <div className={styles.cta}>
           <Link
-            href="#pricing"
+            href="https://pay.kiwify.com.br/offEio7"
             className={styles.ctaButton}
-            onClick={e => handleScroll(e, 'pricing')}
+            data-gtm-category="conversion"
+            data-gtm-label="about_me_cta_pricing"
           >
             Quero começar agora
           </Link>

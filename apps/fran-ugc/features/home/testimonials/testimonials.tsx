@@ -122,15 +122,9 @@ export const Testimonials = () => {
 
         <div className={styles.ctaWrapper}>
           <Link
-            href="#pricing"
-            onClick={e => {
-              e.preventDefault();
-              const element = document.getElementById('pricing');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-                window.history.pushState(null, '', '#pricing');
-              }
-            }}
+            data-gtm-category="conversion"
+            data-gtm-label="testimonials_cta_pricing"
+            href="https://pay.kiwify.com.br/offEio7"
           >
             <Button size="large" variant="solid" className={styles.ctaButton}>
               <strong>Quero ter esses resultados</strong>
