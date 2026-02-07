@@ -17,27 +17,15 @@ const TEXT_TESTIMONIALS = [
   },
   {
     name: 'Elaine Lacerda',
-    text: 'O UGC na Prática me mostrou que eu não preciso ser famosa pra ganhar dinheiro. Em 3 semanas fechei contrato com uma loja de maquiagem. Estou amando!',
+    text: 'A mentoria foi maravilhosa! Após a maternidade, eu precisava de uma oportunidade para trabalhar em casa e o UGC foi a resposta que eu tanto pedia. O material é muito claro e o suporte no WhatsApp é excelente. Sou muito grata por todo o cuidado e dedicação!',
   },
   {
     name: 'Maria Fernanda',
-    text: 'Gente, a didática da Fran é perfeita! Eu tinha zero experiência e já fiz vídeos que as marcas amaram. Liberdade de verdade é trabalhar de casa assim.',
+    text: 'Desde o início da minha jornada no UGC, a Fran teve um papel fundamental. Antes da mentoria eu não tinha clareza, mas agora entendo perfeitamente como o mercado funciona, como abordar marcas e como me posicionar. Sou muito grata por todo o apoio!',
   },
   {
     name: 'Zilmara Santos',
-    text: 'Melhor investimento que fiz! O passo a passo é muito claro. Já recuperei o valor do curso no primeiro trabalho que fechei. Recomendo demais!',
-  },
-  {
-    name: 'Juliana Mendes',
-    text: 'Eu tinha medo de aparecer, mas o método me deixou super segura. Hoje faço vídeos com naturalidade e sou paga por isso. Gratidão eterna!',
-  },
-  {
-    name: 'Camila Rocha',
-    text: 'Sempre achei que precisava de equipamentos caros, mas comecei só com o celular como a Fran ensina e deu super certo. O mercado de UGC é gigante!',
-  },
-  {
-    name: 'Beatriz Souza',
-    text: 'Estou vivendo 100% de UGC agora. O curso me ensinou não só a gravar, mas negociar com as marcas. É uma virada de chave na vida financeira.',
+    text: 'Sempre admirei o trabalho da Fran e entrei na mentoria assim que abriu! O suporte é excelente, ajudando com roteiros e tirando dúvidas na hora. Consigo conciliar tudo com meu trabalho e estudos, e sinto que estou evoluindo e me sentindo muito mais segura a cada vídeo!',
   },
 ];
 
