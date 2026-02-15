@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
+import { NextRequest, NextResponse } from 'next/server';
 import { ebookGuideTemplate } from '@/app/templates/ebook-guide';
 import { generateEbookHash, storeEbookHash } from '@/lib/ebook-hash';
 import { getTransporter } from '@/lib/email';
@@ -100,6 +100,27 @@ export async function POST(request: NextRequest) {
         subject: `Nova Inscrição - ${name}`,
         html: adminHtml,
       });
+    }
+
+    // Send data to webhook
+    const webhookUrl = process.env.LEAD_WEBHOOK_URL;
+    if (webhookUrl) {
+      try {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+          }),
+        });
+      } catch (webhookError) {
+        console.error('Error sending data to webhook:', webhookError);
+        // We don't block the response if webhook fails
+      }
     }
 
     return NextResponse.json({ success: true }, { status: 200 });
