@@ -24,11 +24,13 @@ export const Hero = () => {
       <Container>
         <div className={styles.content}>
           <div className={styles.textContent}>
-            <h1 className={styles.title}>UGC na Prática </h1>
+            <h1 className={styles.title}>
+              Transforme seu Celular em uma Fonte de Renda
+            </h1>
 
             <h2 className={styles.subtitle}>
-              Trabalhe no seu próprio ritmo: <br />
-              ganhe criando conteúdo de casa
+              Seja paga por marcas para criar vídeos simples de casa, mesmo
+              começando do absoluto zero.
             </h2>
 
             <div className={styles.author}>
