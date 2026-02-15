@@ -46,8 +46,9 @@ export const Hero = () => {
             </div>
 
             <p className={styles.description}>
-              Vou te mostrar um método descomplicado de criar vídeos com seu
-              celular, enviar para marcas e ganhar dinheiro trabalhando de casa.
+              Vou te mostrar um método descomplicado chamado UGC para criar
+              vídeos com seu celular, enviar para marcas e ganhar dinheiro
+              trabalhando de casa.
             </p>
 
             <div className={styles.buttons}>

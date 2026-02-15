@@ -29,7 +29,7 @@ export const Pricing = () => {
               </div>
               <div className={styles.priceWrapper}>
                 <span className={styles.currency}>R$</span>
-                <span className={styles.price}>97,00</span>
+                <span className={styles.price}>27,90</span>
               </div>
 
               <p className={styles.installments}>em até 12x no cartão</p>
