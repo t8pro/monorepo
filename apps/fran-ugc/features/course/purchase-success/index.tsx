@@ -1,5 +1,6 @@
 'use client';
 
+import { FaWhatsapp } from 'react-icons/fa';
 import { Button, Card, Text, View } from 'reshaped';
 import styles from './styles.module.scss';
 
@@ -133,6 +134,24 @@ export const PurchaseSuccess = () => {
                 Não recebeu o e-mail? Entre em contato conosco através do
                 WhatsApp
               </Text>
+            </View.Item>
+            <View.Item>
+              <Button
+                color="positive"
+                href="https://wa.me/5567981134999"
+                attributes={{
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                  'aria-label': 'Falar com o suporte no WhatsApp - Abre em nova aba',
+                }}
+              >
+                <View direction="row" gap={2} align="center">
+                  <View.Item>
+                    <FaWhatsapp size={18} />
+                  </View.Item>
+                  <View.Item>Falar no WhatsApp</View.Item>
+                </View>
+              </Button>
             </View.Item>
             <View.Item>
               <Button variant="outline" color="neutral" href="/">
