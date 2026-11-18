@@ -373,10 +373,10 @@ export const PrivacyPolicy = () => {
                       <Text variant="body-2">
                         <strong>WhatsApp:</strong>{' '}
                         <Link
-                          href="https://wa.me/+5567998777776"
+                          href="https://wa.me/5567981134999"
                           target="_blank"
                         >
-                          +55 67 99877-7776
+                          +55 67 98113-4999
                         </Link>
                       </Text>
                     </View.Item>

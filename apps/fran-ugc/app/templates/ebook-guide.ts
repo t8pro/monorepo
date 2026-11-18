@@ -63,8 +63,8 @@ export const ebookGuideTemplate = `
               📸 Instagram: @byfranazevedo
             </a>
             <br />
-            <a href='https://wa.me/+5567998777776' target='_blank' style='color: #c75d3b; text-decoration: none;'>
-              📱 WhatsApp: (67) 99877-7776
+            <a href='https://wa.me/5567981134999' target='_blank' style='color: #c75d3b; text-decoration: none;'>
+              📱 WhatsApp: (67) 98113-4999
             </a>
           </p>
         </div>

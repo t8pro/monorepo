@@ -75,14 +75,14 @@ export const Footer = () => {
             <div className={styles.linkGroup}>
               <h3 className={styles.linkTitle}>Contato</h3>
               <a
-                href="https://wa.me/+5567998777776"
+                href="https://wa.me/5567981134999"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
                 aria-label="WhatsApp - Abre em nova aba"
               >
                 <FaWhatsapp size={20} />
-                <span>+55 67 99877-7776</span>
+                <span>+55 67 98113-4999</span>
               </a>
               <a
                 href="mailto:contato@francieliazevedo.com"
